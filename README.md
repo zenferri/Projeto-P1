@@ -14,7 +14,6 @@
 **Codinome: <i>Habitat</i>**<br>
 **Versão 1.0 – 2025.2**
 
-
 ### Integrantes
 
 - Guilherme Henrique Volpato
@@ -25,7 +24,6 @@
 
 **Data:** Setembro/2025
 <br>
-
 
 ## Sumário
 
@@ -41,7 +39,7 @@
 - [4. Requisitos Funcionais e Não Funcionais](#4-requisitos-funcionais-e-não-funcionais)
   - [4.1 Requisitos Funcionais](#41-requisitos-funcionais)
     - [RF01](#rf01) • [RF02](#rf02) • [RF03](#rf03) • [RF04](#rf04) • [RF05](#rf05)
-    - [RF06](#rf06) • [RF07](#rf07) 
+    - [RF06](#rf06) • [RF07](#rf07)
   - [4.2 Requisitos Não Funcionais](#42-requisitos-não-funcionais)
     - [RNF01](#rnf01) • [RNF02](#rnf02) • [RNF03](#rnf03) • [RNF04](#rnf04) • [RNF05](#rnf05)
     - [RNF06](#rnf06) • [RNF07](#rnf07)
@@ -51,12 +49,9 @@
 - [8. Cronograma da Primeira Etapa](#8-cronograma-da-primeira-etapa-20252)
 - [9. Referências](#9-referências)
 
-
-
 ## Resumo
 
 O presente projeto de pesquisa tem como finalidade o desenvolvimento de um portal web para a Hospedaria Internet, voltado ao provisionamento automático de máquinas virtuais (VMs) em infraestrutura Proxmox. Atualmente, a contratação de servidores virtuais exige contato direto com a equipe técnica, que realiza a configuração manualmente. Esse modelo gera atrasos e limita a escalabilidade da oferta. A pesquisa busca propor, modelar e validar um sistema que permita ao cliente, de forma autônoma, selecionar planos de VPS, realizar o pagamento online e inicializar automaticamente sua instância virtual. O projeto fundamenta-se em referenciais teóricos de computação em nuvem, automação de infraestrutura e comércio eletrônico, aplicando metodologia de análise de requisitos, modelagem conceitual, implementação prototípica e validação prática. O resultado esperado é a criação de uma solução que otimize processos, reduza custos operacionais e amplie a experiência do cliente.
-
 
 ## 1. Introdução
 
@@ -89,12 +84,11 @@ A proposta justifica-se pela necessidade de modernização do processo de provis
 
 A pesquisa fundamenta-se em conceitos de computação em nuvem, infraestrutura como serviço (IaaS) e automação de infraestrutura por meio de APIs e ferramentas como Proxmox e cloud-init. O National Institute of Standards and Technology (NIST) define computação em nuvem como “(...) um modelo que possibilita o acesso ubíquo, conveniente e sob demanda, por meio da rede, a um conjunto compartilhado de recursos computacionais configuráveis (por exemplo, redes, servidores, armazenamento, aplicações e serviços), que podem ser rapidamente provisionados e liberados com o mínimo de esforço de gerenciamento ou interação com o provedor de serviços (...).” (NIST, 2011).
 
-<i>Segundo Rios (2019, p. 16-17), citando o trabalho de Turban et al. (2018), expõe que, no campo do comércio eletrônico, a integração entre sistemas de pagamento e plataformas digitais é apontada como fundamental para garantir experiências fluidas de consumo. Esses referenciais fornecem base teórica para a modelagem e a implementação do portal proposto.</i> 
+Segundo Rios (2019, p. 16-17), citando o trabalho de Turban et al. (2018), expõe que, <i>no campo do comércio eletrônico, a integração entre sistemas de pagamento e plataformas digitais é apontada como fundamental para garantir experiências fluidas de consumo. Esses referenciais fornecem base teórica para a modelagem e a implementação do portal proposto.</i>
 
 ## 3. Metodologia
 
 A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo. A metodologia compreende as etapas: 1) entrevista e levantamento de requisitos funcionais e não funcionais; 2) modelagem conceitual e lógica do sistema; 3) implementação prototípica em ambiente controlado; 4) integração com gateway de pagamento; 5) testes de provisionamento em Proxmox com uso de templates cloud-init; 6) análise de desempenho e confiabilidade; 7) documentação e validação junto.
-
 
 ## 4. Requisitos Funcionais e Não Funcionais
 
@@ -130,57 +124,56 @@ A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo.
 
 - <a id="rnf07"></a>**RNF07** – Conformidade com a LGPD: O portal deve estar em conformidade com a LGPD (Lei Geral de Proteção de Dados) no tratamento de dados pessoais de clientes.
 
-
 ## 5. Protótipo de Fluxo de Provisionamento
 
-1.	Cliente seleciona plano e cria Pedido (status: created).
+1. Cliente seleciona plano e cria Pedido (status: created).
 
-2.	Checkout no gateway; Webhook aprovado → Pedido = paid 
+2. Checkout no gateway; Webhook aprovado → Pedido = paid
 
-3.	 Criação de trabalho na fila: Provisionar VM (pedidoId).
+3. Criação de trabalho na fila: Provisionar VM (pedidoId).
 
-4.	Orquestrador invoca API Proxmox: clone do Template → CPU/RAM/Disk → cloud‑init (ciuser/sshkeys/hostname/ipconfig0) → start.
+4. Orquestrador invoca API Proxmox: clone do Template → CPU/RAM/Disk → cloud‑init (ciuser/sshkeys/hostname/ipconfig0) → start.
 
-5.	Descoberta de IP (QEMU Guest Agent ou DHCP leases), gravação da VM e atualização do Pedido para provisioned.
+5. Descoberta de IP (QEMU Guest Agent ou DHCP leases), gravação da VM e atualização do Pedido para provisioned.
 
-6.	Notificação por e-mail ao cliente com hostname/IP/credenciais e exibição no painel.
+6. Notificação por e-mail ao cliente com hostname/IP/credenciais e exibição no painel.
 
-7.	Em erros, registro de EventoProvisionamento e rollback (destroy).
+7. Em erros, registro de EventoProvisionamento e rollback (destroy).
 
 ---
 
 ## 6. Protótipo de Arquitetura Técnica
 
-A arquitetura proposta adota um modelo em camadas para assegurar modularidade, escalabilidade e segurança no provisionamento automático de máquinas virtuais. Após discussões com o gestor de redes da Hospedaria Internet, foram sugeridas as seguintes ferramentas: 
-•	Camada de Apresentação (Front-end): Responsável pela interação com o cliente, será implementada utilizando frameworks modernos como Next.js ou React, garantindo responsividade, acessibilidade em múltiplos dispositivos e experiência de uso intuitiva.
+A arquitetura proposta adota um modelo em camadas para assegurar modularidade, escalabilidade e segurança no provisionamento automático de máquinas virtuais. Após discussões com o gestor de redes da Hospedaria Internet, foram sugeridas as seguintes ferramentas:
+• Camada de Apresentação (Front-end): Responsável pela interação com o cliente, será implementada utilizando frameworks modernos como Next.js ou React, garantindo responsividade, acessibilidade em múltiplos dispositivos e experiência de uso intuitiva.
 
-•	Camada de Aplicação (Back-end): Implementada em Node.js/Express ou Python/Django REST Framework, será responsável pela lógica de negócios, autenticação de clientes, gestão de pedidos, integração com gateway de pagamento e comunicação com os demais serviços da arquitetura.
+• Camada de Aplicação (Back-end): Implementada em Node.js/Express ou Python/Django REST Framework, será responsável pela lógica de negócios, autenticação de clientes, gestão de pedidos, integração com gateway de pagamento e comunicação com os demais serviços da arquitetura.
 
-•	Camada de Dados: Utilização de PostgreSQL como sistema gerenciador de banco de dados relacional, armazenando informações de clientes, planos, pedidos, pagamentos, logs de auditoria e metadados das máquinas virtuais.
+• Camada de Dados: Utilização de PostgreSQL como sistema gerenciador de banco de dados relacional, armazenando informações de clientes, planos, pedidos, pagamentos, logs de auditoria e metadados das máquinas virtuais.
 
-•	Camada de Mensageria e Orquestração: A comunicação assíncrona e o gerenciamento de tarefas de provisionamento serão realizados por meio de Redis ou RabbitMQ, assegurando confiabilidade, escalabilidade e idempotência no tratamento dos eventos. O Orquestrador de Provisionamento atuará como serviço especializado, consumindo mensagens da fila e executando as chamadas à API do Proxmox.
+• Camada de Mensageria e Orquestração: A comunicação assíncrona e o gerenciamento de tarefas de provisionamento serão realizados por meio de Redis ou RabbitMQ, assegurando confiabilidade, escalabilidade e idempotência no tratamento dos eventos. O Orquestrador de Provisionamento atuará como serviço especializado, consumindo mensagens da fila e executando as chamadas à API do Proxmox.
 
-•	Camada de Infraestrutura Virtualizada: A infraestrutura de máquinas virtuais será gerida em ambiente Proxmox, utilizando templates configurados com cloud-init, possibilitando a criação rápida e padronizada de VMs.
+• Camada de Infraestrutura Virtualizada: A infraestrutura de máquinas virtuais será gerida em ambiente Proxmox, utilizando templates configurados com cloud-init, possibilitando a criação rápida e padronizada de VMs.
 
-•	Camada de Rede e Proxy Reverso: O acesso externo às VMs e ao portal será intermediado por Traefik ou Nginx, garantindo balanceamento de carga, roteamento dinâmico de subdomínios e emissão automática de certificados digitais.
+• Camada de Rede e Proxy Reverso: O acesso externo às VMs e ao portal será intermediado por Traefik ou Nginx, garantindo balanceamento de carga, roteamento dinâmico de subdomínios e emissão automática de certificados digitais.
 
-•	Camada de Integração com Pagamentos: O portal contará com integração a gateways de pagamento como Stripe ou Mercado Pago, que enviarão confirmações via webhooks para disparo do processo de provisionamento.
+• Camada de Integração com Pagamentos: O portal contará com integração a gateways de pagamento como Stripe ou Mercado Pago, que enviarão confirmações via webhooks para disparo do processo de provisionamento.
 
-•	Camada de Segurança: Todas as comunicações serão realizadas por meio de TLS (HTTPS), assegurando confidencialidade e integridade dos dados. Além disso, serão aplicadas boas práticas de controle de acesso, criptografia de credenciais e conformidade com a LGPD.
+• Camada de Segurança: Todas as comunicações serão realizadas por meio de TLS (HTTPS), assegurando confidencialidade e integridade dos dados. Além disso, serão aplicadas boas práticas de controle de acesso, criptografia de credenciais e conformidade com a LGPD.
 
 ---
 
 ## 7. Segurança e Governança
 
-•	Tokens de API Proxmox com menor privilégio e escopo restrito.
+• Tokens de API Proxmox com menor privilégio e escopo restrito.
 
-•	Validação de assinatura e idempotência do webhook.
+• Validação de assinatura e idempotência do webhook.
 
-•	Logs de eventos e auditoria de acesso.
+• Logs de eventos e auditoria de acesso.
 
-•	Limites de recursos e políticas de suspensão.
+• Limites de recursos e políticas de suspensão.
 
-•	Backups de metadados e, conforme plano, snapshot/backup da VM.
+• Backups de metadados e, conforme plano, snapshot/backup da VM.
 
 ---
 
@@ -206,4 +199,3 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY. The NIST Definition of Cloud Computing. NIST Special Publication 800-145. Gaithersburg: NIST, 2011. Disponível em: https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf. Acesso: 07/09/2025.
 
 RIOS, Larissa Soares de Queiroz. Intenção de compra no social commerce: um estudo sobre a perspectiva dos consumidores brasileiros. 2019. Dissertação (Mestrado em Administração) – Universidade Federal de Sergipe, São Cristóvão, 2019. Disponível em: https://ri.ufs.br/bitstream/riufs/14120/2/LARISSA_SOARES_QUEIROZ_RIOS.pdf. Acesso em: 07/09/2025.
-
