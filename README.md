@@ -1,4 +1,4 @@
-<p align="center" style="font-size:28px;"><strong>Documentação do PI</em></strong></p>
+# Documentação do PI
 
 # FATEC JAHU
 
