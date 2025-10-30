@@ -18,9 +18,7 @@
 
 - Guilherme Henrique Volpato
 - José Augusto Zen Ferri
-- Mauro Barbosa de Azevedo Junior
 - Rafael Henrique Biliasi
-- Renan de Fabio
 
 **Data:** Setembro/2025
 <br>
