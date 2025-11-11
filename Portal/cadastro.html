@@ -81,49 +81,135 @@
 
     <section class="cadastro">
         <div class="container">
-            <form class="row g-3">
+            <form id="cadastroForm" class="row g-3" novalidate>
+                <div class="col-12">
+                    <label class="form-label d-block">Tipo de cadastro</label>
+                    <div class="btn-group" role="group" aria-label="Tipo de cadastro">
+                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPF" value="pf" checked>
+                        <label class="btn btn-outline-primary" for="tipoPF">Pessoa Física</label>
+                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPJ" value="pj">
+                        <label class="btn btn-outline-primary" for="tipoPJ">Pessoa Jurídica</label>
+                    </div>
+                </div>
+
+                <div class="col-12" id="pfFields">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputNome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" name="nome" required data-required-group="pf">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputSobrenome" class="form-label">Sobrenome</label>
+                            <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required data-required-group="pf">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCPF" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="inputCPF" name="cpf" required data-required-group="pf"
+                                inputmode="numeric" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputNascimento" class="form-label">Data de nascimento</label>
+                            <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required data-required-group="pf">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label d-block">Sexo</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="masculino" required data-required-group="pf">
+                                    <label class="form-check-label" for="sexoM">Masculino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino" data-required-group="pf">
+                                    <label class="form-check-label" for="sexoF">Feminino</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 d-none" id="pjFields">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputEmpresa" class="form-label">Nome empresarial</label>
+                            <input type="text" class="form-control" id="inputEmpresa" name="nomeEmpresarial" required data-required-group="pj">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCNPJ" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="inputCNPJ" name="cnpj" required data-required-group="pj">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputResponsavel" class="form-label">Responsável técnico</label>
+                            <input type="text" class="form-control" id="inputResponsavel" name="responsavelTecnico" required data-required-group="pj">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <label for="inputEmail" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4">
+                    <label for="inputWhatsapp" class="form-label">WhatsApp</label>
+                    <input type="tel" class="form-control" id="inputWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    <label for="inputAddress" class="form-label">Endereço</label>
+                    <input type="text" class="form-control" id="inputAddress" name="endereco" required>
                 </div>
                 <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2"
-                        placeholder="Apartment, studio, or floor">
+                    <label for="inputAddress2" class="form-label">Complemento do endereço</label>
+                    <input type="text" class="form-control" id="inputAddress2" name="complemento" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="inputCity" class="form-label">City</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="inputCity" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="inputCity" name="cidade" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="inputState" class="form-label">State</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                    <label for="estado" class="form-label">Estado</label>
+                    <select id="estado" class="form-select" name="estado" required>
+                        <option value="">Selecione...</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="inputZip" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <label for="inputZip" class="form-label">CEP</label>
+                    <input type="text" class="form-control" id="inputZip" name="cep" required inputmode="numeric"
+                        maxlength="9" autocomplete="postal-code" pattern="\d{5}-\d{3}">
                 </div>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                <div class="col-12 d-flex flex-column flex-md-row justify-content-end align-items-md-center gap-3">
+                    <div class="form-check text-md-end">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label" for="gridCheck">
-                            Check me out
+                            Li e concordo com os termos do serviço.
                         </label>
                     </div>
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" id="btnCadastrar" class="btn btn-primary" disabled>Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -184,6 +270,101 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('cadastroForm');
+            const pfFields = document.getElementById('pfFields');
+            const pjFields = document.getElementById('pjFields');
+            const tipoPF = document.getElementById('tipoPF');
+            const tipoPJ = document.getElementById('tipoPJ');
+            const submitButton = document.getElementById('btnCadastrar');
+            const termosCheck = document.getElementById('gridCheck');
+            const pfInputs = document.querySelectorAll('[data-required-group="pf"]');
+            const pjInputs = document.querySelectorAll('[data-required-group="pj"]');
+            const cepInput = document.getElementById('inputZip');
+            const cpfInput = document.getElementById('inputCPF');
+
+            const setGroupState = (inputs, isActive) => {
+                inputs.forEach((input) => {
+                    input.disabled = !isActive;
+                    input.required = isActive;
+                });
+            };
+
+            const updateSubmitState = () => {
+                const isValid = form.checkValidity();
+                submitButton.disabled = !isValid;
+            };
+
+            const togglePessoa = () => {
+                const isPJ = tipoPJ.checked;
+                pfFields.classList.toggle('d-none', isPJ);
+                pjFields.classList.toggle('d-none', !isPJ);
+                setGroupState(pfInputs, !isPJ);
+                setGroupState(pjInputs, isPJ);
+                updateSubmitState();
+            };
+
+            const formatCEP = (value) => {
+                const digits = value.replace(/\D/g, '').slice(0, 8);
+                if (digits.length <= 5) {
+                    return digits;
+                }
+                return `${digits.slice(0, 5)}-${digits.slice(5)}`;
+            };
+
+            if (cepInput) {
+                cepInput.addEventListener('input', () => {
+                    const formatted = formatCEP(cepInput.value);
+                    if (formatted !== cepInput.value) {
+                        cepInput.value = formatted;
+                    }
+                });
+            }
+
+            const formatCPF = (value) => {
+                const digits = value.replace(/\D/g, '').slice(0, 11);
+                const parts = [];
+                if (digits.length > 0) {
+                    parts.push(digits.slice(0, 3));
+                }
+                if (digits.length >= 4) {
+                    parts.push(digits.slice(3, 6));
+                }
+                if (digits.length >= 7) {
+                    parts.push(digits.slice(6, 9));
+                }
+                let formatted = parts.join('.');
+                if (digits.length > 9) {
+                    formatted += `-${digits.slice(9)}`;
+                }
+                return formatted;
+            };
+
+            if (cpfInput) {
+                cpfInput.addEventListener('input', () => {
+                    const formatted = formatCPF(cpfInput.value);
+                    if (formatted !== cpfInput.value) {
+                        cpfInput.value = formatted;
+                    }
+                });
+            }
+
+            form.addEventListener('input', updateSubmitState);
+            form.addEventListener('change', updateSubmitState);
+            termosCheck.addEventListener('change', updateSubmitState);
+            form.addEventListener('submit', (event) => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    form.reportValidity();
+                }
+            });
+
+            tipoPF.addEventListener('change', togglePessoa);
+            tipoPJ.addEventListener('change', togglePessoa);
+            togglePessoa();
+        });
+    </script>
 
 </body>
 
