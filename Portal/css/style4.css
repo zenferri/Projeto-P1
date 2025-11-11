@@ -156,6 +156,12 @@ img {
     padding: 10px;
 }
 
+.menu-nav .already-account {
+    font-size: 1.25em;
+    display: block;
+    padding: 10px;
+}
+
 .menu-nav .botao-cadastro {
     background-color: var(--primary-brand-2);
     color: var(--primary-light-1);
