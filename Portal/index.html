@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Singularys</title>
+
+    <!-- Descrição  -->
+
+    <meta name="description"
+        content="Implante sua máquina virtual em poucos cliques. Performance real, estabilidade contínua e suporte especializado para projetos que exigem segurança e eficiência." />
+
+    <!-- Fonte que será utilizada no site. Ela vem antes do style.css -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Meta TAG para o responsivo funcionar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Declara que o site usa esquema de cores claro para evitar cagada do Android -->
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS  inline para evitar flash escuro antes do CSS externo -->
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        /* impede darkening automático */
+        html,
+        body {
+            background: #fff;
+            color: #101C5E;
+        }
+    </style>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" type="text/css" href="css/style4.css?v=1.0.3">
+
+    <link rel="stylesheet" href="css/style_login.css">
+
+    <link rel="stylesheet" href="css/carrousel.css">
+
+</head>
+
+<body>
+    <section class="menu-top">
+        <div class="superinfo-bg">
+            <div class="superinfo">
+                <a href="#blog">Blog</a>
+                <a href="#documentos">Documentos</a>
+                <a href="#suporte">Suporte</a>
+                <a href="#quem_somos">Nossa equipe</a>
+            </div>
+        </div>
+
+        <header class="menu-bg">
+            <div class="menu">
+                <div class="menu-logo">
+                    <a href="#">Singularys</a>
+                </div>
+                <nav class="menu-nav">
+                    <ul>
+                        <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#preco">Planos</a></li>
+                        <!-- <li><a href="#login">Login</a></li> -->
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li><a href="#cadastrese" class="botao-cadastro">Cadastre-se</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <div class="introducao" id="sobre">
+
+        <h1><strong>De um ponto, tudo pode nascer.</strong></h1>
+        <h2>Servidores privados virtualizados de alta performance, preparados para dar forma às suas ideias.</h2>
+
+        <!-- <h1>Crie o futuro agora</h1>
+        <h2>Lance sua máquina virtual em poucos cliques!<br>É rápido, é seguro e do seu jeito!</h2> -->
+    </div>
+
+    <section class="sobre">
+        <div class="sobre-info">
+            <h1>Origem</h1>
+            <p><strong>A Singularys surge da ideia de que toda criação começa em um ponto.</strong> Há um instante
+                anterior a tudo, silencioso, denso, cheio de potencial, como a singularidade que antecede o universo. É
+                desse instante que surgem as ideias que mudam trajetórias, projetos que ganham corpo, sistemas que se
+                tornam realidade.</p>
+
+            <p><em>Nós oferecemos esse ponto de origem.</em> Um espaço seguro, estável e preparado para acolher o
+                primeiro impulso criativo. De um único servidor central, novos ambientes podem nascer, crescer e se
+                multiplicar. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem limitações, sem
+                ruídos, sem interferências.</p>
+
+            <p>Acreditamos que criar é um movimento sagrado. Exige confiança, exige estrutura, exige coragem.
+                <strong>Nossa missão é sustentar esse momento decisivo</strong> em que uma ideia deixa de ser apenas
+                intenção e se converte em presença.
+            </p>
+        </div>
+        <div class="sobre-img">
+            <div>
+                <img src="https://www.singularys.net/imgs/logo22.png" alt="logo22">
+            </div>
+        </div>
+    </section>
+
+    <section class="produtos" id="opcoes">
+        <h1>Escolha a performance ideal para o seu projeto</h1>
+    </section>
+
+    <section class="preco" id="preco">
+        <div class="preco-item">
+            <h2>VM Básica</h2>
+            <span><sup>R$</sup>29,90<sub>/mês</sub></span>
+            <ul>
+                <li>1 vCPU</li>
+                <li>2 GB RAM</li>
+                <li>20 GB SSD</li>
+                <li>Suporte 24h</li>
+            </ul>
+            <a href="#">Selecionar</a>
+
+        </div>
+
+        <div class="preco-item">
+            <h2>VM Avançada</h2>
+            <span><sup>R$</sup>69,90<sub>/mês</sub></span>
+            <ul>
+                <li>8 vCPU</li>
+                <li>16 GB RAM</li>
+                <li>100 GB SSD</li>
+                <li>1000mbit exclusivo</li>
+                <li>Baixa latência</li>
+                <li>Suporte 24h</li>
+            </ul>
+            <a href="#">Selecionar</a>
+        </div>
+
+        <div class="preco-item">
+            <h2>VM Padrão</h2>
+            <span><sup>R$</sup>39,90<sub>/mês</sub></span>
+            <ul>
+                <li>2 vCPU</li>
+                <li>4 GB RAM</li>
+                <li>40 GB SSD</li>
+                <li>100mbit</li>
+                <li>Suporte 24h</li>
+            </ul>
+            <a href="#">Selecionar</a>
+        </div>
+
+    </section>
+
+    <section class="carrousel">
+        <div class="container-fluid px-0">
+            <div class="row justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="carousel" mask>
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Provisionamento.png"
+                                    alt=""></div>
+                            <h2>Provisionamento</h2>
+                            <div>
+                                <p>Sua máquina virtual pronta para uso em segundos, sem burocracia nem espera.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Performance.png"
+                                    alt=""></div>
+                            <h2>Performance</h2>
+                            <div>
+                                <p>Infraestrutura de alto nível, otimizada para qualquer carga de trabalho e demanda
+                                    crítica.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Escalabilidade.png"
+                                    alt=""></div>
+                            <h2>Escalabilidade</h2>
+                            <div>
+                                <p>Expanda ou reduza seus recursos com um clique, quando e como quiser.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Seguranca.png" alt="">
+                            </div>
+                            <h2>Segurança</h2>
+                            <div>
+                                <p>Proteção em múltiplas camadas, com monitoramento contínuo e isolamento de dados para
+                                    máxima
+                                    tranquilidade.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Suporte.png"
+                                    alt="easter chick"></div>
+                            <h2>Suporte 24/7</h2>
+                            <div>
+                                <p>Equipe técnica disponível o tempo todo para garantir estabilidade e resolver qualquer
+                                    necessidade com
+                                    agilidade.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+
+                        <article>
+                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Uptime.png"
+                                    alt="easter bunny"></div>
+                            <h2>Uptime</h2>
+                            <div>
+                                <p>Conectividade contínua e confiável para que seu projeto permaneça online, sempre
+                                    disponível e sem
+                                    interrupções.</p>
+
+                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- <section class="qualidade" id="qualidade">
+        <div class="qualidade-item">
+            <h2>Provisionamento</h2>
+            <p>Sua máquina virtual pronta para uso em segundos, sem burocracia nem espera.</p>
+        </div>
+
+        <div class="qualidade-item">
+            <h2>Performance</h2>
+            <p>Infraestrutura de alto nível, otimizada para qualquer carga de trabalho e demanda crítica.</p>
+        </div>
+
+        <div class="qualidade-item">
+            <h2>Escalabilidade</h2>
+            <p>Expanda ou reduza seus recursos com um clique, quando e como quiser.</p>
+        </div>
+
+        <div class="qualidade-item">
+            <h2>Segurança</h2>
+            <p>Proteção em múltiplas camadas, com monitoramento contínuo e isolamento de dados para máxima
+                tranquilidade.</p>
+        </div>
+
+        <div class="qualidade-item">
+            <h2>Suporte 24/7</h2>
+            <p>Equipe técnica disponível o tempo todo para garantir estabilidade e resolver qualquer necessidade com
+                agilidade.</p>
+        </div>
+
+        <div class="qualidade-item">
+            <h2>Uptime</h2>
+            <p>Conectividade contínua e confiável para que seu projeto permaneça online, sempre disponível e sem
+                interrupções.</p>
+        </div>
+
+    </section> -->
+
+    <section class="newsletter">
+        <div class="newsletter-info">
+            <h1>Newsletter</h1>
+            <p>Assine nossa newsletter e receba insights exclusivos, novidades e ofertas especiais antes de todo mundo.
+            </p>
+        </div>
+        <form class="newsletter-form">
+            <input type="text" placeholder="Seu e-mail">
+            <button type="submit">Assinar</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
+    </footer>
+
+    <!-- LOGIN FLUTUANTE -->
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bem vindo de volta!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Digite seu e-mail:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="nome@examplo.com">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="Digite sua senha">
+                                <span class="input-group-text password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="remember">
+                                <label class="form-check-label" for="remember">Lembrar</label>
+                            </div>
+                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login text-white">Entrar</button>
+
+
+
+                        <div class="register-link">
+                            Ainda não tem uma conta? <a href="#" class="text-decoration-none">Cadastre-se agora!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIM LOGIN FLUTUANTE  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

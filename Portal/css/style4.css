@@ -1,0 +1,612 @@
+/* PALETA DE CORES E VARIÁVEIS */
+
+:root {
+    /* Paleta de cores definida */
+    --primary-brand-1: #4361EE;
+    --primary-brand-2: #1F3BC0;
+    --primary-light-1: #FFFFFF;
+    --primary-light-2: #EFF1FE;
+    --primary-light-3: #D5DBFB;
+    --primary-dark-1: #101C5E;
+    --primary-dark-2: #2D3979;
+    --primary-dark-3: #474E6B;
+    --sombra-botao: #D5DBFB;
+
+    /* Mapeamento Semântico (como as cores serão usadas) */
+    --cor-fundo-claro: var(--primary-light-2);
+    --cor-fundo-medio: var(--primary-light-3);
+    --cor-fundo-branco: var(--primary-light-1);
+
+    --cor-texto-principal: var(--primary-dark-1);
+    --cor-texto-secundario: var(--primary-dark-2);
+    --cor-texto-sobre-marca: var(--primary-light-3);
+    --cor-texto-link-sobre-marca: var(--primary-light-1);
+
+    --cor-marca-principal: var(--primary-brand-1);
+    --cor-marca-secundaria: var(--primary-brand-2);
+    --cor-borda-acento: var(--primary-dark-3);
+
+    --sombreamento: var(--sombra-botao);
+}
+
+/* Sumir com o scrollbar */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+    /* remove a barra visual */
+}
+
+body,
+h1,
+h2,
+p,
+ul,
+li,
+a {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+  background: var(--primary-light-1); /* #FFFFFF */
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: var(--cor-texto-principal);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 80%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Fixa menu-top durante o scroll */
+
+.menu-top {
+    position: sticky;
+    /* fixa no topo durante o scroll */
+    top: 0;
+    z-index: 50;
+    /* fica acima do conteúdo */
+    /* border-bottom: 1px solid var(--primary-dark-3); linha sutil de separação */
+}
+
+/* Superinfo */
+
+.superinfo-bg {
+    background: var(--cor-marca-principal);
+    color: var(--cor-texto-sobre-marca);
+}
+
+.superinfo {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.superinfo a {
+    margin: 0 10px 10px 10px;
+    color: var(--cor-texto-link-sobre-marca);
+}
+
+/* Menu */
+
+.menu-bg {
+    background: var(--cor-fundo-claro);
+}
+
+.menu {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu a {
+    color: var(--cor-texto-secundario);
+}
+
+.menu-logo a {
+    font-size: 2.25em;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.menu-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+}
+
+.menu-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-nav a {
+    font-size: 1.25em;
+    display: block;
+    padding: 10px;
+}
+
+.menu-nav .botao-cadastro {
+    background-color: var(--primary-brand-2);
+    color: var(--primary-light-1);
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.menu-nav ul li a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--primary-dark-1);
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-nav ul li a:hover {
+    background-color: var(--sombra-botao);
+    color: var(--primary-dark-2);
+
+}
+
+.menu-nav ul li a.botao-cadastro {
+    background-color: var(--primary-brand-2);
+    color: var(--primary-light-2);
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.menu-nav ul li a.botao-cadastro:hover {
+    background-color: var(--primary-brand-1);
+}
+
+/* Introdução */
+
+.introducao {
+    line-height: 1.5;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: var(--primary-dark-1); */
+}
+
+.introducao h1 {
+    color: var(--cor-marca-secundaria);
+    font-size: 4em;
+    text-align: center;
+}
+
+.introducao h2 {
+    color: var(--primary-dark-3);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* TRANSPARÊNCIA */
+
+/* garante contexto de isolamento para o efeito de blur */
+.menu-top {
+    position: sticky;
+    /* Faz o elemento grudar no topo durante o scroll */
+    top: 0;
+    /* define que ele deve ficar exatamente no topo */
+    z-index: 50;
+    /* Garante que o menu fique acima de todos os outros elementos */
+    isolation: isolate;
+    /* Cria um novo contexto de empilhamento visual impedindo q o blur seja afetado por contextos externos*/
+}
+
+/* barra superior (links Blog/Documentos/Suporte/Vendas) com vidro fosco */
+.superinfo-bg {
+    /* cor base da sua paleta com alpha */
+    background: rgba(67, 97, 238, 0.72);
+    /* a variável não funcionou para transparência. Considerando o CSS, mantive o backuground acima, já que se tirar essa parte do código, a estrutura se mantém. */
+    /* vidro fosco */
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    /* para não “vazar” em bordas e evitar artefatos */
+    background-clip: padding-box;
+}
+
+/* header do menu principal com vidro fosco */
+.menu-bg {
+    background: rgba(239, 241, 254, 0.82);
+    /* explicação acima - em background do superinfo-bg */
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    background-clip: padding-box;
+}
+
+/* Sobre */
+
+.sobre {
+    border-top: 2px solid var(--primary-brand-1);
+    border-bottom: 2px solid var(--primary-brand-1);
+    max-width: 1440px;
+    margin: 10px auto;
+    padding: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sobre-info {
+    flex: 2 1 300px;
+    margin: 0 10px;
+}
+
+.sobre-info h1 {
+    font-size: 2.5em;
+    margin: 10px 20px;
+    margin-bottom: 0.5em;
+    color: var(--cor-marca-secundaria);
+}
+
+.sobre-info p {
+    flex: 2 1 300px;
+    margin: 20px 20px;
+    font-size: 1.25em;
+    line-height: 1.4;
+    margin-bottom: 1em;
+    color: var(--primary-dark-3);
+    ;
+}
+
+.sobre-img {
+    width: 100%;
+    border-radius: 12px;
+    flex: 2 1;
+    margin: 0 auto;
+}
+
+/* Produtos */
+
+.produtos {
+    max-width: 1440px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produtos h1 {
+    font-size: 3em;
+    margin: 30px 10px 30px 10px;
+    color: var(--primary-brand-2);
+    text-align: center;
+}
+
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.produtos-item {
+    flex: 1 200px;
+    margin: 10px;
+}
+
+.purple {
+    border-top: 6px solid var(--cor-borda-acento);
+    padding: 20px 20px;
+}
+
+.pink {
+    border-top: 6px solid var(--cor-borda-acento);
+    padding: 20px 20px;
+}
+
+.blue {
+    border-top: 6px solid var(--cor-borda-acento);
+    padding: 20px 20px;
+}
+
+/* Preço */
+
+.preco {
+    max-width: 1440px;
+    margin: 10px auto;
+    margin-bottom: 60px;
+    background: var(--cor-fundo-claro);
+    padding: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.preco-item {
+    flex: 1 1 260px;
+    border: 4px solid var(--cor-fundo-branco);
+    padding: 20px;
+    margin: 10px;
+}
+
+.preco-item h2 {
+    font-size: 2.3em;
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.preco-item span {
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    font-size: 3em;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0 5px 0;
+    border-top: 4px solid var(--cor-fundo-branco);
+}
+
+.preco-item sup {
+    font-size: .5em;
+}
+
+.preco-item sub {
+    font-size: .4em;
+}
+
+.preco-item ul {
+    max-width: 300px;
+    margin: 20px auto;
+    font-size: 1.25em;
+    color: var(--cor-texto-secundario);
+}
+
+.preco-item li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.preco-item li::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--cor-marca-secundaria);
+    border-radius: 50%;
+}
+
+.preco-item a {
+    max-width: 300px;
+    display: block;
+    margin: 20px auto;
+    border: 4px solid;
+    color: var(--cor-marca-secundaria);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 15px 0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preco-item a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.preco-item:nth-child(2) {
+    background: var(--cor-fundo-medio);
+}
+
+@media (max-width: 800px) {
+    .preco {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .preco .preco-item:nth-child(3) {
+        order: -1;
+    }
+
+    .preco .preco-item:nth-child(2) {
+        order: -2;
+    }
+}
+
+/* QUALIDADE */
+
+.qualidade {
+    max-width: 1440px;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.qualidade-item {
+    flex: 1 1 400px;
+    /* background-color: var(--primary-light-2); */
+    /* border-radius: 8px; */
+    padding: 20px 10px;
+    margin: 20px 10px;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+/* .qualidade-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+} */
+
+.qualidade-item h2 {
+    font-size: 1.8em;
+    color: var(--primary-dark-3);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.qualidade-item h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 28px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/* Cores alternadas nas barras laterais */
+.qualidade-item:nth-of-type(3n+1) h2::before {
+    background: violet;
+    /* Roxo principal */
+}
+
+.qualidade-item:nth-of-type(3n+2) h2::before {
+    background: blueviolet;
+    /* Tom secundário */
+}
+
+.qualidade-item:nth-of-type(3n+3) h2::before {
+    background: var(--primary-brand-1);
+    /* Tom mais escuro */
+}
+
+.qualidade-item p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--primary-dark-3);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .qualidade {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .qualidade-item {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Newsletter */
+
+/* Vamos pintar a área com CSS usando "calc"*/
+
+.newsletter {
+    background: var(--cor-fundo-claro);
+    /* Quero 100% que é o total do meu layout, 
+    menos 1440px que é o total do meu container, divididos por 2 */
+    padding: 50px calc((100% - 1440px) / 2);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.newsletter-info {
+    flex: 1 1 260px;
+    margin: 0 10px;
+}
+
+.newsletter-info h1 {
+    font-size: 3em;
+    color: var(--cor-texto-secundario);
+
+}
+
+.newsletter-info p {
+    font-size: 1em;
+    max-width: 230px;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    flex: 2 1 200px;
+    margin: 0 10px;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input {
+    flex: 3 1 200px;
+    font-size: 1.5em;
+    color: var(--cor-texto-secundario);
+    background: transparent;
+    padding: 10px;
+    margin: 0px;
+    border-radius: px;
+}
+
+.newsletter-form button {
+    flex: 1 1 200px;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--cor-marca-principal);
+    color: var(--cor-fundo-claro);
+    margin: 0px;
+    cursor: pointer;
+    border: 0px;
+    padding: 10px;
+}
+
+@media (max-width: 600px) {
+    .newsletter-form button {
+        font-size: 1.5em;
+    }
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    height: 200px;
+    background: var(--cor-fundo-medio);
+    align-items: center;
+}
+
+.footer p {
+    flex: 1;
+    text-align: center;
+    font-size: 2em;
+    color: var(--cor-texto-secundario);
+}
+
