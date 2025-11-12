@@ -1,0 +1,35 @@
+/* Estado inicial: invisível e levemente deslocado */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1000ms ease,
+    transform 1000ms ease;
+  will-change: opacity, transform;
+}
+
+/* Variante: subir (padrão) */
+.reveal.up { transform: translateY(18px); }
+/* Variante: vir da esquerda */
+.reveal.left { transform: translateX(-18px); }
+/* Variante: vir da direita */
+.reveal.right { transform: translateX(18px); }
+
+/* Visível no viewport */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0,0);
+}
+
+/* Suporte a stagger: use --stagger na marcação */
+.reveal { transition-delay: var(--stagger, 10ms); }
+
+/* Acessibilidade: reduz animações para quem prefere */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

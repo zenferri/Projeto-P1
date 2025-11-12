@@ -1,0 +1,28 @@
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  box-shadow: 0 8px 22px rgba(108, 99, 255, 0.28);
+  border: none;
+  transition: 0.28s ease;
+}
+
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(108, 99, 255, 0.40);
+}
+
+.btn-cta:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.25);
+}
+
+.btn-cta:focus {
+  outline: 2px solid var(--brand-2);
+  outline-offset: 3px;
+}

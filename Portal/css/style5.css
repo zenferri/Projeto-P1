@@ -1,0 +1,744 @@
+/* PALETA DE CORES E VARIÁVEIS (REVISADA) */
+:root {
+    /*  PALETA BASE (NEUTROS) */
+    --cor-fundo-branco: #FFFFFF;
+    --cor-fundo-claro: #EFF1FE;
+    /* Usado para fundos mais escuros, como o footer */
+    --cor-fundo-medio: #D5DBFB;
+    --cor-fundo-escuro: #101C5E;
+
+    /* === PALETA DE TEXTO === */
+    --cor-texto-principal: #101C5E;
+    --cor-texto-secundario: #474E6B;
+    --cor-texto-claro: #FFFFFF;
+
+    /* PALETA DE MARCA E AÇÃO */
+    /* Azul principal para títulos, links e hover */
+    --cor-marca-primaria: #4361EE;
+    /* (Seu antigo primary-brand-2, agora para ênfase) */
+    --cor-marca-secundaria: #1F3BC0;
+
+    /* A NOVA COR! O acento vibrante para CTA (call to action) */
+    --cor-acento-vibrante: #00F5D4;
+      /* --cor-acento-vibrante: #FB7185; */
+
+
+
+;
+
+    /* Verde Elétrico */
+
+    /* Sombras e bordas suaves */
+    --cor-borda-suave: #D5DBFB;
+    --sombreamento: 0 4px 12px rgba(67, 97, 238, 0.15);
+}
+
+/* Sumir com o scrollbar */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+body,
+h1,
+h2,
+p,
+ul,
+li,
+a {
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+body {
+    background: var(--cor-fundo-branco);
+}
+
+body {
+    /* NOVA FONTE */
+    font-family: "Inter", sans-serif;
+    color: var(--cor-texto-principal);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 80%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Fixa menu-top durante o scroll */
+.menu-top {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    isolation: isolate;
+    /* Garante o efeito de blur correto */
+}
+
+/* Superinfo */
+.superinfo-bg {
+    /* Este RGBA corresponde ao --cor-marca-primaria com 72% de opacidade */
+    background: rgba(67, 97, 238, 0.72);
+    color: var(--cor-fundo-claro);
+    /* Efeito de vidro fosco */
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    background-clip: padding-box;
+}
+
+.superinfo {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+.superinfo a {
+    margin: 0 10px 10px 10px;
+    color: var(--cor-texto-claro);
+}
+
+/* Menu */
+.menu-bg {
+    /* Este RGBA corresponde ao --cor-fundo-claro com 82% de opacidade */
+    background: rgba(239, 241, 254, 0.82);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    background-clip: padding-box;
+    border-bottom: 1px solid var(--cor-fundo-claro);
+    /* Linha sutil de separação */
+}
+
+.menu {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu a {
+    color: var(--cor-texto-secundario);
+}
+
+.menu-logo a {
+    font-size: 2.25em;
+    font-weight: bold;
+    margin: 0 10px;
+    color: var(--cor-marca-secundaria);
+    /* Logo com o azul mais escuro */
+}
+
+.menu-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+}
+
+.menu-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-nav a {
+    font-size: 1.25em;
+    display: block;
+    padding: 10px;
+}
+
+.menu-nav .already-account {
+    font-size: 1.25em;
+    display: block;
+    padding: 10px;
+}
+
+/* Links normais do Menu */
+.menu-nav ul li a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    border-radius: 100px;
+    font-weight: 600;
+    /* Um pouco mais de peso */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-nav ul li a:hover {
+    background-color: var(--cor-borda-suave);
+    color: var(--cor-marca-primaria);
+}
+
+/* Botão "Cadastre-se" (NOVO ESTILO DE DESTAQUE) */
+.menu-nav ul li a.botao-cadastro {
+    background-color: var(--cor-acento-vibrante);
+    color: var(--cor-fundo-escuro);
+    /* Texto escuro para alto contraste */
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.menu-nav ul li a.botao-cadastro:hover {
+    background-color: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-2px);
+    box-shadow: var(--sombreamento);
+}
+
+/* Introdução */
+.introducao {
+    line-height: 1.5;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.introducao h1 {
+    color: var(--cor-marca-primaria);
+    /* Cor principal da marca */
+    font-size: 4em;
+    text-align: center;
+}
+
+.introducao h2 {
+    color: var(--cor-texto-secundario);
+    /* Texto secundário */
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Sobre */
+.sobre {
+    /* border-top: 2px solid var(--cor-marca-primaria); */
+    /* border-bottom: 2px solid var(--cor-marca-primaria); */
+    max-width: 1440px;
+    margin: 10px auto;
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* position: relative; */
+}
+
+.sobre-info {
+    flex: 2 1 300px;
+    margin: 0 10px;
+}
+
+.sobre-info h1 {
+    font-size: 2.5em;
+    margin: 10px 20px;
+    margin-bottom: 0.5em;
+    color: var(--cor-marca-primaria);
+}
+
+.sobre-info p {
+    flex: 2 300px;
+    margin: 20px 20px;
+    font-size: 1.25em;
+    line-height: 1.4;
+    margin-bottom: 1em;
+    color: var(--cor-texto-secundario);
+}
+
+.sobre-img {
+    width: 100%;
+    border-radius: 12px;
+    flex: 2 1;
+    margin: 0 auto;
+}
+
+/* Inicio painel com código */
+
+.illus {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    position: relative
+}
+
+.blob {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    right: 0%;
+    bottom: 10%;
+    border-radius: 28px;
+    background: linear-gradient(120deg, rgba(108, 99, 255, .25), rgba(34, 211, 238, .25));
+    filter: blur(30px)
+}
+
+.blob2 {
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    right: 0%;
+    bottom: 10%;
+    border-radius: 28px;
+    background: linear-gradient(120deg, rgba(34, 211, 238, .25), rgba(108, 99, 255, .25));
+    filter: blur(40px)
+}
+
+.panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 18px;
+    background: #0F172A;
+    color: #fff;
+    padding: 22px 18px;
+    margin: 60px;
+    box-shadow: var(--shadow);
+}
+
+.panel h4 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: #A5B4FC;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase
+}
+
+.panel pre {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Fim do painel com código */
+
+
+/* Produtos */
+.produtos {
+    max-width: 1440px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produtos h1 {
+    font-size: 3em;
+    margin: 30px 10px 30px 10px;
+    color: var(--cor-marca-primaria);
+    text-align: center;
+}
+
+/* ... (O restante da seção .produtos, .produtos-container, etc. permanece) */
+
+/* Preço */
+.preco {
+    max-width: 1440px;
+    margin: 10px auto;
+    margin-bottom: 60px;
+    background: var(--cor-fundo-branco);
+    /* Fundo branco limpo */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+    /* border-bottom: 2px solid var(--cor-marca-primaria); */
+    /* Centraliza os cards */
+}
+
+.preco-item {
+    flex: 1 1 380px;
+    /* Um pouco mais de base */
+    border: 2px solid var(--cor-borda-suave);
+    /* Borda suave padrão */
+    padding: 20px;
+    margin: 10px;
+    border-radius: 12px;
+    /* Bordas arredondadas */
+    box-shadow: var(--sombreamento);
+    /* Sombra sutil */
+    transition: all 0.3s ease;
+}
+
+.preco-item h2 {
+    font-size: 2.3em;
+    color: var(--cor-texto-principal);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.preco-item span {
+    max-width: 300px;
+    margin: 20px auto;
+    display: block;
+    font-size: 3em;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0 5px 0;
+    border-top: 2px solid var(--cor-borda-suave);
+    color: var(--cor-marca-primaria);
+    /* Preço com cor */
+}
+
+.preco-item sup {
+    font-size: .5em;
+}
+
+.preco-item sub {
+    font-size: .4em;
+}
+
+.preco-item ul {
+    max-width: 300px;
+    margin: 20px auto;
+    font-size: 1.25em;
+    color: var(--cor-texto-secundario);
+}
+
+.preco-item li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.preco-item li::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--cor-marca-primaria);
+    /* Bolinha azul */
+    border-radius: 50%;
+}
+
+/* Botão de Preço Padrão */
+.preco-item a {
+    max-width: 300px;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid var(--cor-marca-primaria);
+    color: var(--cor-marca-primaria);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 8px;
+    /* Borda arredondada */
+    transition: all 0.3s ease;
+}
+
+.preco-item a:hover {
+    background: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-5px);
+    box-shadow: var(--sombreamento);
+}
+
+/* DESTAQUE DO PLANO AVANÇADO */
+.preco-item:nth-child(2) {
+    background: var(--cor-fundo-claro);
+    border: 3px solid var(--cor-acento-vibrante);
+    /* Borda verde */
+    transform: scale(1.03);
+    /* Levemente maior */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Sombra mais forte */
+}
+
+/* Bolinha do plano destacado */
+.preco-item:nth-child(2) li::after {
+    background: var(--cor-acento-vibrante);
+    /* Bolinha verde */
+}
+
+/* Botão do plano destacado */
+.preco-item:nth-child(2) a {
+    background: var(--cor-acento-vibrante);
+    color: var(--cor-fundo-escuro);
+    /* Alto contraste */
+    border-color: var(--cor-acento-vibrante);
+    font-weight: 700;
+}
+
+.preco-item:nth-child(2) a:hover {
+    background: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
+    border-color: var(--cor-marca-primaria);
+}
+
+
+@media (max-width: 800px) {
+    .preco {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .preco .preco-item:nth-child(3) {
+        order: -1;
+    }
+
+    /* O plano destacado (Avançado) vem primeiro no mobile */
+    .preco .preco-item:nth-child(2) {
+        order: -2;
+        transform: scale(1);
+        /* Reseta o scale no mobile */
+    }
+}
+
+/* QUALIDADE */
+/* (Esta seção está comentada no HTML, mas atualizei o CSS dela) */
+.qualidade {
+    max-width: 1440px;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.qualidade-item {
+    flex: 1 1 400px;
+    padding: 20px 10px;
+    margin: 20px 10px;
+}
+
+.qualidade-item h2 {
+    font-size: 1.8em;
+    color: var(--cor-texto-principal);
+    /* Cor principal */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.qualidade-item h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 28px;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/* Cores alternadas usando a nova paleta */
+.qualidade-item:nth-of-type(2n+1) h2::before {
+    background: var(--cor-marca-primaria);
+    /* Azul */
+}
+
+.qualidade-item:nth-of-type(2n) h2::before {
+    background: var(--cor-acento-vibrante);
+    /* Verde */
+}
+
+.qualidade-item p {
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: var(--cor-texto-secundario);
+}
+
+@media (max-width: 768px) {
+    .qualidade {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .qualidade-item {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Contato */
+
+.contato {
+  padding: 48px 0 28px;
+  text-align: center;
+}
+
+.contato h3 {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.contato-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.15rem;
+  color: var(--text-2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contato-lista li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Ícones minimalistas */
+.contato .icon {
+  width: 22px;
+  height: 22px;
+  stroke: var(--text-2);
+  display: block;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+
+.contato li:hover .icon {
+  opacity: 1;
+  stroke: var(--brand-1); /* leve realce ao passar o mouse */
+}
+
+@media (max-width: 560px) {
+  .contato-lista { font-size: 1rem; }
+}
+
+/* Newsletter */
+.newsletter {
+    background: var(--cor-fundo-claro);
+    padding: 50px calc((100% - 1440px) / 2);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.newsletter-info {
+    flex: 1 1 300px;
+    margin: 0 10px;
+}
+
+.newsletter-info h1 {
+    font-size: 2.25em;
+    color: var(--cor-texto-principal);
+}
+
+.newsletter-info p {
+    font-size: 1.25em;
+    /* Um pouco maior */
+    max-width: 400px;
+    /* Um pouco mais de espaço */
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    flex: 2 1 200px;
+    margin: 0 10px;
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid var(--cor-borda-suave);
+    /* Borda no container */
+    border-radius: 8px;
+    overflow: hidden;
+    /* Para o botão não vazar */
+}
+
+.newsletter-form input {
+    flex: 3 1 200px;
+    font-size: 1.5em;
+    color: var(--cor-texto-secundario);
+    background: var(--cor-fundo-branco);
+    /* Fundo branco */
+    padding: 20px;
+    /* Mais padding */
+    margin: 0px;
+    border: none;
+    /* Remove a borda do input */
+}
+
+.newsletter-form input:focus {
+    outline: 2px solid var(--cor-marca-primaria);
+    /* Foco azul */
+    outline-offset: -2px;
+}
+
+.newsletter-form button {
+    flex: 1 1 200px;
+    font-size: 1.8em;
+    /* Um pouco menor */
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--cor-acento-vibrante);
+    /* Botão verde */
+    /* color: var(--cor-fundo-escuro); */
+    /* Texto escuro */
+    margin: 0px;
+    cursor: pointer;
+    border: 0px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
+}
+
+
+@media (max-width: 600px) {
+    .newsletter-form button {
+        font-size: 1.5em;
+    }
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    height: 200px;
+    background: var(--cor-fundo-claro);
+    /* Fundo claro, igual newsletter */
+    align-items: center;
+}
+
+.footer p {
+    flex: 1;
+    text-align: center;
+    font-size: 1.5em;
+    /* Um pouco menor e mais elegante */
+    color: var(--cor-texto-secundario);
+}
+
+/* Botao de cadastro */
+.cadastro {
+    padding: 20px;
+    margin-top: 10px
+}

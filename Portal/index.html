@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> -->
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -44,11 +45,13 @@
     </style>
 
     <!-- CSS externo -->
-    <link rel="stylesheet" type="text/css" href="css/style4.css?v=1.0.3">
+    <link rel="stylesheet" type="text/css" href="/css/style5.css?v=1.0.0">
 
-    <link rel="stylesheet" href="css/style_login.css">
+    <link rel="stylesheet" href="/css/style_login.css">
 
-    <link rel="stylesheet" href="css/carrousel.css">
+    <link rel="stylesheet" href="/css/botoes.css">
+
+    <link rel="stylesheet" href="/css/reveal.css">
 
 </head>
 
@@ -71,7 +74,7 @@
                 <nav class="menu-nav">
                     <ul>
                         <li><a href="#sobre">Sobre nós</a></li>
-                        <li><a href="#preco">Planos</a></li>
+                        <li><a href="#opcoes">Planos</a></li>
                         <!-- <li><a href="#login">Login</a></li> -->
                         <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
                         <li><a href="/cadastro.html" class="botao-cadastro">Cadastre-se</a></li>
@@ -81,52 +84,61 @@
         </header>
     </section>
 
-    <div class="introducao" id="sobre">
+    <div class="introducao reveal up" id="sobre">
 
-        <h1><strong>De um ponto, tudo pode nascer.</strong></h1>
-        <h2>Servidores privados virtualizados de alta performance, preparados para dar forma às suas ideias. <br><br>
-        Under Construction. <br> This page does not offer any services yet. It is currently just a prototype.
-        </h2>
+        <!-- <h1><strong>Onde ideias ganham forma.</strong></h1>
+        <h2>Infraestrutura privada, de alta performance, pensada para quem cria, constrói e desenvolve.</h2> -->
+        <h1><strong>Toda criação surge da singularidade!</strong></h1>
+        <h2>Servidores virtuais privados de alta performance, preparados para dar forma às suas ideias.</h2>
 
-        <!-- <h1>Crie o futuro agora</h1>
-        <h2>Lance sua máquina virtual em poucos cliques!<br>É rápido, é seguro e do seu jeito!</h2> -->
     </div>
 
     <section class="sobre">
-        <div class="sobre-info">
+        <div class="blob"></div>
+        <div class="sobre-info reveal left">
             <h1>Origem</h1>
-            <p><strong>A Singularys surge da ideia de que toda criação começa em um ponto.</strong> Há um instante
-                anterior a tudo, silencioso, denso, cheio de potencial, como a singularidade que antecede o universo. É
-                desse instante que surgem as ideias que mudam trajetórias, projetos que ganham corpo, sistemas que se
-                tornam realidade.</p>
+            <p><strong>A Singularys nasceu da ideia de que toda criação começa em um ponto.</strong></p>
 
-            <p><em>Nós oferecemos esse ponto de origem.</em> Um espaço seguro, estável e preparado para acolher o
-                primeiro impulso criativo. De um único servidor central, novos ambientes podem nascer, crescer e se
-                multiplicar. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem limitações, sem
+            <p> Nós oferecemos esse ponto de origem: um espaço seguro, estável e preparado para acolher o
+                primeiro impulso criativo. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem
+                limitações, sem
                 ruídos, sem interferências.</p>
 
-            <p>Acreditamos que criar é um movimento sagrado. Exige confiança, exige estrutura, exige coragem.
+            <p>Acreditamos que criar é um movimento sagrado.
                 <strong>Nossa missão é sustentar esse momento decisivo</strong> em que uma ideia deixa de ser apenas
                 intenção e se converte em presença.
             </p>
         </div>
-        <div class="sobre-img">
-            <div>
-                <img src="https://www.singularys.net/imgs/logo22.png" alt="logo22">
+
+        <!-- Terminal -->
+
+        <div class="illus">
+            <div class="blob2"></div>
+            <div class="panel">
+                <h4>provision_site.sh</h4>
+                <pre>$ havoc create --vm "api-singularys" --vcpus 2 --ram 4096
+✓ template: ubuntu-24.04-lts
+✓ network: vlan-10
+✓ storage: ssd-01 (40G)
+✓ ssh: key: zen@singularys
+✓ dns: api.singularys.net → 10.0.10.12
+→ deploying...
+✓ done in 30s</pre>
             </div>
         </div>
+        </div>
+
     </section>
 
+    <!-- Fim do painel com código -->
+
     <section class="produtos" id="opcoes">
-        <h1>Escolha a performance ideal para o seu projeto
-            <br>
-            <h2>Under Construction. <br> This page does not offer any services yet. It is currently just a prototype.</h2>
-        </h1>
+        <h1>Escolha a performance ideal para o seu projeto</h1>
     </section>
 
     <section class="preco" id="preco">
-        <div class="preco-item">
-            <h2>VM Básica</h2>
+        <div class="preco-item reveal left">
+            <h2>Essencial</h2>
             <span><sup>R$</sup>29,90<sub>/mês</sub></span>
             <ul>
                 <li>1 vCPU</li>
@@ -134,12 +146,11 @@
                 <li>20 GB SSD</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="#">Selecionar</a>
-
+            <a href="#" class="btn-cta">Selecionar</a>
         </div>
 
-        <div class="preco-item">
-            <h2>VM Avançada</h2>
+        <div class="preco-item reveal up">
+            <h2>Desempenho</h2>
             <span><sup>R$</sup>69,90<sub>/mês</sub></span>
             <ul>
                 <li>8 vCPU</li>
@@ -149,11 +160,11 @@
                 <li>Baixa latência</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="#">Selecionar</a>
+            <a href="#" class="btn-cta">Selecionar</a>
         </div>
 
-        <div class="preco-item">
-            <h2>VM Padrão</h2>
+        <div class="preco-item reveal right">
+            <h2>Avançado</h2>
             <span><sup>R$</sup>39,90<sub>/mês</sub></span>
             <ul>
                 <li>2 vCPU</li>
@@ -162,136 +173,88 @@
                 <li>100mbit</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="#">Selecionar</a>
+            <a href="#" class="btn-cta">Selecionar</a>
         </div>
 
     </section>
 
-    <section class="carrousel">
-        <div class="container-fluid px-0">
-            <div class="row justify-content-center">
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="carousel" mask>
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Provisionamento.png"
-                                    alt=""></div>
-                            <h2>Provisionamento</h2>
-                            <div>
-                                <p>Sua máquina virtual pronta para uso em segundos, sem burocracia nem espera.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Performance.png"
-                                    alt=""></div>
-                            <h2>Performance</h2>
-                            <div>
-                                <p>Infraestrutura de alto nível, otimizada para qualquer carga de trabalho e demanda
-                                    crítica.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Escalabilidade.png"
-                                    alt=""></div>
-                            <h2>Escalabilidade</h2>
-                            <div>
-                                <p>Expanda ou reduza seus recursos com um clique, quando e como quiser.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Seguranca.png" alt="">
-                            </div>
-                            <h2>Segurança</h2>
-                            <div>
-                                <p>Proteção em múltiplas camadas, com monitoramento contínuo e isolamento de dados para
-                                    máxima
-                                    tranquilidade.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Suporte.png"
-                                    alt="easter chick"></div>
-                            <h2>Suporte 24/7</h2>
-                            <div>
-                                <p>Equipe técnica disponível o tempo todo para garantir estabilidade e resolver qualquer
-                                    necessidade com
-                                    agilidade.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="image-wrapper"><img src="https://www.singularys.net/imgs/Uptime.png"
-                                    alt="easter bunny"></div>
-                            <h2>Uptime</h2>
-                            <div>
-                                <p>Conectividade contínua e confiável para que seu projeto permaneça online, sempre
-                                    disponível e sem
-                                    interrupções.</p>
-
-                                <!-- <button class="btn btn-primary" type="submit">Button</button> -->
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- <section class="qualidade" id="qualidade">
-        <div class="qualidade-item">
+    <section class="qualidade" id="qualidade">
+        <div class="qualidade-item reveal left">
             <h2>Provisionamento</h2>
             <p>Sua máquina virtual pronta para uso em segundos, sem burocracia nem espera.</p>
         </div>
 
-        <div class="qualidade-item">
+        <div class="qualidade-item reveal up">
             <h2>Performance</h2>
             <p>Infraestrutura de alto nível, otimizada para qualquer carga de trabalho e demanda crítica.</p>
         </div>
 
-        <div class="qualidade-item">
+        <div class="qualidade-item reveal right">
             <h2>Escalabilidade</h2>
             <p>Expanda ou reduza seus recursos com um clique, quando e como quiser.</p>
         </div>
 
-        <div class="qualidade-item">
+        <div class="qualidade-item reveal left">
             <h2>Segurança</h2>
             <p>Proteção em múltiplas camadas, com monitoramento contínuo e isolamento de dados para máxima
                 tranquilidade.</p>
         </div>
 
-        <div class="qualidade-item">
+        <div class="qualidade-item reveal up">
             <h2>Suporte 24/7</h2>
             <p>Equipe técnica disponível o tempo todo para garantir estabilidade e resolver qualquer necessidade com
                 agilidade.</p>
         </div>
 
-        <div class="qualidade-item">
+        <div class="qualidade-item reveal right">
             <h2>Uptime</h2>
             <p>Conectividade contínua e confiável para que seu projeto permaneça online, sempre disponível e sem
                 interrupções.</p>
         </div>
 
-    </section> -->
+    </section>
+
+    <section class="contato container" id="contato">
+        <h3>Entre em contato</h3>
+
+        <ul class="contato-lista">
+
+            <li>
+                <!-- Ícone Endereço -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z" stroke="currentColor" stroke-width="2" />
+                    <circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <span>9303 Lyon Drive — Hill Valley, CA 95420</span>
+            </li>
+
+            <li>
+                <!-- Ícone E-mail -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" />
+                    <path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <span>contato@singularys.net</span>
+            </li>
+
+            <li>
+                <!-- Ícone WhatsApp (linha fina, não marca registrada) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 12a8 8 0 10-14.32 4.906L4 20l3.2-.84A8 8 0 0020 12z" stroke="currentColor"
+                        stroke-width="2" />
+                    <path d="M9.5 10.5c.3 2 2 3.5 4 4M14 14l-.7 1.4" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+                <span>(12) 91955-0638</span>
+            </li>
+
+        </ul>
+    </section>
 
     <section class="newsletter">
         <div class="newsletter-info">
-            <h1>Newsletter</h1>
-            <p>Assine nossa newsletter e receba insights exclusivos, novidades e ofertas especiais antes de todo mundo.
-            </p>
+            <h1>Pronto para lançar a sua ideia?</h1>
+            <p>Solicite acesso antecipado e seja avisado quando o provisionamento público estiver ativo.</p>
         </div>
         <form class="newsletter-form">
             <input type="text" placeholder="Seu e-mail">
@@ -360,6 +323,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <script src="/js/script_reveal.js"></script>
 
 </body>
 
