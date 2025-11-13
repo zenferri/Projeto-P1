@@ -20,11 +20,11 @@
 
     /* A NOVA COR! O acento vibrante para CTA (call to action) */
     --cor-acento-vibrante: #00F5D4;
-      /* --cor-acento-vibrante: #FB7185; */
+    /* --cor-acento-vibrante: #FB7185; */
 
 
 
-;
+    ;
 
     /* Verde Elétrico */
 
@@ -193,13 +193,14 @@ img {
     color: var(--cor-marca-primaria);
 }
 
-/* Botão "Cadastre-se" (NOVO ESTILO DE DESTAQUE) */
+/* Botão "Cadastre-se" */
 .menu-nav ul li a.botao-cadastro {
     background-color: var(--cor-acento-vibrante);
     color: var(--cor-fundo-escuro);
     /* Texto escuro para alto contraste */
     border-radius: 100px;
     padding: 10px 20px;
+    margin: 0 10px;
     font-weight: 700;
     transition: all 0.3s ease;
 }
@@ -214,7 +215,7 @@ img {
 /* Introdução */
 .introducao {
     line-height: 1.5;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 50px auto;
     padding: 20px 20px;
     display: flex;
@@ -225,7 +226,7 @@ img {
 .introducao h1 {
     color: var(--cor-marca-primaria);
     /* Cor principal da marca */
-    font-size: 4em;
+    font-size: 3em;
     text-align: center;
 }
 
@@ -246,7 +247,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* position: relative; */
+    position: relative;
 }
 
 .sobre-info {
@@ -294,7 +295,7 @@ img {
     bottom: 10%;
     border-radius: 28px;
     background: linear-gradient(120deg, rgba(108, 99, 255, .25), rgba(34, 211, 238, .25));
-    filter: blur(30px)
+    filter: blur(40px)
 }
 
 .blob2 {
@@ -338,6 +339,30 @@ img {
 }
 
 /* Fim do painel com código */
+
+/* Fundo degradê e blur para as seções hero */
+.introducao,
+.sobre,
+.news {
+    position: relative;
+    isolation: isolate;
+    border-radius: 32px;
+}
+
+.introducao::before,
+.sobre::before,
+.news::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(67, 97, 238, 0.25), rgba(31, 59, 192, 0.25));
+    /* background: linear-gradient(120deg, rgba(100, 92, 250, 0.25), rgba(87, 29, 246, 0.25)); */
+    filter: blur(55px);
+    transform: scale(1.2);
+    z-index: -2;
+    pointer-events: none;
+}
 
 
 /* Produtos */
@@ -516,14 +541,12 @@ img {
 }
 
 /* QUALIDADE */
-/* (Esta seção está comentada no HTML, mas atualizei o CSS dela) */
 .qualidade {
-    max-width: 1440px;
+    max-width: 1400px;
     margin: 60px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
 }
 
 .qualidade-item {
@@ -579,56 +602,120 @@ img {
     }
 }
 
+/* news  */
+
+.news-h2 {
+    line-height: 1.5;
+    max-width: 1440px;
+    margin: 50px auto;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    color: var(--cor-marca-primaria);
+    font-weight: bold;
+    }
+
+.news {
+    max-width: 1440px;
+    margin: 60px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} 
+
+.news-rol {
+    flex: 1 1 400px;
+    padding: 20px 10px;
+    margin: 20px 10px;
+}
+
+.news-rol p {
+    margin: 20px auto;
+}
+
+.news-rol h3 {
+    margin: 20px auto;
+}
+
+.news-rol a {
+    max-width: 100px;
+    display: block;
+    /* margin: 20px auto; */
+    /* border: 2px solid var(--cor-marca-primaria); */
+    color: var(--cor-marca-primaria);
+    /* text-transform: uppercase; */
+    font-weight: bold;
+    font-size: 1em;
+    padding: 15px;
+    text-align: center;
+    /* border-radius: 8px; */
+    /* Borda arredondada */
+    /* transition: all 0.3s ease; */
+}
+
+.news-rol a:hover {
+    background: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
+    transform: translateY(-5px);
+    box-shadow: var(--sombreamento);
+}
+
+
+
+
 /* Contato */
 
 .contato {
-  padding: 48px 0 28px;
-  text-align: center;
+    padding: 48px 0 28px;
+    text-align: center;
 }
 
 .contato h3 {
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-  font-weight: 700;
-  color: var(--text-1);
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    color: var(--text-1);
 }
 
 .contato-lista {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 1.15rem;
-  color: var(--text-2);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.15rem;
+    color: var(--text-2);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .contato-lista li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
 
 /* Ícones minimalistas */
 .contato .icon {
-  width: 22px;
-  height: 22px;
-  stroke: var(--text-2);
-  display: block;
-  flex-shrink: 0;
-  opacity: 0.85;
-  transition: 0.2s ease;
+    width: 22px;
+    height: 22px;
+    stroke: var(--text-2);
+    display: block;
+    flex-shrink: 0;
+    opacity: 0.85;
+    transition: 0.2s ease;
 }
 
 .contato li:hover .icon {
-  opacity: 1;
-  stroke: var(--brand-1); /* leve realce ao passar o mouse */
+    opacity: 1;
+    stroke: var(--brand-1);
+    /* leve realce ao passar o mouse */
 }
 
 @media (max-width: 560px) {
-  .contato-lista { font-size: 1rem; }
+    .contato-lista {
+        font-size: 1rem;
+    }
 }
 
 /* Newsletter */
@@ -653,7 +740,7 @@ img {
 .newsletter-info p {
     font-size: 1.25em;
     /* Um pouco maior */
-    max-width: 400px;
+    max-width: 350px;
     /* Um pouco mais de espaço */
     color: var(--cor-texto-secundario);
     margin-bottom: 10px;
@@ -665,7 +752,7 @@ img {
     align-self: center;
     display: flex;
     flex-wrap: wrap;
-    border: 2px solid var(--cor-borda-suave);
+    /* border: 2px solid var(--cor-borda-suave); */
     /* Borda no container */
     border-radius: 8px;
     overflow: hidden;
@@ -738,7 +825,7 @@ img {
 }
 
 /* Botao de cadastro */
-.cadastro {
+/* .cadastro {
     padding: 20px;
     margin-top: 10px
-}
+} */

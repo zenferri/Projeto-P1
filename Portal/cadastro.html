@@ -45,8 +45,8 @@
 
     <!-- CSS externo -->
     <link rel="stylesheet" type="text/css" href="/css/style5.css?v=1.0.5">
-
     <link rel="stylesheet" href="/css/style_login.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
 
 </head>
 
@@ -54,7 +54,7 @@
     <section class="menu-top">
         <div class="superinfo-bg">
             <div class="superinfo">
-                <a href="#blog">Blog</a>
+                <a href="/termos.html">Termos de Uso</a>
                 <a href="#documentos">Documentos</a>
                 <a href="#suporte">Suporte</a>
                 <a href="#quem_somos">Nossa equipe</a>
@@ -71,7 +71,7 @@
                         <!-- <li><a href="#sobre">Sobre nós</a></li>
                         <li><a href="#preco">Planos</a></li> -->
                         <li class="already-account">Já possui uma conta?</li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li class="botao-login"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
                         <!-- <li><a href="#cadastrese" class="botao-cadastro">Cadastre-se</a></li> -->
                     </ul>
                 </nav>
@@ -91,36 +91,42 @@
                         <label class="btn btn-outline-primary" for="tipoPJ">Pessoa Jurídica</label>
                     </div>
                 </div>
-
+                <p class="text-muted small" id="paragrafo">Campos com * são obrigatórios</p>
                 <div class="col-12" id="pfFields">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="inputNome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="inputNome" name="nome" required data-required-group="pf">
+                            <label for="inputNome" class="form-label">Nome*</label>
+                            <input type="text" class="form-control" id="inputNome" name="nome" required
+                                data-required-group="pf">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputSobrenome" class="form-label">Sobrenome</label>
-                            <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required data-required-group="pf">
+                            <label for="inputSobrenome" class="form-label">Sobrenome*</label>
+                            <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required
+                                data-required-group="pf">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputCPF" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="inputCPF" name="cpf" required data-required-group="pf"
-                                inputmode="numeric" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                            <label for="inputCPF" class="form-label">CPF* (apenas números)</label>
+                            <input type="text" class="form-control" id="inputCPF" name="cpf" required
+                                data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"
+                                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
                         </div>
                         <div class="col-md-3">
-                            <label for="inputNascimento" class="form-label">Data de nascimento</label>
-                            <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required data-required-group="pf">
+                            <label for="inputNascimento" class="form-label">Data de nascimento*</label>
+                            <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required
+                                data-required-group="pf">
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label d-block">Sexo</label>
+                            <label class="form-label d-block">Sexo*</label>
                             <div class="d-flex gap-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="masculino" required data-required-group="pf">
-                                    <label class="form-check-label" for="sexoM">Masculino</label>
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoM"
+                                        value="masculino" required data-required-group="pf">
+                                    <label class="form-check-label" for="sexoM">&nbsp;Masculino</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino" data-required-group="pf">
-                                    <label class="form-check-label" for="sexoF">Feminino</label>
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino"
+                                        data-required-group="pf">
+                                    <label class="form-check-label" for="sexoF">&nbsp;Feminino</label>
                                 </div>
                             </div>
                         </div>
@@ -130,42 +136,50 @@
                 <div class="col-12 d-none" id="pjFields">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label for="inputEmpresa" class="form-label">Nome empresarial</label>
-                            <input type="text" class="form-control" id="inputEmpresa" name="nomeEmpresarial" required data-required-group="pj">
+                            <label for="inputEmpresa" class="form-label">Nome empresarial*</label>
+                            <input type="text" class="form-control" id="inputEmpresa" name="nomeEmpresarial" required
+                                data-required-group="pj">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputCNPJ" class="form-label">CNPJ</label>
-                            <input type="text" class="form-control" id="inputCNPJ" name="cnpj" required data-required-group="pj">
+                            <label for="inputCNPJ" class="form-label">CNPJ* (apenas números)</label>
+                            <input type="text" class="form-control" id="inputCNPJ" name="cnpj" required
+                                data-required-group="pj" inputmode="numeric" maxlength="18"
+                                placeholder="" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputResponsavel" class="form-label">Responsável técnico</label>
-                            <input type="text" class="form-control" id="inputResponsavel" name="responsavelTecnico" required data-required-group="pj">
+                            <label for="inputResponsavel" class="form-label">Responsável técnico*</label>
+                            <input type="text" class="form-control" id="inputResponsavel" name="responsavelTecnico"
+                                required data-required-group="pj">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="inputEmail" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email" required>
+                    <label for="inputEmail" class="form-label">E-mail*</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" required
+                        pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" placeholder="usuario@dominio.com"
+                        title="Use o formato usuario@dominio.com">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputWhatsapp" class="form-label">WhatsApp</label>
-                    <input type="tel" class="form-control" id="inputWhatsapp" name="whatsapp" placeholder="(00) 00000-0000" required>
+                    <label for="inputWhatsapp" class="form-label">Telefone Celular / WhatsApp* (apenas números)</label>
+                    <input type="tel" class="form-control" id="inputWhatsapp" name="whatsapp"
+                        placeholder="" inputmode="numeric" maxlength="15" pattern="\(\d{2}\) \d{5}-\d{4}"
+                        required>
                 </div>
-                <div class="col-12">
-                    <label for="inputAddress" class="form-label">Endereço</label>
+                <div class="col-12 col-md-8">
+                    <label for="inputAddress" class="form-label">Endereço*</label>
                     <input type="text" class="form-control" id="inputAddress" name="endereco" required>
                 </div>
-                <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Complemento do endereço</label>
-                    <input type="text" class="form-control" id="inputAddress2" name="complemento" required>
+                <div class="col-12 col-md-4">
+                    <label for="inputAddress2" class="form-label">Complemento (opcional)</label>
+                    <input type="text" class="form-control" id="inputAddress2" name="complemento">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputCity" class="form-label">Cidade</label>
+                    <label for="inputCity" class="form-label">Cidade*</label>
                     <input type="text" class="form-control" id="inputCity" name="cidade" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="estado" class="form-label">Estado</label>
+                    <label for="estado" class="form-label">Estado*</label>
                     <select id="estado" class="form-select" name="estado" required>
                         <option value="">Selecione...</option>
                         <option value="AC">Acre</option>
@@ -198,24 +212,80 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="inputZip" class="form-label">CEP</label>
+                    <label for="inputZip" class="form-label">CEP*</label>
                     <input type="text" class="form-control" id="inputZip" name="cep" required inputmode="numeric"
                         maxlength="9" autocomplete="postal-code" pattern="\d{5}-\d{3}">
                 </div>
-                <div class="col-12 d-flex flex-column flex-md-row justify-content-end align-items-md-center gap-3">
-                    <div class="form-check text-md-end">
+
+                <!-- Caixa de texto com os termos do serviço  -->
+                <div class="form-group">
+                    <label for="termsBox">Termos e condições</label>
+                    <div id="termsBox" class="terms-box"></div>
+                    <!-- <label for="termsAndConditions">Termos e condições</label>
+                    <textarea class="form-control" id="termsAndConditions" rows="10" readonly
+                        style="overflow-y: scroll;"></textarea> -->
+                </div>
+
+                <!-- Checkbox à esquerda do botão cadastrar  -->
+                <div class="col-12 d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
+                    <div class="form-check d-flex align-items-center gap-2 mb-2 order-1 order-md-1 ms-md-auto">
                         <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                        <label class="form-check-label" for="gridCheck">
-                            Li e concordo com os termos do serviço.
+                        <label class="form-check-label mb-0" for="gridCheck">
+                            Eu li e concordo com os <a href="/termos.html" target="_blank" >termos de uso</a>*.
                         </label>
                     </div>
-                    <button type="submit" id="btnCadastrar" class="btn btn-primary" disabled>Cadastrar</button>
+
+                    <!-- Botão  -->
+                    <button type="submit" id="btnCadastrar" class="btn btn-primary order-2 order-md2">Cadastrar</button>
                 </div>
             </form>
         </div>
     </section>
 
-    <!-- LOGIN FLUTUANTE -->
+    <!-- Rodapé -->
+
+     <footer class="footer">
+        <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
+    </footer>
+
+    <!-- MODAL DE VERIFICAÇÃO -->
+
+    <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verificationModalLabel">Verifique seu e-mail</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Enviamos um código de 6 dígitos para <strong id="verificationEmail"></strong>. Informe-o abaixo
+                        para concluir seu cadastro.</p>
+                    <form id="verificationForm" class="d-flex flex-column gap-3" novalidate>
+                        <div id="verificationFormFields" class="d-flex flex-column gap-2">
+                            <label for="verificationCode" class="form-label">Código de verificação</label>
+                            <input type="text" class="form-control" id="verificationCode" inputmode="numeric"
+                                maxlength="6" pattern="\d{6}" placeholder="000000" required>
+                            <div class="d-flex justify-content-end gap-2">
+                                <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" id="btnEnviarCodigo">Enviar</button>
+                            </div>
+                        </div>
+                        <div id="verificationSuccessMessage" class="alert alert-success d-none mb-0" role="alert">
+                            Cadastro criado com sucesso! Você já pode acessar a Dashboard.
+                            <div class="d-flex justify-content-end mt-3">
+                                <button type="button" class="btn btn-success" id="btnGoDashboard">Ir para a
+                                    Dashboard</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login flutuante -->
 
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -265,107 +335,12 @@
         </div>
     </div>
 
-    <!-- FIM LOGIN FLUTUANTE  -->
+    <!-- Fim do login flutuante -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('cadastroForm');
-            const pfFields = document.getElementById('pfFields');
-            const pjFields = document.getElementById('pjFields');
-            const tipoPF = document.getElementById('tipoPF');
-            const tipoPJ = document.getElementById('tipoPJ');
-            const submitButton = document.getElementById('btnCadastrar');
-            const termosCheck = document.getElementById('gridCheck');
-            const pfInputs = document.querySelectorAll('[data-required-group="pf"]');
-            const pjInputs = document.querySelectorAll('[data-required-group="pj"]');
-            const cepInput = document.getElementById('inputZip');
-            const cpfInput = document.getElementById('inputCPF');
-
-            const setGroupState = (inputs, isActive) => {
-                inputs.forEach((input) => {
-                    input.disabled = !isActive;
-                    input.required = isActive;
-                });
-            };
-
-            const updateSubmitState = () => {
-                const isValid = form.checkValidity();
-                submitButton.disabled = !isValid;
-            };
-
-            const togglePessoa = () => {
-                const isPJ = tipoPJ.checked;
-                pfFields.classList.toggle('d-none', isPJ);
-                pjFields.classList.toggle('d-none', !isPJ);
-                setGroupState(pfInputs, !isPJ);
-                setGroupState(pjInputs, isPJ);
-                updateSubmitState();
-            };
-
-            const formatCEP = (value) => {
-                const digits = value.replace(/\D/g, '').slice(0, 8);
-                if (digits.length <= 5) {
-                    return digits;
-                }
-                return `${digits.slice(0, 5)}-${digits.slice(5)}`;
-            };
-
-            if (cepInput) {
-                cepInput.addEventListener('input', () => {
-                    const formatted = formatCEP(cepInput.value);
-                    if (formatted !== cepInput.value) {
-                        cepInput.value = formatted;
-                    }
-                });
-            }
-
-            const formatCPF = (value) => {
-                const digits = value.replace(/\D/g, '').slice(0, 11);
-                const parts = [];
-                if (digits.length > 0) {
-                    parts.push(digits.slice(0, 3));
-                }
-                if (digits.length >= 4) {
-                    parts.push(digits.slice(3, 6));
-                }
-                if (digits.length >= 7) {
-                    parts.push(digits.slice(6, 9));
-                }
-                let formatted = parts.join('.');
-                if (digits.length > 9) {
-                    formatted += `-${digits.slice(9)}`;
-                }
-                return formatted;
-            };
-
-            if (cpfInput) {
-                cpfInput.addEventListener('input', () => {
-                    const formatted = formatCPF(cpfInput.value);
-                    if (formatted !== cpfInput.value) {
-                        cpfInput.value = formatted;
-                    }
-                });
-            }
-
-            form.addEventListener('input', updateSubmitState);
-            form.addEventListener('change', updateSubmitState);
-            termosCheck.addEventListener('change', updateSubmitState);
-            form.addEventListener('submit', (event) => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    form.reportValidity();
-                }
-            });
-
-            tipoPF.addEventListener('change', togglePessoa);
-            tipoPJ.addEventListener('change', togglePessoa);
-            togglePessoa();
-        });
-    </script>
+    <script src="/js/cadastro.js"></script>
 
 </body>
-
 </html>
