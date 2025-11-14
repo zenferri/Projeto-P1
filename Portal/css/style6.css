@@ -1,29 +1,31 @@
 /* PALETA DE CORES E VARIÁVEIS (REVISADA) */
 :root {
     /*  PALETA BASE (NEUTROS) */
-    --cor-fundo-branco: #FFFFFF;
-    --cor-fundo-claro: #EFF1FE;
+    --cor-fundo-branco: #0b0713;
+    --cor-fundo-claro: #1b0f23;
     /* Usado para fundos mais escuros, como o footer */
-    --cor-fundo-medio: #D5DBFB;
-    --cor-fundo-escuro: #101C5E;
+    --cor-fundo-medio: #241733;
+    --cor-fundo-escuro: #120a1c;
 
     /* === PALETA DE TEXTO === */
-    --cor-texto-principal: #101C5E;
-    --cor-texto-secundario: #474E6B;
+    --cor-texto-principal: #120a1c;
+    --cor-texto-secundario: rgba(236, 234, 241, 0.78);
     --cor-texto-claro: #FFFFFF;
 
     /* PALETA DE MARCA E AÇÃO */
     /* Azul principal para títulos, links e hover */
-    --cor-marca-primaria: #4361EE;
+    --cor-marca-primaria: #874efe;
     /* (Seu antigo primary-brand-2, agora para ênfase) */
-    --cor-marca-secundaria: #1F3BC0;
+    --cor-marca-secundaria: #874efe;
 
     /* A NOVA COR! O acento vibrante para CTA (call to action) */
-    --cor-acento-vibrante: #f5b400;
+    --cor-acento-vibrante: #ba8646;
+    /* --cor-acento-vibrante: #FB7185; */
+
 
     /* Sombras e bordas suaves */
-    --cor-borda-suave: #D5DBFB;
-    --sombreamento: 0 4px 12px rgba(67, 97, 238, 0.15);
+    --cor-borda-suave: #874efe;
+    --sombreamento: 0 18px 45px rgba(0, 0, 0, 0.55);
 }
 
 /* Sumir com o scrollbar */
@@ -189,7 +191,7 @@ img {
 /* Botão "Cadastre-se" */
 .menu-nav ul li a.botao-cadastro {
     background-color: var(--cor-acento-vibrante);
-    color: var(--cor-fundo-escuro);
+    /* color: var(--cor-fundo-escuro); */
     /* Texto escuro para alto contraste */
     border-radius: 100px;
     padding: 10px 20px;
@@ -199,38 +201,35 @@ img {
 }
 
 .menu-nav ul li a.botao-cadastro:hover {
-    /* background-color: var(--cor-marca-primaria); */
-    /* color: var(--cor-fundo-branco); */
+    background-color: var(--cor-marca-primaria);
+    color: var(--cor-fundo-branco);
     transform: translateY(-2px);
     box-shadow: var(--sombreamento);
 }
 
 /* Introdução */
 .introducao {
-    max-width: 1440px;
     line-height: 1.5;
-    margin: 80px auto;
+    max-width: 1440px;
+    margin: 50px auto;
     padding: 20px 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.introducao-int {
-    flex: 2 1 300px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .introducao h1 {
     color: var(--cor-marca-primaria);
+    /* Cor principal da marca */
     font-size: 3em;
-    text-align: left;
+    text-align: center;
 }
 
 .introducao h2 {
     color: var(--cor-texto-secundario);
-    line-height: 1.5;
+    /* Texto secundário */
     font-size: 1.5em;
-    text-align: left;
+    text-align: center;
 }
 
 /* Sobre */
@@ -277,7 +276,7 @@ img {
 /* Inicio painel com código */
 
 .illus {
-    aspect-ratio: 16 / 4;
+    aspect-ratio: 4 / 3;
     display: grid;
     place-items: center;
     position: relative
@@ -312,8 +311,8 @@ img {
     border-radius: 18px;
     background: #0F172A;
     color: #fff;
-    padding: 20px 16px;
-    margin: 10px;
+    padding: 22px 18px;
+    margin: 60px;
     box-shadow: var(--shadow);
 }
 

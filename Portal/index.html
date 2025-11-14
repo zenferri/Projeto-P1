@@ -45,7 +45,7 @@
     </style>
 
     <!-- CSS externo -->
-    <link rel="stylesheet" type="text/css" href="/css/style5.css?v=1.0.5">
+    <link rel="stylesheet" type="text/css" href="/css/style7.css" id="themeStylesheet">
 
     <link rel="stylesheet" href="/css/style_login.css">
 
@@ -60,10 +60,20 @@
         <div class="superinfo-bg">
             <div class="superinfo">
                 <a href="/termos.html">Termos de Uso</a>
-                <a href="#documentos">Documentos</a>
+                <!-- <a href="#documentos">Documentos</a> -->
                 <a href="#suporte">Suporte</a>
                 <a href="#quem_somos">Nossa equipe</a>
+                <!-- <button id="themeToggle" class="toggle-btn">Tema: Escuro</button> -->
+                <div class="theme-toggle">
+                    <span class="theme-label">Claro</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="theme-label">Escuro</span>
+                </div>
             </div>
+
         </div>
 
         <header class="menu-bg">
@@ -84,27 +94,14 @@
         </header>
     </section>
 
-    <div class="introducao reveal up" id="sobre">
+    <section class="introducao">
+        <div class="introducao-int reveal up" id="sobre">
 
-        <h1><strong>Tudo surge de um ponto!</strong></h1>
-        <h2>Servidores virtuais privados de alta performance pensados para quem cria, constrói e desenvolve.</h2>
+            <h1><strong>Poder para <span class="criar"> Criar</span></strong>
+                <h1><strong>Estrutura para <span class="crescer">Crescer</span></strong></h1>
+                <h2>Servidores virtuais escaláveis, executados em infraestrutura</h2>
+                <h2>no Brasil. Estabilidade e performance pensado para quem cria.</h2>
 
-    </div>
-
-    <section class="sobre">
-        <div class="sobre-info reveal left">
-            <h1>Origem</h1>
-            <p><strong>A Singularys nasce da ideia de que toda criação começa em um ponto.</strong></p>
-
-            <p> Nós oferecemos esse ponto de origem: um espaço seguro, estável e preparado para acolher o
-                primeiro impulso criativo. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem
-                limitações, sem ruídos e sem interferências.</p>
-
-            <p>Acreditamos que criar é um movimento sagrado.</p>
-
-            <p><strong>Nossa missão é sustentar esse momento decisivo</strong> em que uma ideia deixa de ser apenas
-                intenção e se converte em presença.
-            </p>
         </div>
 
         <!-- Terminal -->
@@ -124,8 +121,52 @@
             </div>
         </div>
         </div>
-
     </section>
+
+
+    <!-- <div class="introducao reveal up" id="sobre">
+
+        <h1><strong>Poder para Criar.</strong>
+        <h1><strong>Estrutura para Crescer.</strong></h1>
+        <h2>Servidores virtuais escaláveis, executados em</h2>
+            <h2>infraestrutura premium no Brasil.</h2>
+    </div> -->
+
+    <!-- <section class="sobre">
+        <div class="sobre-info reveal left">
+            <h1>Origem</h1>
+            <p><strong>A Singularys nasce da ideia de que toda criação começa em um ponto.</strong></p>
+
+            <p> Nós oferecemos esse ponto de origem: um espaço seguro, estável e preparado para acolher o
+                primeiro impulso criativo. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem
+                limitações, sem ruídos e sem interferências.</p>
+
+            <p>Acreditamos que criar é um movimento sagrado.</p>
+
+            <p><strong>Nossa missão é sustentar esse momento decisivo</strong> em que uma ideia deixa de ser apenas
+                intenção e se converte em presença.
+            </p>
+        </div> -->
+
+    <!-- Terminal -->
+
+    <!-- <div class="illus">
+            <div class="blob"></div>
+            <div class="panel">
+                <h4>provision_site.sh</h4>
+                <pre>$ havoc create --vm "api-singularys" --vcpus 2 --ram 4096
+✓ template: ubuntu-24.04-lts
+✓ network: vlan-10
+✓ storage: ssd-01 (40G)
+✓ ssh: key: zen@singularys
+✓ dns: api.singularys.net → 10.0.10.12
+→ deploying...
+✓ done in 30s</pre>
+            </div>
+        </div>
+        </div>
+
+    </section> -->
 
     <!-- Fim do painel com código -->
 
@@ -214,7 +255,7 @@
 
     <!-- News  -->
 
-    <h2 class="news-h2">Últimas notícias da Singularys...</h2>
+    <!-- <h2 class="news-h2">Últimas notícias da Singularys...</h2>
 
     <section class="news" id="news">
 
@@ -235,11 +276,12 @@
         <div class="news-rol">
             <img src="/imgs/foco.jpg" alt="foco">
             <h3>Em testes...e bang!</h3>
-            <p>Os testes começaram, e antes de entrar em produução, recebemos mais de 5 mil visitantes únicos em apenas 7 dias.</p>
+            <p>Os testes começaram, e antes de entrar em produução, recebemos mais de 5 mil visitantes únicos em apenas
+                7 dias.</p>
             <a href="cadastro.html" class="click-leia">Foram dias incríveis...</a>
         </div>
 
-    </section>
+    </section> -->
 
 
     <!-- Contato -->
@@ -353,6 +395,7 @@
         crossorigin="anonymous"></script>
 
     <script src="/js/script_reveal.js"></script>
+    <script src="/js/main_script.js"></script>
 
 </body>
 

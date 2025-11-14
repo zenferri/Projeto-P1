@@ -1,29 +1,28 @@
 /* PALETA DE CORES E VARIÁVEIS (REVISADA) */
 :root {
-    /*  PALETA BASE (NEUTROS) */
-    --cor-fundo-branco: #FFFFFF;
-    --cor-fundo-claro: #EFF1FE;
-    /* Usado para fundos mais escuros, como o footer */
-    --cor-fundo-medio: #D5DBFB;
-    --cor-fundo-escuro: #101C5E;
+  /* Fundos (escolha se vai ser claro ou escuro no layout geral) */
+  --cor-fundo-branco: #0b0713;      /* se mantiver o tema dark */
+  --cor-fundo-claro:  #141635;      /* seções e faixas */
+  --cor-fundo-medio:  #1d2145;      /* cards */
+  --cor-fundo-escuro: #050514;      /* header/footer */
 
-    /* === PALETA DE TEXTO === */
-    --cor-texto-principal: #101C5E;
-    --cor-texto-secundario: #474E6B;
-    --cor-texto-claro: #FFFFFF;
+  /* Texto */
+  --cor-texto-principal:  #f7f7ff;
+  --cor-texto-secundario: rgba(247, 247, 255, 0.78);
+  --cor-texto-claro:      #ffffff;
 
-    /* PALETA DE MARCA E AÇÃO */
-    /* Azul principal para títulos, links e hover */
-    --cor-marca-primaria: #4361EE;
-    /* (Seu antigo primary-brand-2, agora para ênfase) */
-    --cor-marca-secundaria: #1F3BC0;
+  /* Marca e ações principais */
+  --cor-marca-primaria:   #f8f8f8;  /* azul principal Singularys */
+  --cor-marca-secundaria: #454BBA;  /* roxo-azulado para hovers/gradientes */
 
-    /* A NOVA COR! O acento vibrante para CTA (call to action) */
-    --cor-acento-vibrante: #f5b400;
+  /* Acentos funcionais */
+  --cor-acento-vibrante:  #FAD932; /* CTA forte / sucesso */
+  --cor-acento-aviso:     #07ED67;  /* aviso / destaque neutro */
+  --cor-acento-erro:      #FA3F32;  /* erros e alertas */
+  --cor-neutro-suave:     #567A65;  /* bordas, chips, tags, badges discretos */
 
-    /* Sombras e bordas suaves */
-    --cor-borda-suave: #D5DBFB;
-    --sombreamento: 0 4px 12px rgba(67, 97, 238, 0.15);
+  --cor-borda-suave: rgba(247, 247, 255, 0.14);
+  --sombreamento: 0 18px 45px rgba(0, 0, 0, 0.55);
 }
 
 /* Sumir com o scrollbar */
@@ -115,7 +114,8 @@ img {
 /* Menu */
 .menu-bg {
     /* Este RGBA corresponde ao --cor-fundo-claro com 82% de opacidade */
-    background: rgba(239, 241, 254, 0.82);
+    background: linear-gradient(120deg, #020104e6, #230d5c);
+    /* background: rgba(239, 241, 254, 0.82); */
     backdrop-filter: saturate(160%) blur(12px);
     -webkit-backdrop-filter: saturate(160%) blur(12px);
     background-clip: padding-box;
@@ -200,7 +200,7 @@ img {
 
 .menu-nav ul li a.botao-cadastro:hover {
     /* background-color: var(--cor-marca-primaria); */
-    /* color: var(--cor-fundo-branco); */
+    color: var(--cor-fundo-branco);
     transform: translateY(-2px);
     box-shadow: var(--sombreamento);
 }
@@ -217,20 +217,30 @@ img {
 }
 
 .introducao-int {
-    flex: 2 1 300px;
+    flex: 2 1 400px;
 }
 
 .introducao h1 {
     color: var(--cor-marca-primaria);
     font-size: 3em;
+    line-height: 1.25;
     text-align: left;
 }
 
 .introducao h2 {
     color: var(--cor-texto-secundario);
-    line-height: 1.5;
+    margin-top: 15px;
+    line-height: 1;
     font-size: 1.5em;
     text-align: left;
+}
+
+.criar {
+    color: var(--cor-acento-vibrante); /* ou qualquer cor específica */
+}
+
+.crescer {
+    color: var(--cor-acento-aviso); /* por exemplo */
 }
 
 /* Sobre */
@@ -473,8 +483,7 @@ img {
     font-size: 1.8em;
     padding: 15px 0;
     text-align: center;
-    border-radius: 8px;
-    /* Borda arredondada */
+    border-radius: 12px;
     transition: all 0.3s ease;
 }
 
@@ -489,17 +498,14 @@ img {
 .preco-item:nth-child(2) {
     background: var(--cor-fundo-claro);
     border: 3px solid var(--cor-acento-vibrante);
-    /* Borda verde */
     transform: scale(1.03);
-    /* Levemente maior */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    /* Sombra mais forte */
 }
 
 /* Bolinha do plano destacado */
 .preco-item:nth-child(2) li::after {
     background: var(--cor-acento-vibrante);
-    /* Bolinha verde */
+    /* Bolinha */
 }
 
 /* Botão do plano destacado */
@@ -554,7 +560,6 @@ img {
 .qualidade-item h2 {
     font-size: 1.8em;
     color: var(--cor-texto-principal);
-    /* Cor principal */
     margin-bottom: 15px;
     display: flex;
     align-items: center;
@@ -571,13 +576,13 @@ img {
 
 /* Cores alternadas usando a nova paleta */
 .qualidade-item:nth-of-type(2n+1) h2::before {
-    background: var(--cor-marca-primaria);
-    /* Azul */
+    background: var(--cor-marca-secundaria);
+
 }
 
 .qualidade-item:nth-of-type(2n) h2::before {
     background: var(--cor-acento-vibrante);
-    /* Verde */
+
 }
 
 .qualidade-item p {
@@ -819,9 +824,3 @@ img {
     /* Um pouco menor e mais elegante */
     color: var(--cor-texto-secundario);
 }
-
-/* Botao de cadastro */
-/* .cadastro {
-    padding: 20px;
-    margin-top: 10px
-} */

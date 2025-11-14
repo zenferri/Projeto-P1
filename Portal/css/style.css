@@ -1,0 +1,204 @@
+/* ======= PALETA DARK SINGULARYS (DATACENTER) ======= */
+:root {
+    --cor-fundo-branco: #0b0713;
+    --cor-fundo-claro:  #1b0f23;
+    --cor-fundo-medio:  #241733;
+    --cor-fundo-escuro: #120a1c;
+
+    --cor-texto-principal:  #eceaf1;
+    --cor-texto-secundario: rgba(236, 234, 241, 0.78);
+    --cor-texto-claro:      #ffffff;
+
+    --cor-marca-primaria:   #874efe;
+    --cor-marca-secundaria: #653dd3;
+    --cor-acento-vibrante:  #ba8646;
+
+    --cor-borda-suave: rgba(236, 234, 241, 0.14);
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+
+    --text-1: var(--cor-texto-principal);
+    --text-2: var(--cor-texto-secundario);
+    --brand-1: var(--cor-marca-primaria);
+}
+
+html, body {
+    background: var(--cor-fundo-branco);
+    color: var(--cor-texto-principal);
+    font-family: "Inter", sans-serif;
+}
+
+/* MENU E SUPERINFO */
+.superinfo-bg {
+    padding: 10px 0;
+    background: linear-gradient(120deg, #413076d3, #653dd3e6);
+    text-align: right;
+}
+.superinfo-bg a { color: var(--cor-texto-claro); margin: 0 20px; }
+
+.menu-bg {
+    background: rgba(18, 10, 28, 0.9);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.menu {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-logo a {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: var(--cor-marca-primaria);
+}
+
+.menu-nav ul {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.menu-nav a {
+    padding: 10px 16px;
+    color: var(--cor-texto-secundario);
+    font-weight: 600;
+}
+
+.botao-cadastro {
+    background: var(--cor-acento-vibrante);
+    color: #0b0713;
+    border-radius: 100px;
+    font-weight: 800;
+}
+
+/* HERO */
+.hero {
+    background: radial-gradient(circle at top, #241733, #0b0713);
+    padding: 140px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.4em;
+    color: var(--cor-marca-primaria);
+}
+
+.hero p {
+    max-width: 620px;
+    margin: 20px auto;
+    font-size: 1.4em;
+    color: var(--cor-texto-secundario);
+}
+
+.hero-cta {
+    display: inline-block;
+    margin-top: 30px;
+    background: var(--cor-acento-vibrante);
+    padding: 16px 40px;
+    border-radius: 12px;
+    font-size: 1.3em;
+    color: #0b0713;
+    font-weight: bold;
+}
+
+/* SOBRE */
+.sobre {
+    max-width: 1400px;
+    margin: 90px auto;
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+}
+
+.sobre-info h1 {
+    font-size: 2.6em;
+    color: var(--cor-marca-primaria);
+}
+
+.sobre-info p {
+    font-size: 1.3em;
+    color: var(--cor-texto-secundario);
+}
+
+.sobre-img {
+    width: 45%;
+    border-radius: 16px;
+}
+
+/* PRODUTOS */
+.produtos {
+    max-width: 1400px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.produtos-container {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.produto-card {
+    background: var(--cor-fundo-medio);
+    padding: 30px;
+    width: 300px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.produto-card h2 { color: var(--cor-marca-primaria); }
+
+.preco {
+    font-size: 2em;
+    margin: 20px 0;
+    color: var(--cor-acento-vibrante);
+}
+
+/* DESTAQUE */
+.produto-card.destaque {
+    border: 3px solid var(--cor-acento-vibrante);
+    transform: scale(1.05);
+}
+
+.produto-card a {
+    display: block;
+    background: var(--cor-marca-primaria);
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+/* CTA FINAL */
+.cta-final {
+    margin: 120px auto;
+    text-align: center;
+}
+
+.cta-final h2 {
+    color: var(--cor-marca-secundaria);
+    font-size: 2.5em;
+}
+
+.cta-final .cta-botao {
+    display: inline-block;
+    background: var(--cor-acento-vibrante);
+    padding: 16px 40px;
+    border-radius: 10px;
+    color: #0b0713;
+    font-weight: 800;
+    font-size: 1.4em;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+    background: var(--cor-fundo-escuro);
+    padding: 40px;
+    text-align: center;
+    color: var(--cor-texto-secundario);
+}
