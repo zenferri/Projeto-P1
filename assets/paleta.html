@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paleta Singularys</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+
+<!-- Utilizei CSS interno por ser página estática para referência do projeto  -->
+ 
+    <style>
+        :root {
+            --cor-fundo-branco: #0b0713;
+            --cor-fundo-claro: #141635;
+            --cor-fundo-medio: #1d2145;
+            --cor-fundo-escuro: #050514;
+            --cor-texto-principal: #f7f7ff;
+            --cor-texto-secundario: rgba(247, 247, 255, 0.78);
+            --cor-texto-claro: #ffffff;
+            --cor-marca-primaria: #f8f8f8;
+            --cor-marca-secundaria: #454bba;
+            --cor-acento-vibrante: #fad932;
+            --cor-acento-aviso: #07ed67;
+            --cor-acento-erro: #fa3f32;
+            --cor-neutro-suave: #567a65;
+            --cor-borda-suave: rgba(247, 247, 255, 0.14);
+            --sombreamento: 0 18px 45px rgba(0, 0, 0, 0.55);
+            --fonte-base: "Inter", "Montserrat", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top, rgba(69, 75, 186, 0.15), transparent 55%), var(--cor-fundo-escuro);
+            color: var(--cor-texto-principal);
+            font-family: var(--fonte-base);
+            -webkit-font-smoothing: antialiased;
+            padding: 3rem 1rem 4rem;
+        }
+
+        .glass-panel {
+            background: rgba(5, 5, 20, 0.75);
+            border-radius: 32px;
+            border: 1px solid var(--cor-borda-suave);
+            box-shadow: var(--sombreamento);
+            backdrop-filter: blur(14px);
+            padding: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .section-heading {
+            max-width: 680px;
+        }
+
+        .color-card {
+            border-radius: 24px;
+            background: var(--cor-fundo-medio);
+            border: 1px solid var(--cor-borda-suave);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: inset 0 0 0 1px rgba(247, 247, 255, 0.02);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            height: 100%;
+        }
+
+        .color-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(69, 75, 186, 0.5);
+        }
+
+        .amostra {
+            width: 100%;
+            height: 120px;
+            border-radius: 18px;
+            background: var(--amostra-color);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 -12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .info span {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--cor-texto-secundario);
+        }
+
+        .info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .code {
+            font-family: "JetBrains Mono", "Fira Code", monospace;
+            color: var(--cor-texto-claro);
+        }
+
+        .info p:last-child {
+            color: var(--cor-texto-secundario);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="glass-panel mx-auto">
+            <header class="section-heading mb-5">
+                <div class="d-inline-flex align-items-center gap-2 text-uppercase fw-semibold text-secondary mb-3"
+                    style="letter-spacing: 0.3em;">
+                    <span class="badge text-bg-primary text-light">Singularys</span>
+                    Paleta oficial
+                </div>
+                <h1 class="display-5 fw-bold mb-3">Paleta Singularys</h1>
+                <p class="lead" style="color: var(--cor-texto-secundario);">
+                    Grid com as cores principais do sistema visual Singularys. Use estas amostras como guia para fundos,
+                    tipografia,
+                    componentes e chamadas para ação consistentes em toda a experiência.
+                </p>
+            </header>
+
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-fundo-branco)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Fundos</span>
+                            <h2>Fundo Escuro Base</h2>
+                            <p class="code">#0B0713</p>
+                            <p>Plano geral para telas em tema dark, garantindo contraste máximo.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-fundo-claro)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Fundos</span>
+                            <h2>Faixas e Seções</h2>
+                            <p class="code">#141635</p>
+                            <p>Use para separar blocos de conteúdo sem quebrar o clima noturno.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-fundo-medio)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Fundos</span>
+                            <h2>Surface / Cards</h2>
+                            <p class="code">#1D2145</p>
+                            <p>Realça cartões e componentes com sutileza, mantendo profundidade.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-fundo-escuro)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Fundos</span>
+                            <h2>Header & Footer</h2>
+                            <p class="code">#050514</p>
+                            <p>Base extra escura para elementos estruturais como topo e rodapé.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-texto-principal)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Texto</span>
+                            <h2>Texto Principal</h2>
+                            <p class="code">#F7F7FF</p>
+                            <p>Cor de leitura padrão, perfeita sobre fundos profundos.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-marca-secundaria)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Marca</span>
+                            <h2>Marca Secundária</h2>
+                            <p class="code">#454BBA</p>
+                            <p>Roxo-azulado para gradientes, estados hover e links.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-acento-vibrante);">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Acentos</span>
+                            <h2>Botões - Vibrante</h2>
+                            <p class="code">#FAD932</p>
+                            <p>Chamadas para ação fortes, badges de sucesso e métricas.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-acento-aviso);">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Acentos</span>
+                            <h2>Aviso / Destaque</h2>
+                            <p class="code">#07ED67</p>
+                            <p>Realça estados neutros ou indicadores de progresso.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-acento-erro);">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Acentos</span>
+                            <h2>Erro / Alerta</h2>
+                            <p class="code">#FA3F32</p>
+                            <p>Alertas, validações negativas e mensagens críticas.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <article class="color-card" style="--amostra-color: var(--cor-neutro-suave)">
+                        <div class="amostra"></div>
+                        <div class="info">
+                            <span>Acentos</span>
+                            <h2>Neutro Suave</h2>
+                            <p class="code">#567A65</p>
+                            <p>Bordas e chips discretos para dividir informação com elegância.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

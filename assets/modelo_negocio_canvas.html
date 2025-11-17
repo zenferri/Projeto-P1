@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Canvas de Modelo de Negócio – Singularys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  
+   <!-- Usei CSS interno pra facilitar, ja que é página estática e para referência  -->
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .canvas-header-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .canvas-header-subtitle {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .bmc-board {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+        }
+
+        .bmc-block {
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            background-color: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bmc-block-header {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background-color: #f8f9fa;
+        }
+
+        .bmc-block-body {
+            padding: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .bmc-block-body p {
+            margin-bottom: 0.35rem;
+        }
+
+        @media (min-width: 992px) {
+            .row-top {
+                min-height: 260px;
+            }
+
+            .row-middle {
+                min-height: 235px;
+            }
+
+            .row-bottom {
+                min-height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<!-- 
+
+Usei bmc como abreviação de "Business Model Canvas". 
+bmc-board: o quadro geral do canvas
+bmc-block: cada bloco do canvas
+bmc-block-header: cabeçalho do bloco
+bmc-block-body: conteúdo do bloco 
+
+-->
+
+
+<body>
+    <div class="container py-5">
+
+        <header class="text-center mb-4">
+            <h1 class="canvas-header-title">Canvas de Modelo de Negócio</h1>
+            <p class="canvas-header-subtitle">
+                Singularys – Automação de provisionamento de máquinas virtuais (VMs)
+            </p>
+        </header>
+
+        <div class="bmc-board">
+
+            <!-- LINHA SUPERIOR – 1 a 5 -->
+            <div class="row g-3 row-top">
+
+                <!-- 1. Segmento de clientes -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">1. Segmento de clientes</div>
+                        <div class="bmc-block-body">
+                            <p><strong>Singularys</strong></p>
+                            <p>Empresas de datacenter que pretendem oferecer servidores virtuais aos clientes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Proposta de valor -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">2. Proposta de valor</div>
+                        <div class="bmc-block-body">
+                            <p>O produto foi desenvolvido a partir de uma proposta da Hospedaria Internet para automatizar o provisionamento de máquinas virtuais (VMs) na infraestrutura Proxmox da empresa. O cliente escolhe um plano e paga online, o que resulta na criação e disponibilização instantânea da VM sem intervenção humana. Ele pode ser adaptado para outras empresas, com o objetivo principal de otimizar processos, reduzir custos operacionais e melhorar a experiência do cliente.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Canais -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">3. Canais</div>
+                        <div class="bmc-block-body">
+                            <p>O novo serviço será promovido como parte da publicidade geral da empresa. A divulgação ocorrerá também nas redes sociais, como YouTube, Tubes, Instagram e Google Ad Services.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Relacionamento -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">4. Relacionamento com o cliente</div>
+                        <div class="bmc-block-body">
+                            <p>Suporte contínuo, atualizações de segurança, inovações e comunicação clara.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Fontes de renda -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">5. Fontes de renda</div>
+                        <div class="bmc-block-body">
+                            <p>Pagamento inicial pelo desenvolvimento.</p>
+                            <p>Manutenção mensal ou anual, com fidelidade contratual.</p>
+                            <p>Valor personalizado consdierando a demanda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LINHA DO MEIO – 6 e 7 -->
+            <div class="row g-3 row-middle mt-1">
+
+                <!-- 6. Recursos chave -->
+                <div class="col-lg-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">6. Recursos chave</div>
+                        <div class="bmc-block-body">
+                            <p>Arquitetura em camadas com modularidade e segurança.</p>
+                            <p>Front-end em React/Next.js e back-end em Node/Express ou Django REST.</p>
+                            <p>PostgreSQL, Redis ou RabbitMQ, orquestração com Proxmox.</p>
+                            <p>Nginx/Traefik, TLS, LGPD e integração com Mercado Pago.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Atividades chave -->
+                <div class="col-lg-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">7. Atividades chave</div>
+                        <div class="bmc-block-body">
+                            <p>Modelagem, implementação prototípica e testes com cloud-init.</p>
+                            <p>Integração com gateway de pagamento.</p>
+                            <p>Testes de desempenho, documentação e implantação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LINHA INFERIOR – 8 e 9 -->
+            <div class="row g-3 row-bottom mt-1">
+
+                <!-- 8. Parceiros chave -->
+                <div class="col-lg-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">8. Parceiros chave</div>
+                        <div class="bmc-block-body">
+                            <p>A FATEC, com recursos educacionais</p>
+                            <p>Hospedaria Internet com orientação técnica.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Estrutura de custos -->
+                <div class="col-lg-6">
+                    <div class="bmc-block">
+                        <div class="bmc-block-header">9. Estrutura de custos</div>
+                        <div class="bmc-block-body">
+                            <p>Desenvolvimento voluntário por alunos de DSM.</p>
+                            <p>Custos intangíveis: tempo, dedicação e aprendizado.</p>
+                            <p>Em produção, incluiria manutenção, suporte, infraestrutura e monitoramento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
