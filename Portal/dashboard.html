@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard • Singularys</title>
+    <meta name="description"
+        content="Acompanhe o status do seu servidor virtual Singularys com métricas em tempo real e ações rápidas." />
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        html,
+        body {
+            background: #fff;
+            color: #101C5E;
+        }
+    </style>
+
+    <!-- CSS principal do site -->
+    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025_v3" id="themeStylesheet">
+    <link rel="stylesheet" href="/css/style_login.css">
+    <link rel="stylesheet" href="/css/botoes.css">
+    <link rel="stylesheet" href="/css/reveal.css">
+    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025_v3">
+
+</head>
+
+<body>
+    <section class="menu-top">
+        <div class="superinfo-bg">
+            <div class="superinfo">
+                <a href="/termos.html">Termos de Uso</a>
+                <a href="#suporte">Suporte</a>
+                <a href="#quem_somos">Nossa equipe</a>
+            </div>
+        </div>
+
+        <header class="menu-bg">
+            <div class="menu">
+                <div class="menu-logo">
+                    <a href="/index.html">Singularys</a>
+                </div>
+                <nav class="menu-nav">
+                    <ul>
+                        <li><a href="#overview">Visão geral</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
+                        <li><a href="/index.html">Log out</a></li>
+                        <!-- <li><a href="#" class="botao-cadastro" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastre-se</a></li> -->
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <main class="py-5">
+        <div class="container">
+
+            <!-- Hero / resumo -->
+             
+            <section id="overview" class="row g-4 align-items-stretch mb-1">
+                <div class="col-12 col-xl-8">
+                    <div class="card h-100 border-0 text-white shadow-sm"
+                        style="background: var(--cor-fundo-medio); box-shadow: var(--sombreamento);">
+                        <div class="card-body">
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+                                <div>
+                                    <span
+                                        class="badge rounded-pill bg-success text-uppercase fw-bold px-3 py-2 mb-2">Servidor
+                                        on-line</span>
+                                    <h1 class="h3 fw-bold">VM • api-singularys</h1>
+                                    <p class="text-white-50 mb-2">Ubuntu 24.04 LTS — Região São Paulo • VLAN 10</p>
+                                    <div class="d-flex flex-column flex-sm-row gap-3 text-white-50">
+                                        <div><span class="text-white">IP público:</span> 18.120.40.12</div>
+                                        <div><span class="text-white">Uptime:</span> 18 dias 04:23</div>
+                                        <div><span class="text-white">Último backup:</span> há 8h</div>
+                                    </div>
+                                </div>
+                                <div class="text-md-end w-100" style="max-width: 340px;">
+                                    <p class="text-white-50 mb-2">Consumo atual</p>
+                                    <div class="d-flex justify-content-between">
+                                        <span>vCPUs</span>
+                                        <span class="fw-bold">62%</span>
+                                    </div>
+                                    <div class="progress mb-2" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 62%;">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Memória</span>
+                                        <span class="fw-bold">48%</span>
+                                    </div>
+                                    <div class="progress mb-3" style="height: 8px;">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 48%;"></div>
+                                    </div>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <button class="btn btn-outline-light btn-sm px-3">Reiniciar</button>
+                                        <button class="btn btn-outline-light btn-sm px-3">Console</button>
+                                        <button class="btn btn-warning btn-sm px-3 text-dark fw-bold">Escalar
+                                            recursos</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4">
+                    <div class="card h-100 border-0 text-white shadow-sm"
+                        style="background: var(--cor-fundo-medio); box-shadow: var(--sombreamento);">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <p class="text-uppercase small text-white-50 mb-1">Plano contratado</p>
+                                <h2 class="h4 fw-bold">Desempenho</h2>
+                                <p class="text-white-50 mb-4">8 vCPU • 16 GB RAM • 100 GB SSD NVMe</p>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex justify-content-between text-white-50">
+                                    <span>Tráfego incluso</span>
+                                    <strong class="text-white">5 TB</strong>
+                                </div>
+                                <div class="d-flex justify-content-between text-white-50">
+                                    <span>Tráfego usado</span>
+                                    <strong class="text-white">2.9 TB</strong>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 58%;"></div>
+                                </div>
+                                <p class="small text-white-50 mb-0">Próxima fatura em 12 de dezembro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Métricas -->
+            <section class="row g-4 mb-4">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <p class="text-uppercase small text-white-50">Uso de CPU</p>
+                            <h3 class="h2 fw-bold mb-3">62%</h3>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-warning" style="width: 62%;"></div>
+                            </div>
+                            <p class="small text-white-50 mt-3">Carga média 15 min: 1.32</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <p class="text-uppercase small text-white-50">Memória</p>
+                            <h3 class="h2 fw-bold mb-3">7.6 / 16 GB</h3>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-info" style="width: 48%;"></div>
+                            </div>
+                            <p class="small text-white-50 mt-3">Buffer + cache: 1.2 GB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <p class="text-uppercase small text-white-50">Storage</p>
+                            <h3 class="h2 fw-bold mb-3">68 / 100 GB</h3>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-danger" style="width: 68%;"></div>
+                            </div>
+                            <p class="small text-white-50 mt-3">Snapshots ocupam 12 GB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <p class="text-uppercase small text-white-50">Tráfego</p>
+                            <h3 class="h2 fw-bold mb-3">420 Mbps</h3>
+                            <div class="progress" style="height: 6px;">
+                                <div class="progress-bar bg-success" style="width: 42%;"></div>
+                            </div>
+                            <p class="small text-white-50 mt-3">Pico hoje: 820 Mbps</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabela e eventos -->
+            <section id="recursos" class="row g-4">
+                <div class="col-12 col-xl-6">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2 class="h5 fw-bold mb-0">Processos principais</h2>
+                                <span class="badge text-bg-dark border">Atualizado há 1 min</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-borderless align-middle">
+                                    <thead>
+                                        <tr class="text-white-50">
+                                            <th class="text-uppercase small">Serviço</th>
+                                            <th class="text-uppercase small text-end">CPU</th>
+                                            <th class="text-uppercase small text-end">RAM</th>
+                                            <th class="text-uppercase small text-end">I/O</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Nginx</td>
+                                            <td class="text-end">14%</td>
+                                            <td class="text-end">620 MB</td>
+                                            <td class="text-end">90 MB/s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Node.js • api</td>
+                                            <td class="text-end">22%</td>
+                                            <td class="text-end">1.8 GB</td>
+                                            <td class="text-end">110 MB/s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PostgreSQL</td>
+                                            <td class="text-end">18%</td>
+                                            <td class="text-end">2.3 GB</td>
+                                            <td class="text-end">180 MB/s</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Redis cache</td>
+                                            <td class="text-end">6%</td>
+                                            <td class="text-end">780 MB</td>
+                                            <td class="text-end">64 MB/s</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-outline-light btn-sm">Ver todos os processos</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6" id="eventos">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <h2 class="h5 fw-bold mb-4">Eventos recentes</h2>
+                            <div class="d-flex flex-column gap-4">
+                                <div class="d-flex gap-3">
+                                    <div class="badge rounded-pill text-bg-success">OK</div>
+                                    <div>
+                                        <p class="mb-1 fw-semibold">Backup incremental concluído</p>
+                                        <p class="small text-white-50 mb-0">Hoje • 05:14 • 9.4 GB enviados ao cofre
+                                            SP-02</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div class="badge rounded-pill text-bg-warning">Aviso</div>
+                                    <div>
+                                        <p class="mb-1 fw-semibold">Latência de disco acima do normal</p>
+                                        <p class="small text-white-50 mb-0">Ontem • 23:02 • Storage NVMe cluster 3</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div class="badge rounded-pill text-bg-danger">Alerta</div>
+                                    <div>
+                                        <p class="mb-1 fw-semibold">Falha de autenticação SSH</p>
+                                        <p class="small text-white-50 mb-0">Ontem • 18:44 • Origem 181.76.34.8 bloqueada
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <div class="badge rounded-pill text-bg-secondary">Info</div>
+                                    <div>
+                                        <p class="mb-1 fw-semibold">Atualizações de segurança aplicadas</p>
+                                        <p class="small text-white-50 mb-0">Ontem • 14:18 • Kernel 6.8.11-lts</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-light btn-sm mt-4">Abrir centro de notificações</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status adicionais -->
+            <section class="row g-4 mt-1" id="suporte">
+                <div class="col-12 col-lg-4">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <h2 class="h5 fw-bold mb-4">Cluster Singularys</h2>
+                            <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Orquestrador</span>
+                                    <span class="badge text-bg-success px-3">operacional</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Storage NVMe</span>
+                                    <span class="badge text-bg-success px-3">99.99%</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Rede SP-Edge</span>
+                                    <span class="badge text-bg-warning px-3">latência 15ms</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Backups</span>
+                                    <span class="badge text-bg-info px-3">sincronizando</span>
+                                </li>
+                            </ul>
+                            <p class="text-white-50 small mb-2">Escalabilidade automática ativa para CPU e memória.</p>
+                            <a href="#" class="btn btn-outline-light btn-sm">Abrir status page</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="card h-100 border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
+                                <h2 class="h5 fw-bold mb-0">Distribuição de recursos</h2>
+                                <button class="btn btn-warning btn-sm text-dark fw-bold">Adicionar volume</button>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-12 col-md-6">
+                                    <p class="text-uppercase small text-white-50 mb-1">vCPUs</p>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>8 cores</span>
+                                        <strong>5 alocados</strong>
+                                    </div>
+                                    <div class="progress mb-4" style="height: 10px;">
+                                        <div class="progress-bar bg-primary" style="width: 62%;"></div>
+                                    </div>
+                                    <p class="text-uppercase small text-white-50 mb-1">Memória</p>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>16 GB</span>
+                                        <strong>8.5 GB em uso</strong>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar bg-info" style="width: 53%;"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p class="text-uppercase small text-white-50 mb-1">Volumes</p>
+                                    <div class="list-group list-group-flush">
+                                        <div
+                                            class="list-group-item bg-transparent text-white d-flex justify-content-between px-0">
+                                            <span>root • NVMe</span>
+                                            <span>40 GB / 26 GB</span>
+                                        </div>
+                                        <div
+                                            class="list-group-item bg-transparent text-white d-flex justify-content-between px-0">
+                                            <span>/data</span>
+                                            <span>50 GB / 38 GB</span>
+                                        </div>
+                                        <div
+                                            class="list-group-item bg-transparent text-white d-flex justify-content-between px-0">
+                                            <span>backup incremental</span>
+                                            <span>10 GB / 4 GB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ações rápidas -->
+            <section class="row g-4 mt-1">
+                <div class="col-12">
+                    <div class="card border-0 text-white" style="background: var(--cor-fundo-medio);">
+                        <div
+                            class="card-body d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3">
+                            <div>
+                                <h2 class="h5 fw-bold mb-1">Precisa de ajuda urgente?</h2>
+                                <p class="text-white-50 mb-0">Nossa equipe responde solicitações críticas em menos de 5
+                                    minutos.</p>
+                            </div>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a class="btn btn-outline-light" href="mailto:suporte@singularys.net">Abrir ticket</a>
+                                <a class="btn btn-warning text-dark fw-bold" href="tel:+5512919550638">Chamar
+                                    suporte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer mt-5">
+        <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
+    </footer>
+
+    <!-- Modal de login (reaproveitado do index) -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bem vindo de volta!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Digite seu e-mail:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="nome@examplo.com">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="Digite sua senha">
+                                <span class="input-group-text password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="remember">
+                                <label class="form-check-label" for="remember">Lembrar</label>
+                            </div>
+                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                        </div>
+                        <button type="submit" class="btn btn-login text-white">Entrar</button>
+                        <div class="register-link">
+                            Ainda não tem uma conta? <a href="#" class="text-decoration-none" data-bs-toggle="modal"
+                                href="/cadastro.html">Cadastre-se agora!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modals-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/script_reveal.js?v=15112025"></script>
+    <script src="/js/cadastro.js?v=15112025"></script>
+    <script src="/js/main_script.js?v=15112025"></script>
+</body>
+
+</html>

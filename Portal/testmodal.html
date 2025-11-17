@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Singularys</title>
+
+    <!-- Descrição  -->
+
+    <meta name="description"
+        content="Implante sua máquina virtual em poucos cliques. Performance real, estabilidade contínua e suporte especializado para projetos que exigem segurança e eficiência." />
+
+    <!-- Fonte que será utilizada no site. Ela vem antes do style.css -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Meta TAG para o responsivo funcionar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Declara que o site usa esquema de cores claro para evitar cagada do Android -->
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS  inline para evitar flash escuro antes do CSS externo -->
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        /* impede darkening automático */
+        html,
+        body {
+            background: #fff;
+            color: #101C5E;
+        }
+    </style>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" type="text/css" href="/css/style5.css?v=1.0.5">
+    <link rel="stylesheet" href="/css/style_login.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
+
+</head>
+
+<body>
+    <section class="menu-top">
+        <div class="superinfo-bg">
+            <div class="superinfo">
+                <a href="/termos.html">Termos de Uso</a>
+                <a href="#documentos">Documentos</a>
+                <a href="#suporte">Suporte</a>
+                <a href="#quem_somos">Nossa equipe</a>
+            </div>
+        </div>
+
+        <header class="menu-bg">
+            <div class="menu">
+                <div class="menu-logo">
+                    <a href="/index.html">Singularys</a>
+                </div>
+                <nav class="menu-nav">
+                    <ul>
+                        <!-- <li><a href="#sobre">Sobre nós</a></li>
+                        <li><a href="#preco">Planos</a></li> -->
+                        <li class="already-account">Já possui uma conta?</li>
+                        <li class="botao-login"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <!-- <li><a href="#cadastrese" class="botao-cadastro">Cadastre-se</a></li> -->
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <!-- TESTE DE MODAL  -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastre-se</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="cadastroForm" class="row g-3" novalidate>
+                <div class="col-12">
+                    <label class="form-label d-block">Tipo de cadastro</label>
+                    <div class="btn-group" role="group" aria-label="Tipo de cadastro">
+                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPF" value="pf" checked>
+                        <label class="btn btn-outline-primary" for="tipoPF">Pessoa Física</label>
+                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPJ" value="pj">
+                        <label class="btn btn-outline-primary" for="tipoPJ">Pessoa Jurídica</label>
+                    </div>
+                </div>
+                <p class="text-muted small" id="paragrafo">Campos com * são obrigatórios</p>
+                <div class="col-12" id="pfFields">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputNome" class="form-label">Nome*</label>
+                            <input type="text" class="form-control" id="inputNome" name="nome" required
+                                data-required-group="pf">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputSobrenome" class="form-label">Sobrenome*</label>
+                            <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required
+                                data-required-group="pf">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCPF" class="form-label">CPF* (apenas números)</label>
+                            <input type="text" class="form-control" id="inputCPF" name="cpf" required
+                                data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"
+                                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputNascimento" class="form-label">Data de nascimento*</label>
+                            <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required
+                                data-required-group="pf">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label d-block">Sexo*</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoM"
+                                        value="masculino" required data-required-group="pf">
+                                    <label class="form-check-label" for="sexoM">&nbsp;Masculino</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino"
+                                        data-required-group="pf">
+                                    <label class="form-check-label" for="sexoF">&nbsp;Feminino</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 d-none" id="pjFields">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputEmpresa" class="form-label">Nome empresarial*</label>
+                            <input type="text" class="form-control" id="inputEmpresa" name="nomeEmpresarial" required
+                                data-required-group="pj">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCNPJ" class="form-label">CNPJ* (apenas números)</label>
+                            <input type="text" class="form-control" id="inputCNPJ" name="cnpj" required
+                                data-required-group="pj" inputmode="numeric" maxlength="18"
+                                placeholder="" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputResponsavel" class="form-label">Responsável técnico*</label>
+                            <input type="text" class="form-control" id="inputResponsavel" name="responsavelTecnico"
+                                required data-required-group="pj">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputEmail" class="form-label">E-mail*</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" required
+                        pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" placeholder="usuario@dominio.com"
+                        title="Use o formato usuario@dominio.com">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputWhatsapp" class="form-label">Telefone Celular / WhatsApp* (apenas números)</label>
+                    <input type="tel" class="form-control" id="inputWhatsapp" name="whatsapp"
+                        placeholder="" inputmode="numeric" maxlength="15" pattern="\(\d{2}\) \d{5}-\d{4}"
+                        required>
+                </div>
+                <div class="col-12 col-md-8">
+                    <label for="inputAddress" class="form-label">Endereço*</label>
+                    <input type="text" class="form-control" id="inputAddress" name="endereco" required>
+                </div>
+                <div class="col-12 col-md-4">
+                    <label for="inputAddress2" class="form-label">Complemento (opcional)</label>
+                    <input type="text" class="form-control" id="inputAddress2" name="complemento">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Cidade*</label>
+                    <input type="text" class="form-control" id="inputCity" name="cidade" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="estado" class="form-label">Estado*</label>
+                    <select id="estado" class="form-select" name="estado" required>
+                        <option value="">Selecione...</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">CEP*</label>
+                    <input type="text" class="form-control" id="inputZip" name="cep" required inputmode="numeric"
+                        maxlength="9" autocomplete="postal-code" pattern="\d{5}-\d{3}">
+                </div>
+
+                <!-- Caixa de texto com os termos do serviço  -->
+                <div class="form-group">
+                    <label for="termsBox">Termos e condições</label>
+                    <div id="termsBox" class="terms-box"></div>
+                </div>
+
+                <!-- Checkbox à esquerda do botão cadastrar  -->
+                <div class="col-12 d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
+                    <div class="form-check d-flex align-items-center gap-2 mb-2 order-1 order-md-1 ms-md-auto">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                        <label class="form-check-label mb-0" for="gridCheck">
+                            Eu li e concordo com os termos de uso</a>*.
+                        </label>
+                    </div>
+
+                    <!-- Botão  -->
+                    <button type="submit" id="btnCadastrar" class="btn btn-primary order-2 order-md2">Cadastrar</button>
+                </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary" id="btnCadastrar">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIM DO TESTE DE MODAL  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="/js/cadastro.js"></script>
+
+</body>
+</html>

@@ -3,39 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Singularys</title>
-
-    <!-- Descrição  -->
-
+    <title>Cadastro • Singularys</title>
     <meta name="description"
-        content="Implante sua máquina virtual em poucos cliques. Performance real, estabilidade contínua e suporte especializado para projetos que exigem segurança e eficiência." />
-
-    <!-- Fonte que será utilizada no site. Ela vem antes do style.css -->
+        content="Crie sua conta na Singularys, confirme o e-mail e conclua o pedido do seu servidor virtual." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <!-- Meta TAG para o responsivo funcionar -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-    <!-- Declara que o site usa esquema de cores claro para evitar cagada do Android -->
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- CSS  inline para evitar flash escuro antes do CSS externo -->
     <style>
         :root {
             color-scheme: light only;
         }
 
-        /* impede darkening automático */
         html,
         body {
             background: #fff;
@@ -43,11 +31,128 @@
         }
     </style>
 
-    <!-- CSS externo -->
-    <link rel="stylesheet" type="text/css" href="/css/style5.css?v=1.0.5">
+    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025_v3" id="themeStylesheet">
     <link rel="stylesheet" href="/css/style_login.css">
-    <link rel="stylesheet" href="/css/cadastro.css">
+    <link rel="stylesheet" href="/css/botoes.css">
+    <link rel="stylesheet" href="/css/reveal.css">
+    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025_v3">
 
+    <style>
+        .cadastro-hero {
+            background: linear-gradient(120deg, rgba(67, 97, 238, 0.18), rgba(5, 5, 20, 0.7));
+            border-radius: 32px;
+            padding: 48px 32px;
+            box-shadow: 0 25px 45px rgba(5, 5, 20, 0.35);
+        }
+
+        .cadastro-hero h1 {
+            font-size: clamp(2.2rem, 3vw, 3rem);
+            color: var(--cor-texto-principal);
+        }
+
+        .cadastro-hero p {
+            color: var(--cor-texto-secundario);
+            max-width: 520px;
+        }
+
+        .card-cadastro {
+            background: var(--cor-fundo-medio);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            box-shadow: var(--sombreamento);
+        }
+
+        .card-cadastro h2,
+        .card-cadastro h3,
+        .card-cadastro p,
+        .card-cadastro span {
+            color: inherit;
+        }
+
+        .plan-summary ul {
+            padding-left: 1rem;
+        }
+
+        .plan-summary li {
+            margin-bottom: .35rem;
+        }
+
+        .step-list {
+            counter-reset: etapa;
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+        }
+
+        .step-list li::before {
+            counter-increment: etapa;
+            content: counter(etapa);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+        }
+
+        .info-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .4rem .9rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-size: .9rem;
+        }
+
+        .form-card {
+            background: #f7f8ff;
+            border-radius: 24px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+            padding: 2.5rem;
+        }
+
+        .form-card label {
+            color: #273163;
+        }
+
+        .server-option {
+            background: var(--cor-fundo-medio);
+            border-radius: 20px;
+            color: #fff;
+            padding: 1.5rem;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: var(--sombreamento);
+        }
+
+        .server-option ul {
+            padding-left: 1rem;
+        }
+
+        .server-option li {
+            margin-bottom: .35rem;
+        }
+
+        .pix-card {
+            background: rgba(7, 237, 103, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -55,7 +160,6 @@
         <div class="superinfo-bg">
             <div class="superinfo">
                 <a href="/termos.html">Termos de Uso</a>
-                <a href="#documentos">Documentos</a>
                 <a href="#suporte">Suporte</a>
                 <a href="#quem_somos">Nossa equipe</a>
             </div>
@@ -68,190 +172,227 @@
                 </div>
                 <nav class="menu-nav">
                     <ul>
-                        <!-- <li><a href="#sobre">Sobre nós</a></li>
-                        <li><a href="#preco">Planos</a></li> -->
-                        <li class="already-account">Já possui uma conta?</li>
-                        <li class="botao-login"><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                        <!-- <li><a href="#cadastrese" class="botao-cadastro">Cadastre-se</a></li> -->
+                        <li><a href="/index.html#sobre">Sobre nós</a></li>
+                        <li><a href="/index.html#opcoes">Planos</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li><a href="/cadastro.html" class="botao-cadastro">Contratar</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
     </section>
 
-    <section class="cadastro">
+    <main class="py-5">
         <div class="container">
-            <form id="cadastroForm" class="row g-3" novalidate>
-                <div class="col-12">
-                    <label class="form-label d-block">Tipo de cadastro</label>
-                    <div class="btn-group" role="group" aria-label="Tipo de cadastro">
-                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPF" value="pf" checked>
-                        <label class="btn btn-outline-primary" for="tipoPF">Pessoa Física</label>
-                        <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPJ" value="pj">
-                        <label class="btn btn-outline-primary" for="tipoPJ">Pessoa Jurídica</label>
+            <section class="cadastro-hero mb-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-7">
+                        <p class="info-chip">
+                            <span class="badge bg-success rounded-pill">Etapas guiadas</span>
+                            Configure em poucos minutos
+                        </p>
+                        <h1 class="fw-bold mt-3">
+                            Cadastro e provisionamento sem atrito
+                        </h1>
+                        <p class="lead mb-0">
+                            Revise seus dados, confirme o e-mail, escolha o servidor e finalize o pagamento sem sair desta jornada.
+                        </p>
+                    </div>
+                    <div class="col-md-5 text-md-end">
+                        <div class="text-white-50">
+                            <p class="mb-1">Plano atual</p>
+                            <h2 class="h3 fw-bold mb-2" id="selectedPlanName">Desempenho</h2>
+                            <p class="fs-5 mb-0" id="selectedPlanPrice">R$ 69,90/mês</p>
+                        </div>
                     </div>
                 </div>
-                <p class="text-muted small" id="paragrafo">Campos com * são obrigatórios</p>
-                <div class="col-12" id="pfFields">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="inputNome" class="form-label">Nome*</label>
-                            <input type="text" class="form-control" id="inputNome" name="nome" required
-                                data-required-group="pf">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputSobrenome" class="form-label">Sobrenome*</label>
-                            <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required
-                                data-required-group="pf">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCPF" class="form-label">CPF* (apenas números)</label>
-                            <input type="text" class="form-control" id="inputCPF" name="cpf" required
-                                data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"
-                                pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="inputNascimento" class="form-label">Data de nascimento*</label>
-                            <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required
-                                data-required-group="pf">
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label d-block">Sexo*</label>
-                            <div class="d-flex gap-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoM"
-                                        value="masculino" required data-required-group="pf">
-                                    <label class="form-check-label" for="sexoM">&nbsp;Masculino</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino"
-                                        data-required-group="pf">
-                                    <label class="form-check-label" for="sexoF">&nbsp;Feminino</label>
+            </section>
+
+            <section class="row g-4 align-items-start">
+                <div class="col-lg-5">
+                    <div class="card-cadastro p-4 mb-4 plan-summary">
+                        <p class="text-uppercase text-white-50 small mb-2">Detalhes do plano</p>
+                        <h2 class="h4 fw-bold" id="planResumeTitle">VM dedicada para crescer</h2>
+                        <p class="text-white-50" id="planResumeDescription">8 vCPU • 16 GB RAM • 100 GB SSD NVMe</p>
+                        <ul class="mb-4" id="selectedPlanSpecs">
+                            <li>Provisionamento em 30 segundos</li>
+                            <li>Rede 1 Gbps dedicada</li>
+                            <li>Backup automático</li>
+                        </ul>
+                        <a href="/index.html#opcoes" class="btn btn-outline-light w-100">Quero revisar outras opções</a>
+                    </div>
+
+                    <div class="card-cadastro p-4">
+                        <p class="text-uppercase text-white-50 small mb-2">Linha do tempo</p>
+                        <ul class="step-list">
+                            <li>Preencha seus dados pessoais e fiscais.</li>
+                            <li>Confirme o código enviado para o e-mail informado.</li>
+                            <li>Escolha o servidor disponível e envie para o carrinho.</li>
+                            <li>Selecione PIX ou cartão, finalize o pagamento e acesse a dashboard.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="form-card">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-3">
+                            <div>
+                                <h2 class="h4 fw-bold mb-1">Dados do titular</h2>
+                                <p class="text-muted mb-0">Usaremos estas informações no contrato e na fatura.</p>
+                            </div>
+                            <div class="text-md-end">
+                                <label class="form-label d-block mb-2">Tipo de cadastro</label>
+                                <div class="btn-group" role="group" aria-label="Tipo de cadastro">
+                                    <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPF" value="pf" checked>
+                                    <label class="btn btn-outline-primary" for="tipoPF">Pessoa Física</label>
+                                    <input type="radio" class="btn-check" name="tipoCadastro" id="tipoPJ" value="pj">
+                                    <label class="btn btn-outline-primary" for="tipoPJ">Pessoa Jurídica</label>
                                 </div>
                             </div>
                         </div>
+
+                        <form id="cadastroForm" class="row g-3" novalidate>
+                            <p class="text-muted small" id="paragrafo">Campos com * são obrigatórios</p>
+                            <div class="col-12" id="pfFields">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="inputNome" class="form-label">Nome*</label>
+                                        <input type="text" class="form-control" id="inputNome" name="nome" required data-required-group="pf">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputSobrenome" class="form-label">Sobrenome*</label>
+                                        <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required data-required-group="pf">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputCPF" class="form-label">CPF* (apenas números)</label>
+                                        <input type="text" class="form-control" id="inputCPF" name="cpf" required data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="inputNascimento" class="form-label">Data de nascimento*</label>
+                                        <input type="date" class="form-control" id="inputNascimento" name="dataNascimento" required data-required-group="pf">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label d-block">Sexo*</label>
+                                        <div class="d-flex gap-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="masculino" required data-required-group="pf">
+                                                <label class="form-check-label" for="sexoM">Masculino</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino" data-required-group="pf">
+                                                <label class="form-check-label" for="sexoF">Feminino</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-none" id="pjFields">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="inputRazao" class="form-label">Razão social*</label>
+                                        <input type="text" class="form-control" id="inputRazao" name="razao" data-required-group="pj">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputFantasia" class="form-label">Nome fantasia</label>
+                                        <input type="text" class="form-control" id="inputFantasia" name="fantasia">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputCNPJ" class="form-label">CNPJ*</label>
+                                        <input type="text" class="form-control" id="inputCNPJ" name="cnpj" maxlength="18" placeholder="00.000.000/0000-00" data-required-group="pj">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputIE" class="form-label">Inscrição estadual</label>
+                                        <input type="text" class="form-control" id="inputIE" name="inscricaoEstadual">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="inputEmail" class="form-label">E-mail corporativo*</label>
+                                <input type="email" class="form-control" id="inputEmail" name="email" required placeholder="nome@empresa.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputWhatsapp" class="form-label">WhatsApp*</label>
+                                <input type="tel" class="form-control" id="inputWhatsapp" name="telefone" required placeholder="(11) 90000-0000">
+                            </div>
+
+                            <div class="col-md-8">
+                                <label for="inputEndereco" class="form-label">Endereço*</label>
+                                <input type="text" class="form-control" id="inputEndereco" name="endereco" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="inputNumero" class="form-label">Número*</label>
+                                <input type="text" class="form-control" id="inputNumero" name="numero" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="inputComplemento" class="form-label">Compl.</label>
+                                <input type="text" class="form-control" id="inputComplemento" name="complemento">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="inputCidade" class="form-label">Cidade*</label>
+                                <input type="text" class="form-control" id="inputCidade" name="cidade" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputEstado" class="form-label">Estado*</label>
+                                <select id="inputEstado" class="form-select" required>
+                                    <option value="" selected disabled>Escolha...</option>
+                                    <option>AC</option>
+                                    <option>AL</option>
+                                    <option>AP</option>
+                                    <option>AM</option>
+                                    <option>BA</option>
+                                    <option>CE</option>
+                                    <option>DF</option>
+                                    <option>ES</option>
+                                    <option>GO</option>
+                                    <option>MA</option>
+                                    <option>MT</option>
+                                    <option>MS</option>
+                                    <option>MG</option>
+                                    <option>PA</option>
+                                    <option>PB</option>
+                                    <option>PR</option>
+                                    <option>PE</option>
+                                    <option>PI</option>
+                                    <option>RJ</option>
+                                    <option>RN</option>
+                                    <option>RS</option>
+                                    <option>RO</option>
+                                    <option>RR</option>
+                                    <option>SC</option>
+                                    <option>SP</option>
+                                    <option>SE</option>
+                                    <option>TO</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputZip" class="form-label">CEP*</label>
+                                <input type="text" class="form-control" id="inputZip" name="cep" required inputmode="numeric" maxlength="9" autocomplete="postal-code" pattern="\d{5}-\d{3}">
+                            </div>
+
+                            <div class="col-12 d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
+                                <div class="form-check d-flex align-items-center gap-2 mb-2 order-1 order-md-1 ms-md-auto">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                                    <label class="form-check-label mb-0" for="gridCheck">
+                                        Eu li e concordo com os <a href="#" id="termsLink" class="fw-semibold text-decoration-none">termos de uso</a>*.
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100" id="btnCadastrar">Cadastrar e verificar e-mail</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <div class="col-12 d-none" id="pjFields">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label for="inputEmpresa" class="form-label">Nome empresarial*</label>
-                            <input type="text" class="form-control" id="inputEmpresa" name="nomeEmpresarial" required
-                                data-required-group="pj">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputCNPJ" class="form-label">CNPJ* (apenas números)</label>
-                            <input type="text" class="form-control" id="inputCNPJ" name="cnpj" required
-                                data-required-group="pj" inputmode="numeric" maxlength="18"
-                                placeholder="" pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputResponsavel" class="form-label">Responsável técnico*</label>
-                            <input type="text" class="form-control" id="inputResponsavel" name="responsavelTecnico"
-                                required data-required-group="pj">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="inputEmail" class="form-label">E-mail*</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email" required
-                        pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" placeholder="usuario@dominio.com"
-                        title="Use o formato usuario@dominio.com">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputWhatsapp" class="form-label">Telefone Celular / WhatsApp* (apenas números)</label>
-                    <input type="tel" class="form-control" id="inputWhatsapp" name="whatsapp"
-                        placeholder="" inputmode="numeric" maxlength="15" pattern="\(\d{2}\) \d{5}-\d{4}"
-                        required>
-                </div>
-                <div class="col-12 col-md-8">
-                    <label for="inputAddress" class="form-label">Endereço*</label>
-                    <input type="text" class="form-control" id="inputAddress" name="endereco" required>
-                </div>
-                <div class="col-12 col-md-4">
-                    <label for="inputAddress2" class="form-label">Complemento (opcional)</label>
-                    <input type="text" class="form-control" id="inputAddress2" name="complemento">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputCity" class="form-label">Cidade*</label>
-                    <input type="text" class="form-control" id="inputCity" name="cidade" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="estado" class="form-label">Estado*</label>
-                    <select id="estado" class="form-select" name="estado" required>
-                        <option value="">Selecione...</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label for="inputZip" class="form-label">CEP*</label>
-                    <input type="text" class="form-control" id="inputZip" name="cep" required inputmode="numeric"
-                        maxlength="9" autocomplete="postal-code" pattern="\d{5}-\d{3}">
-                </div>
-
-                <!-- Caixa de texto com os termos do serviço  -->
-                <div class="form-group">
-                    <label for="termsBox">Termos e condições</label>
-                    <div id="termsBox" class="terms-box"></div>
-                    <!-- <label for="termsAndConditions">Termos e condições</label>
-                    <textarea class="form-control" id="termsAndConditions" rows="10" readonly
-                        style="overflow-y: scroll;"></textarea> -->
-                </div>
-
-                <!-- Checkbox à esquerda do botão cadastrar  -->
-                <div class="col-12 d-flex flex-column flex-md-row align-items-center gap-3 mt-3">
-                    <div class="form-check d-flex align-items-center gap-2 mb-2 order-1 order-md-1 ms-md-auto">
-                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
-                        <label class="form-check-label mb-0" for="gridCheck">
-                            Eu li e concordo com os <a href="/termos.html" target="_blank" >termos de uso</a>*.
-                        </label>
-                    </div>
-
-                    <!-- Botão  -->
-                    <button type="submit" id="btnCadastrar" class="btn btn-primary order-2 order-md2">Cadastrar</button>
-                </div>
-            </form>
+            </section>
         </div>
-    </section>
+    </main>
 
-    <!-- Rodapé -->
-
-     <footer class="footer">
-        <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
-    </footer>
-
-    <!-- MODAL DE VERIFICAÇÃO -->
-
-    <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel"
-        aria-hidden="true">
+    <!-- Modal de verificação -->
+    <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -259,24 +400,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Enviamos um código de 6 dígitos para <strong id="verificationEmail"></strong>. Informe-o abaixo
-                        para concluir seu cadastro.</p>
+                    <p>Enviamos um código de 6 dígitos para <strong id="verificationEmail"></strong>. Informe-o abaixo para concluir seu cadastro.</p>
                     <form id="verificationForm" class="d-flex flex-column gap-3" novalidate>
                         <div id="verificationFormFields" class="d-flex flex-column gap-2">
                             <label for="verificationCode" class="form-label">Código de verificação</label>
-                            <input type="text" class="form-control" id="verificationCode" inputmode="numeric"
-                                maxlength="6" pattern="\d{6}" placeholder="000000" required>
+                            <input type="text" class="form-control" id="verificationCode" inputmode="numeric" maxlength="6" pattern="\d{6}" placeholder="000000" required>
                             <div class="d-flex justify-content-end gap-2">
-                                <button type="button" class="btn btn-outline-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary" id="btnEnviarCodigo">Enviar</button>
                             </div>
                         </div>
                         <div id="verificationSuccessMessage" class="alert alert-success d-none mb-0" role="alert">
-                            Cadastro criado com sucesso! Você já pode acessar a Dashboard.
+                            Cadastro confirmado! Agora selecione qual servidor quer provisionar.
                             <div class="d-flex justify-content-end mt-3">
-                                <button type="button" class="btn btn-success" id="btnGoDashboard">Ir para a
-                                    Dashboard</button>
+                                <button type="button" class="btn btn-success" id="btnChooseServer">Selecionar servidor</button>
                             </div>
                         </div>
                     </form>
@@ -285,8 +422,95 @@
         </div>
     </div>
 
-    <!-- Login flutuante -->
+    <!-- Modal Seleção de Servidor -->
+    <div class="modal fade" id="serverSelectionModal" tabindex="-1" aria-labelledby="serverSelectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serverSelectionModalLabel">Escolha o servidor disponível</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info" role="alert">
+                        Cada opção abaixo já considera a mesma região e cobrança mensal informada no plano escolhido. Clique em "Enviar ao carrinho" para revisar o pagamento.
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Alta disponibilidade</p>
+                                <h3 class="h5 fw-bold">API • SP01</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 10</p>
+                                <ul>
+                                    <li>8 vCPU • 16 GB RAM</li>
+                                    <li>100 GB SSD NVMe</li>
+                                    <li>Rede 1 Gbps dedicada</li>
+                                    <li>Backup incremental diário</li>
+                                </ul>
+                                <p class="h4">R$ 69,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="desempenho" data-plan-label="Desempenho" data-plan-price="69.90" data-server-name="API • SP01" data-server-region="São Paulo" data-server-network="1 Gbps dedicado" data-server-storage="100 GB SSD NVMe" data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM">Enviar ao carrinho</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Equilíbrio</p>
+                                <h3 class="h5 fw-bold">Banco • SP02</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 20</p>
+                                <ul>
+                                    <li>4 vCPU • 8 GB RAM</li>
+                                    <li>80 GB SSD NVMe</li>
+                                    <li>Rede 500 Mbps</li>
+                                    <li>Snapshots semanais</li>
+                                </ul>
+                                <p class="h4">R$ 39,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="avancado" data-plan-label="Avançado" data-plan-price="39.90" data-server-name="Banco • SP02" data-server-region="São Paulo" data-server-network="500 Mbps" data-server-storage="80 GB SSD NVMe" data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM">Enviar ao carrinho</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Projetos leves</p>
+                                <h3 class="h5 fw-bold">Dev • SP03</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 30</p>
+                                <ul>
+                                    <li>2 vCPU • 4 GB RAM</li>
+                                    <li>40 GB SSD</li>
+                                    <li>Rede 200 Mbps</li>
+                                    <li>Snapshot mensal</li>
+                                </ul>
+                                <p class="h4">R$ 29,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="essencial" data-plan-label="Essencial" data-plan-price="29.90" data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-network="200 Mbps" data-server-storage="40 GB SSD" data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM">Enviar ao carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal dos Termos -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Termos de Uso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="termsModalContent" class="terms-modal-content" style="max-height: 60vh; overflow-y: auto;">
+                        <p>Carregando termos...</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="termsDeclineBtn">Não Concordo</button>
+                    <button type="button" class="btn btn-primary" id="termsAgreeBtn">Concordo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -295,7 +519,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form class="login-form">
                         <div class="mb-3">
                             <label class="form-label">Digite seu e-mail:</label>
                             <div class="input-group">
@@ -327,7 +551,7 @@
                         <button type="submit" class="btn btn-login text-white">Entrar</button>
 
                         <div class="register-link">
-                            Ainda não tem uma conta? <a href="#" class="text-decoration-none">Cadastre-se agora!</a>
+                            Ainda não tem uma conta? <a href="/cadastro.html" class="text-decoration-none">Cadastre-se agora!</a>
                         </div>
                     </form>
                 </div>
@@ -335,12 +559,12 @@
         </div>
     </div>
 
-    <!-- Fim do login flutuante -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="/js/cadastro.js"></script>
 
+    <script src="/js/cadastro.js?v=15112025_v3"></script>
+    <script src="/js/main_script.js?v=15112025_v3"></script>
 </body>
+
 </html>

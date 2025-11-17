@@ -1,3 +1,4 @@
+
 .btn-cta {
   display: inline-flex;
   align-items: center;
@@ -27,23 +28,19 @@
   outline-offset: 3px;
 }
 
-/* .toggle-btn {
-    background: #333;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-} */
+.email {
+     text-decoration: none;
+}
+
 
 /* ESCOLHE DE TEMA */
 
 .theme-toggle {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--cor-texto-secundario);
 }
 

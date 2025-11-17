@@ -1,0 +1,170 @@
+/* Ajustes para telas pequenas (até 500px) */
+
+@media (max-width: 650px) {
+
+    /* Bloqueia scroll left/right  */
+
+      /* html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    } */
+
+    /* menu-top deixa de ser sticky no mobile */
+    .menu-top {
+        position: static;
+        font-size: 1rem;
+    }
+
+    /* header mais compacto */
+    .menu {
+        padding: 8px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .menu-logo {
+        width: 100%;
+        text-align: left;
+    }
+
+    .menu-logo a {
+        display: inline-block;
+        font-size: 1.25rem;
+        margin: 5px;
+    }
+
+    .menu-nav {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .menu-nav ul {
+        gap: 4px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .menu-nav ul li a {
+        padding: 6px 10px;
+        font-size: 1rem;
+    }
+
+    .menu-nav ul li a.botao-cadastro {
+        padding: 6px 12px;
+        margin-left: 6px;
+        font-size: 1rem;
+    }
+
+
+    /* Introdução mais compacta  */
+
+    .introducao {
+        margin: 20px auto;
+    }
+
+    .introducao h1 {
+        font-size: 1.75rem;
+    }
+
+    .introducao h2 {
+        font-size: 1.2rem;
+    }
+
+
+
+    /* Produtos mais compacto */
+
+    .produtos {
+        margin: 10px 0 10px 0;
+    }
+
+    .produtos h1 {
+        font-size: 1.75em;
+        line-height: 1.5;
+    }
+
+
+
+    /* Preços mais compacto  */
+
+    .preco {
+        margin: 15px 5px 15px 5px;
+    }
+
+    .preco-item h2 {
+        font-size: 2rem;
+    }
+
+    .preco-item span {
+        font-size: 2rem;
+    }
+
+    .preco-item ul {
+        font-size: 1rem;
+    }
+
+    .preco-item a {
+        font-size: 1.25rem;
+        max-width: 200px;
+    }
+
+
+
+    /* Qualidade mais compacto  */
+
+    .qualidade {
+        margin: 5px 5px;
+    }
+
+
+
+    /* Contato mais compacto */
+    .contato {
+        padding: 28px 0 48px;
+    }
+
+
+
+    /* News mais compacta  */
+
+    .newsletter {
+        margin: 0px 5px 0px 5px;
+        padding: 10px 10px;
+    }
+
+    .newsletter-info h1 {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        margin: 15px 0 15px 0;
+    }
+
+    .newsletter-info p {
+        font-size: 1rem;
+        margin: 0 0 20px 0;
+    }
+
+    .newsletter-form input {
+        font-size: 1rem;
+    }
+
+    .newsletter-form button {
+        font-size: 1rem;
+    }
+
+
+    
+    /* Footer diminuido  */
+
+    .footer {
+        height: 150px;
+    }
+
+    .footer p {
+        margin: 20px;
+        font-size: 1rem;
+    }
+
+}

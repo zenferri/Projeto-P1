@@ -41,15 +41,18 @@
   - [4.2 Requisitos Não Funcionais](#42-requisitos-não-funcionais)
     - [RNF01](#rnf01) • [RNF02](#rnf02) • [RNF03](#rnf03) • [RNF04](#rnf04) • [RNF05](#rnf05)
     - [RNF06](#rnf06) • [RNF07](#rnf07)
-- [5. Protótipo de Fluxo de Provisionamento](#5-protótipo-de-fluxo-de-provisionamento)
-- [6. Protótipo de Arquitetura Técnica](#6-protótipo-de-arquitetura-técnica)
-- [7. Segurança e Governança](#7-segurança-e-governança)
-- [8. Cronograma da Primeira Etapa](#8-cronograma-da-primeira-etapa-20252)
-- [9. Referências](#9-referências)
+- [5. Estudo de Viabilidade](#5-estudo-de-viabilidade)
+- [6. Canvas de Modelo de Negócio](#6-canvas-de-modelo-de-negócio)
+- [7. Paleta de Cores](#7-paleta-de-cores)
+- [8. Protótipo de Fluxo de Provisionamento](#8-protótipo-de-fluxo-de-provisionamento)
+- [9. Protótipo de Arquitetura Técnica](#9-protótipo-de-arquitetura-técnica)
+- [10. Segurança e Governança](#10-segurança-e-governança)
+- [11. Cronograma da Primeira Etapa](#11-cronograma-da-primeira-etapa-20252)
+- [12. Referências](#12-referências)
 
 ## Resumo
 
-O presente projeto de pesquisa tem como finalidade o desenvolvimento de um portal web para a Hospedaria Internet, voltado ao provisionamento automático de máquinas virtuais (VMs) em infraestrutura Proxmox. Atualmente, a contratação de servidores virtuais exige contato direto com a equipe técnica, que realiza a configuração manualmente. Esse modelo gera atrasos e limita a escalabilidade da oferta. A pesquisa busca propor, modelar e validar um sistema que permita ao cliente, de forma autônoma, selecionar planos de VPS, realizar o pagamento online e inicializar automaticamente sua instância virtual. O projeto fundamenta-se em referenciais teóricos de computação em nuvem, automação de infraestrutura e comércio eletrônico, aplicando metodologia de análise de requisitos, modelagem conceitual, implementação prototípica e validação prática. O resultado esperado é a criação de uma solução que otimize processos, reduza custos operacionais e amplie a experiência do cliente.
+O presente projeto tem como finalidade o desenvolvimento de um portal web destinado ao provisionamento automático de máquinas virtuais (VMs) em ambiente Proxmox. A contratação manual gera atrasos e limita a escalabilidade. A pesquisa propõe modelar e validar um sistema que permita ao cliente selecionar planos, realizar pagamentos online e inicializar automaticamente sua instância virtual.
 
 ## 1. Introdução
 
@@ -122,7 +125,40 @@ A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo.
 
 - <a id="rnf07"></a>**RNF07** – Conformidade com a LGPD: O portal deve estar em conformidade com a LGPD (Lei Geral de Proteção de Dados) no tratamento de dados pessoais de clientes.
 
-## 5. Protótipo de Fluxo de Provisionamento
+## 5. Estudo de Viabilidade
+
+A implementação de um portal automatizado para provisionamento de máquinas virtuais exige avaliação estruturada de sua viabilidade sob quatro perspectivas: técnica, operacional, financeira e de mercado. 
+
+### 5.1 Viabilidade Técnica
+
+A solução demonstra viabilidade técnica. O uso do Proxmox aliado a templates configurados com cloud-init assegura a criação padronizada e eficiente de VMs. Frameworks como React, Next.js, Node.js, FastAPI e Django REST consolidam uma base tecnológica madura e amplamente documentada. A integração com gateways de pagamento via webhooks complementa o fluxo automatizado com segurança e rastreabilidade.
+
+### 5.2 Viabilidade Operacional
+
+A automação reduz significativamente a intervenção humana no processo de provisionamento. As rotinas passam a exigir apenas monitoramento preventivo, manutenção e suporte básica, trazendo previsibilidade operacional que melhora o tempo de atendimento e libera recursos humanos para outras atividades. Todo o fluxo descrito é compatível com a estrutura existente e não demanda reorganização interna ou aquisição de novos servidores, já que a estrutura web (front end) será hospedada em servidor web já existente.
+
+### 5.3 Viabilidade Financeira
+
+A adoção de tecnologias open source elimina custos de licenciamento. Além disso, o desenvolvimento em ambiente acadêmico reduz custos iniciais, concentrando investimentos em manutenção evolutiva. O portal permite oferta escalável de VPS e pode futuramente ser comercializado para terceiros, ampliando fontes de receita, inclusive podendo ser adaptado para outros processos repetitivos.
+
+### 5.4 Viabilidade de Mercado
+
+Há demanda crescente por soluções de provisionamento automatizado entre desenvolvedores, pequenos negócios e provedores de tecnologia. Agilidade, autonomia e escalabilidade tornam este tipo de solução altamente competitiva. O sistema pode ser adaptado e licenciado, ampliando o alcance para empresas de datacenter interessadas em modernizar seu fluxo de provisionamento.
+
+## 6. Canvas de Modelo de Negócio
+
+O modelo de negócio foi estruturado com base na metodologia Business Model Canvas, desenvolvida por Osterwalder e Pigneur (2010), amplamente utilizada no campo da administração e da inovação por permitir a representação clara e integrada dos elementos essenciais de um empreendimento. O Canvas possibilita visualizar de maneira unificada a proposta de valor, os segmentos de clientes, os canais, as fontes de receita, os recursos-chave, as atividades centrais e a estrutura de custos, favorecendo análises estratégicas e decisões de desenvolvimento. Sua aplicação no presente projeto contribui para alinhar a solução proposta às necessidades do mercado e reforçar a consistência do planejamento técnico e operacional.
+
+O modelo pode ser acessado em https://www.singularys.net/assets/canvas.html
+
+## 7. Paleta de Cores
+
+O front-end deverá sser construído com base na seguinte paleta de cores, disponível em 
+
+https://www.singularys.net/assets/paleta.html
+
+
+## 8. Protótipo de Fluxo de Provisionamento
 
 1. Cliente seleciona plano e cria Pedido (status: created).
 
@@ -140,7 +176,7 @@ A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo.
 
 ---
 
-## 6. Protótipo de Arquitetura Técnica
+## 9. Protótipo de Arquitetura Técnica
 
 A arquitetura proposta adota um modelo em camadas para assegurar modularidade, escalabilidade e segurança no provisionamento automático de máquinas virtuais. Após discussões com o gestor de redes da Hospedaria Internet, foram sugeridas as seguintes ferramentas:
 • Camada de Apresentação (Front-end): Responsável pela interação com o cliente, será implementada utilizando frameworks modernos como Next.js ou React, garantindo responsividade, acessibilidade em múltiplos dispositivos e experiência de uso intuitiva.
@@ -161,21 +197,21 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 
 ---
 
-## 7. Segurança e Governança
+## 10. Segurança e Governança
 
 • Tokens de API Proxmox com menor privilégio e escopo restrito.
+
+• Provisionamento somente após validação de e-mail e pagamento confirmado.
 
 • Validação de assinatura e idempotência do webhook.
 
 • Logs de eventos e auditoria de acesso.
 
-• Limites de recursos e políticas de suspensão.
-
 • Backups de metadados e, conforme plano, snapshot/backup da VM.
 
 ---
 
-## 8. Cronograma da Primeira Etapa (2025.2)
+## 11. Cronograma da Primeira Etapa (2025.2)
 
 | Mês      | Dia | Tarefa                              |
 | -------- | --- | ----------------------------------- |
@@ -185,14 +221,14 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 | Setembro | 29  | Estudo de Viabilidade               |
 | Outubro  | 13  | Modelo de Negócio Canva             |
 | Outubro  | 20  | Planejamento do design              |
-| Outubro  | 27  | Modelagens DER                      |
+| Outubro  | 27  | Modelagens DER (adiada para 2026.1  |
 | Novembro | 03  | Entrega do Protótipo                |
 | Novembro | 25  | Entrega da Aplicação + Documentação |
 | Novembro | 25  | Apresentação do PI                  |
 
 ---
 
-## 9. Referências
+## 12. Referências
 
 NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY. The NIST Definition of Cloud Computing. NIST Special Publication 800-145. Gaithersburg: NIST, 2011. Disponível em: https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf. Acesso: 07/09/2025.
 

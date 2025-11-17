@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carrinho • Singularys</title>
+    <meta name="description"
+        content="Revise o servidor selecionado, escolha o método de pagamento e finalize sua assinatura Singularys." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        html,
+        body {
+            background: #fff;
+            color: #101C5E;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025_v3" id="themeStylesheet">
+    <link rel="stylesheet" href="/css/style_login.css">
+    <link rel="stylesheet" href="/css/botoes.css">
+    <link rel="stylesheet" href="/css/reveal.css">
+    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025_v3">
+
+    <style>
+        .checkout-hero {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.16), rgba(5, 5, 20, 0.7));
+            border-radius: 32px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 45px rgba(5, 5, 20, 0.35);
+        }
+
+        .summary-card {
+            background: var(--cor-fundo-medio);
+            border-radius: 24px;
+            color: #fff;
+            padding: 1.5rem;
+            box-shadow: var(--sombreamento);
+        }
+
+        .summary-card ul {
+            padding-left: 1rem;
+        }
+
+        .summary-card li {
+            margin-bottom: .35rem;
+        }
+
+        .payment-card {
+            background: #f7f8ff;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+        }
+
+        .pix-qr-placeholder {
+            background: repeating-linear-gradient(45deg, rgba(5, 5, 20, 0.08), rgba(5, 5, 20, 0.08) 10px, rgba(5, 5, 20, 0.02) 10px, rgba(5, 5, 20, 0.02) 20px);
+            border-radius: 16px;
+            height: 220px;
+            display: grid;
+            place-items: center;
+            color: #454BBA;
+            font-weight: 600;
+        }
+
+        .payment-tabs .btn-outline-primary.active {
+            background: #343c83;
+            color: #fff;
+        }
+
+        .status-message {
+            transition: opacity .3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="menu-top">
+        <div class="superinfo-bg">
+            <div class="superinfo">
+                <a href="/termos.html">Termos de Uso</a>
+                <a href="#suporte">Suporte</a>
+                <a href="#quem_somos">Nossa equipe</a>
+            </div>
+        </div>
+
+        <header class="menu-bg">
+            <div class="menu">
+                <div class="menu-logo">
+                    <a href="/index.html">Singularys</a>
+                </div>
+                <nav class="menu-nav">
+                    <ul>
+                        <li><a href="/index.html#sobre">Sobre nós</a></li>
+                        <li><a href="/cadastro.html">Cadastro</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li><a href="/cadastro.html" class="botao-cadastro">Alterar plano</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <main class="py-5">
+        <div class="container">
+            <div class="checkout-hero">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <p class="text-uppercase text-white-50 mb-1">Resumo rápido</p>
+                        <h1 class="h3 fw-bold mb-2">Finalize o provisionamento do seu servidor</h1>
+                        <p class="text-white-50 mb-0">Revise o plano selecionado e escolha o método de pagamento preferido. Assim que a transação for aprovada, iniciaremos o deploy automaticamente.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <p class="text-white-50 mb-1">Valor mensal</p>
+                        <h2 class="h3 fw-bold mb-0" id="checkoutPrice">R$ 69,90</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-start">
+                <div class="col-lg-8">
+                    <div class="payment-card mb-4">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
+                            <div>
+                                <h2 class="h4 fw-bold mb-1">Pagamento</h2>
+                                <p class="text-muted mb-0">Selecione PIX para pagar instantaneamente ou cartão de crédito para parcelar.</p>
+                            </div>
+                            <div class="btn-group payment-tabs" role="group" aria-label="Forma de pagamento">
+                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentPix" value="pix" checked>
+                                <label class="btn btn-outline-primary" for="paymentPix">PIX</label>
+                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentCard" value="card">
+                                <label class="btn btn-outline-primary" for="paymentCard">Cartão</label>
+                            </div>
+                        </div>
+
+                        <div id="pixContent">
+                            <div class="pix-qr-placeholder mb-3">
+                                <span>QR Code PIX</span>
+                            </div>
+                            <p class="text-muted mb-1">Abra o app do seu banco e escaneie o código acima ou copie o código Pix copia e cola:</p>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="pixCode" value="00020101021226880014br.gov.bcb.pix2563singularys" readonly>
+                                <button class="btn btn-outline-primary" type="button" id="btnCopyPix">Copiar</button>
+                            </div>
+                        </div>
+
+                        <div id="cardContent" class="d-none">
+                            <form id="cardForm" class="row g-3" novalidate>
+                                <div class="col-12">
+                                    <label class="form-label" for="cardName">Nome impresso*</label>
+                                    <input type="text" class="form-control" id="cardName" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label" for="cardNumber">Número do cartão*</label>
+                                    <input type="text" class="form-control" id="cardNumber" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="cardExpiry">Validade*</label>
+                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" inputmode="numeric" maxlength="5" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="cardCVV">CVV*</label>
+                                    <input type="text" class="form-control" id="cardCVV" inputmode="numeric" maxlength="4" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="cardInstallments">Parcelas</label>
+                                    <select id="cardInstallments" class="form-select">
+                                        <option value="1">1x sem juros</option>
+                                        <option value="2">2x sem juros</option>
+                                        <option value="3">3x sem juros</option>
+                                        <option value="6">6x com juros</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="status-message alert alert-success d-none" id="paymentStatus" role="alert">
+                        Pagamento aprovado! Redirecionando para a dashboard...
+                    </div>
+
+                    <button class="btn btn-primary btn-lg w-100" id="btnFinalize">Pagar e provisionar agora</button>
+                </div>
+
+                <div class="col-lg-4" id="checkoutSummary">
+                    <div class="summary-card mb-4">
+                        <p class="text-uppercase text-white-50 small mb-2">Servidor selecionado</p>
+                        <h2 class="h5 fw-bold mb-1" id="checkoutServerName">API • SP01</h2>
+                        <p class="mb-3" id="checkoutPlanLabel">Plano Desempenho</p>
+                        <ul class="mb-3" id="checkoutSpecs">
+                            <li>8 vCPU • 16 GB RAM</li>
+                            <li>100 GB SSD NVMe</li>
+                            <li>Rede 1 Gbps dedicada</li>
+                        </ul>
+                        <div class="d-flex justify-content-between text-white-50">
+                            <span>Sub-total</span>
+                            <strong class="text-white" id="checkoutSubtotal">R$ 69,90</strong>
+                        </div>
+                        <div class="d-flex justify-content-between text-white-50">
+                            <span>Taxas</span>
+                            <strong class="text-white">R$ 0,00</strong>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <span>Total hoje</span>
+                            <strong id="checkoutTotal">R$ 69,90</strong>
+                        </div>
+                    </div>
+
+                    <div class="summary-card">
+                        <p class="text-uppercase text-white-50 small mb-2">Suporte Singularys</p>
+                        <p class="text-white-50 mb-2">Dúvidas no pagamento? Estamos online 24/7 para te ajudar.</p>
+                        <a href="mailto:suporte@singularys.net" class="btn btn-outline-light w-100">Falar com o suporte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bem vindo de volta!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Digite seu e-mail:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="nome@examplo.com">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="Digite sua senha">
+                                <span class="input-group-text password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="rememberCheckout">
+                                <label class="form-check-label" for="rememberCheckout">Lembrar</label>
+                            </div>
+                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login text-white">Entrar</button>
+
+                        <div class="register-link">
+                            Ainda não tem uma conta? <a href="/cadastro.html" class="text-decoration-none">Cadastre-se agora!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script src="/js/checkout.js?v=15112025_v1"></script>
+    <script src="/js/main_script.js?v=15112025_v3"></script>
+</body>
+
+</html>

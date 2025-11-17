@@ -15,10 +15,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"> -->
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CDN  -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <!-- Declara que o site usa esquema de cores claro para evitar cagada do Android -->
+    <!-- Declara que o site usa esquema de cores claro para evitar problemas com o Android -->
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#ffffff">
 
@@ -45,7 +45,8 @@
     </style>
 
     <!-- CSS externo -->
-    <link rel="stylesheet" type="text/css" href="/css/style7.css" id="themeStylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025.3" id="themeStylesheet">
 
     <link rel="stylesheet" href="/css/style_login.css">
 
@@ -53,18 +54,24 @@
 
     <link rel="stylesheet" href="/css/reveal.css">
 
+     <link rel="stylesheet" href="/css/smallscreen.css?v=15112025.3">
+
+    <!-- Fim CSS externo  -->
+
 </head>
 
 <body>
+
+    <!-- Inicio section menu top  -->
     <section class="menu-top">
         <div class="superinfo-bg">
             <div class="superinfo">
                 <a href="/termos.html">Termos de Uso</a>
-                <!-- <a href="#documentos">Documentos</a> -->
                 <a href="#suporte">Suporte</a>
                 <a href="#quem_somos">Nossa equipe</a>
-                <!-- <button id="themeToggle" class="toggle-btn">Tema: Escuro</button> -->
-                <div class="theme-toggle">
+
+                <!-- Div Botão Tema  -->
+                <!-- <div class="theme-toggle">
                     <span class="theme-label">Claro</span>
                     <label class="switch">
                         <input type="checkbox" id="themeToggle">
@@ -72,35 +79,41 @@
                     </label>
                     <span class="theme-label">Escuro</span>
                 </div>
+            </div> -->
+                <!-- Fim DIV botão tema -->
+
             </div>
 
-        </div>
-
-        <header class="menu-bg">
-            <div class="menu">
-                <div class="menu-logo">
-                    <a href="#">Singularys</a>
+            <header class="menu-bg">
+                <div class="menu">
+                    <div class="menu-logo">
+                        <a href="#">Singularys</a>
+                    </div>
+                    <nav class="menu-nav">
+                        <ul>
+                            <li><a href="#sobre">Sobre nós</a></li>
+                            <li><a href="#opcoes">Planos</a></li>
+                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                            <li><a href="/cadastro.html" class="botao-cadastro">Cadastre-se</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav class="menu-nav">
-                    <ul>
-                        <li><a href="#sobre">Sobre nós</a></li>
-                        <li><a href="#opcoes">Planos</a></li>
-                        <!-- <li><a href="#login">Login</a></li> -->
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                        <li><a href="/cadastro.html" class="botao-cadastro">Cadastre-se</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+            </header>
+
     </section>
+
+    <!-- Fim section menu top  -->
+    <!-- Daqui pra cima pode copiar e colar em outras páginas para manter o padrão  -->
+
+    <!-- Inicio section introdução  -->
 
     <section class="introducao">
         <div class="introducao-int reveal up" id="sobre">
 
             <h1><strong>Poder para <span class="criar"> Criar</span></strong>
                 <h1><strong>Estrutura para <span class="crescer">Crescer</span></strong></h1>
-                <h2>Servidores virtuais escaláveis, executados em infraestrutura</h2>
-                <h2>no Brasil. Estabilidade e performance pensado para quem cria.</h2>
+                <h2>Servidores virtuais escaláveis, executados no Brasil.</h2>
+                <!-- <h2>Estabilidade e performance pensado para quem cria.</h2> -->
 
         </div>
 
@@ -110,6 +123,9 @@
             <div class="blob"></div>
             <div class="panel">
                 <h4>provision_site.sh</h4>
+
+                <!-- TAG <pre> faz o texto ser exibido exatamente como foi digitado.  -->
+
                 <pre>$ havoc create --vm "api-singularys" --vcpus 2 --ram 4096
 ✓ template: ubuntu-24.04-lts
 ✓ network: vlan-10
@@ -120,55 +136,13 @@
 ✓ done in 30s</pre>
             </div>
         </div>
-        </div>
+        <!-- Fim Terminal  -->
+
     </section>
 
+    <!-- Fim section introdução  -->
 
-    <!-- <div class="introducao reveal up" id="sobre">
-
-        <h1><strong>Poder para Criar.</strong>
-        <h1><strong>Estrutura para Crescer.</strong></h1>
-        <h2>Servidores virtuais escaláveis, executados em</h2>
-            <h2>infraestrutura premium no Brasil.</h2>
-    </div> -->
-
-    <!-- <section class="sobre">
-        <div class="sobre-info reveal left">
-            <h1>Origem</h1>
-            <p><strong>A Singularys nasce da ideia de que toda criação começa em um ponto.</strong></p>
-
-            <p> Nós oferecemos esse ponto de origem: um espaço seguro, estável e preparado para acolher o
-                primeiro impulso criativo. Aqui, cada cliente encontra o lugar onde sua visão pode tomar forma sem
-                limitações, sem ruídos e sem interferências.</p>
-
-            <p>Acreditamos que criar é um movimento sagrado.</p>
-
-            <p><strong>Nossa missão é sustentar esse momento decisivo</strong> em que uma ideia deixa de ser apenas
-                intenção e se converte em presença.
-            </p>
-        </div> -->
-
-    <!-- Terminal -->
-
-    <!-- <div class="illus">
-            <div class="blob"></div>
-            <div class="panel">
-                <h4>provision_site.sh</h4>
-                <pre>$ havoc create --vm "api-singularys" --vcpus 2 --ram 4096
-✓ template: ubuntu-24.04-lts
-✓ network: vlan-10
-✓ storage: ssd-01 (40G)
-✓ ssh: key: zen@singularys
-✓ dns: api.singularys.net → 10.0.10.12
-→ deploying...
-✓ done in 30s</pre>
-            </div>
-        </div>
-        </div>
-
-    </section> -->
-
-    <!-- Fim do painel com código -->
+    <!-- Inicio section Produtos  -->
 
     <section class="produtos" id="opcoes">
         <h1>Escolha a performance ideal para o seu projeto</h1>
@@ -184,7 +158,7 @@
                 <li>20 GB SSD</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="/cadastro.html" class="btn-cta">Selecionar</a>
+            <a href="/cadastro.html?plano=essencial" class="botao-cadastro">Selecionar</a>
         </div>
 
         <div class="preco-item reveal up">
@@ -198,7 +172,7 @@
                 <li>Baixa latência</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="/cadastro.html" class="btn-cta">Selecionar</a>
+            <a href="/cadastro.html?plano=desempenho" class="botao-cadastro">Selecionar</a>
         </div>
 
         <div class="preco-item reveal right">
@@ -211,10 +185,14 @@
                 <li>100mbit</li>
                 <li>Suporte 24h</li>
             </ul>
-            <a href="/cadastro.html" class="btn-cta">Selecionar</a>
+            <a href="/cadastro.html?plano=avancado" class="botao-cadastro">Selecionar</a>
         </div>
 
     </section>
+
+    <!-- Fim section produtos  -->
+
+    <!-- Inicio section features  -->
 
     <section class="qualidade" id="qualidade">
 
@@ -253,38 +231,9 @@
 
     </section>
 
-    <!-- News  -->
+    <!-- Fim section features  -->
 
-    <!-- <h2 class="news-h2">Últimas notícias da Singularys...</h2>
-
-    <section class="news" id="news">
-
-        <div class="news-rol">
-            <img src="/imgs/foco.jpg" alt="quemsomos">
-            <h3>Nosso dream team!</h3>
-            <p>Um pouco do perfil dos desenvolvedores por trás desse projeto...</p>
-            <a href="cadastro.html" class="click-leia">Saiba mais sobre nosso time...</a>
-        </div>
-
-        <div class="news-rol">
-            <img src="/imgs/foco.jpg" alt="foco">
-            <h3>Tudo surge de um ponto!</h3>
-            <p>Foi aqui que tudo começou!</p>
-            <a href="cadastro.html" class="click-leia">Venha conhecer!</a>
-        </div>
-
-        <div class="news-rol">
-            <img src="/imgs/foco.jpg" alt="foco">
-            <h3>Em testes...e bang!</h3>
-            <p>Os testes começaram, e antes de entrar em produução, recebemos mais de 5 mil visitantes únicos em apenas
-                7 dias.</p>
-            <a href="cadastro.html" class="click-leia">Foram dias incríveis...</a>
-        </div>
-
-    </section> -->
-
-
-    <!-- Contato -->
+    <!-- Inicio Contato -->
 
     <section class="contato container" id="contato">
         <h3>Entre em contato</h3>
@@ -306,7 +255,7 @@
                     <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" />
                     <path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="2" />
                 </svg>
-                <span>contato@singularys.net</span>
+                <a class="email" href="mailto:zenferri@gmail.com"><span>contato@singularys.net</span></a>
             </li>
 
             <li>
@@ -319,24 +268,34 @@
                 </svg>
                 <span>(12) 91955-0638</span>
             </li>
-
         </ul>
     </section>
 
+    <!-- Inicio Contato -->
+
+
+    <!-- Inicio section News  -->
     <section class="newsletter">
         <div class="newsletter-info">
             <h1>Pronto para lançar a sua ideia?</h1>
-            <p>Solicite acesso antecipado e seja avisado quando o provisionamento público estiver ativo.</p>
+            <p>Solicite acesso antecipado e saiba quando o provisionamento público estiver ativo.</p>
         </div>
         <form class="newsletter-form">
             <input type="text" placeholder="Seu e-mail">
-            <button type="submit">Assinar</button>
+            <button type="submit">Quero saber!</button>
         </form>
     </section>
+
+    <!-- Fim section News  -->
+
+    <!-- Footer  -->
 
     <footer class="footer">
         <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
     </footer>
+
+    <!-- Fim footer  -->
+
 
     <!-- LOGIN FLUTUANTE -->
 
@@ -348,7 +307,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form class="login-form">
                         <div class="mb-3">
                             <label class="form-label">Digite seu e-mail:</label>
                             <div class="input-group">
@@ -380,7 +339,7 @@
                         <button type="submit" class="btn btn-login text-white">Entrar</button>
 
                         <div class="register-link">
-                            Ainda não tem uma conta? <a href="#" class="text-decoration-none">Cadastre-se agora!</a>
+                            Ainda não tem uma conta? <a href="/cadastro.html" class="text-decoration-none">Cadastre-se agora!</a>
                         </div>
                     </form>
                 </div>
@@ -394,8 +353,9 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <script src="/js/script_reveal.js"></script>
-    <script src="/js/main_script.js"></script>
+    <script src="/js/script_reveal.js?v=15112025"></script>
+    <script src="/js/cadastro.js?v=15112025"></script>
+    <script src="/js/main_script.js?v=15112025"></script>
 
 </body>
 

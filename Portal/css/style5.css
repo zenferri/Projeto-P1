@@ -24,6 +24,7 @@
     /* Sombras e bordas suaves */
     --cor-borda-suave: #D5DBFB;
     --sombreamento: 0 4px 12px rgba(67, 97, 238, 0.15);
+    --cor-acento-aviso: #07ED67;  /* aviso / destaque neutro */
 }
 
 /* Sumir com o scrollbar */
@@ -231,6 +232,14 @@ img {
     line-height: 1.5;
     font-size: 1.5em;
     text-align: left;
+}
+
+.criar {
+    color: var(--cor-acento-vibrante); /* ou qualquer cor específica */
+}
+
+.crescer {
+    color: var(--cor-acento-aviso); /* por exemplo */
 }
 
 /* Sobre */
