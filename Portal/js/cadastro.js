@@ -23,10 +23,23 @@
         const verificationEmail = document.getElementById('verificationEmail');
         const verificationForm = document.getElementById('verificationForm');
         const verificationFormFields = document.getElementById('verificationFormFields');
-        const verificationSuccessMessage = document.getElementById('verificationSuccessMessage');
         const verificationCodeInput = document.getElementById('verificationCode');
-        const chooseServerButton = document.getElementById('btnChooseServer');
+        const seeOtherOptionsButton = document.getElementById('seeOtherOptionsBtn');
         const serverSelectionModalElement = document.getElementById('serverSelectionModal');
+        const serverSummaryModalElement = document.getElementById('serverSummaryModal');
+        const changeServerButton = document.getElementById('changeServerBtn');
+        const goToCartButton = document.getElementById('goToCartBtn');
+        const serverSummaryElements = {
+            planName: document.getElementById('serverSummaryPlanName'),
+            planPrice: document.getElementById('serverSummaryPlanPrice'),
+            planLabel: document.getElementById('serverSummaryPlanLabel'),
+            name: document.getElementById('serverSummaryName'),
+            region: document.getElementById('serverSummaryRegion'),
+            vcpu: document.getElementById('serverSummaryVcpu'),
+            ram: document.getElementById('serverSummaryRam'),
+            storage: document.getElementById('serverSummaryStorage'),
+            network: document.getElementById('serverSummaryNetwork')
+        };
         const termsLink = document.getElementById('termsLink');
         const termsModalElement = document.getElementById('termsModal');
         const termsModalContent = document.getElementById('termsModalContent');
@@ -57,7 +70,7 @@
                 nome: 'Desempenho',
                 preco: 69.9,
                 precoLabel: 'R$ 69,90/mês',
-                resumoTitulo: 'VM dedicada para crescer',
+                resumoTitulo: 'Puro desempenho',
                 resumoDescricao: '8 vCPU • 16 GB RAM • 100 GB SSD NVMe',
                 specs: ['Rede 1 Gbps dedicada', 'Backup incremental diário', 'Provisionamento em 30 segundos']
             }
@@ -74,13 +87,153 @@
         const cadastroModal = cadastroModalElement ? bootstrap.Modal.getOrCreateInstance(cadastroModalElement) : null;
         const verificationModal = verificationModalElement ? new bootstrap.Modal(verificationModalElement) : null;
         const serverSelectionModal = serverSelectionModalElement ? new bootstrap.Modal(serverSelectionModalElement) : null;
+        const serverSummaryModal = serverSummaryModalElement ? new bootstrap.Modal(serverSummaryModalElement) : null;
         const termsModal = termsModalElement ? bootstrap.Modal.getOrCreateInstance(termsModalElement) : null;
         let shouldValidate = false;
         let termsShouldReturnToCadastro = false;
         let termsLoaded = false;
         let termsLoading = false;
+        let selectedServerOption = null;
+        let sendToCartAfterSelection = false;
+        const serverOptionsByPlan = {};
 
         const digitsOnly = (value, maxLength) => value.replace(/\D/g, '').slice(0, maxLength);
+
+        const cloneDataset = (dataset = {}) => {
+            const clone = {};
+            if (!dataset) {
+                return clone;
+            }
+            Object.keys(dataset).forEach((key) => {
+                clone[key] = dataset[key];
+            });
+            return clone;
+        };
+
+        const normalizePlanKey = (value) => (value ? value.toLowerCase() : '');
+
+        const getPlanDefinition = (planKey) => {
+            const normalized = normalizePlanKey(planKey || planoSelecionado.id);
+            return PLANOS[normalized] || planoSelecionado;
+        };
+
+        const setSelectedServerOptionFromDataset = (dataset = {}) => {
+            const planDefinition = getPlanDefinition(dataset.planId);
+            selectedServerOption = {
+                planId: normalizePlanKey(dataset.planId) || planDefinition.id,
+                planLabel: dataset.planLabel || `Plano ${planDefinition.nome}`,
+                planPrice: dataset.planPrice || planDefinition.preco.toFixed(2),
+                planPriceLabel: dataset.planPriceLabel || planDefinition.precoLabel,
+                serverName: dataset.serverName || planDefinition.nome,
+                serverRegion: dataset.serverRegion || '',
+                serverVcpu: dataset.serverVcpu || '',
+                serverRam: dataset.serverRam || '',
+                serverStorage: dataset.serverStorage || '',
+                serverNetwork: dataset.serverNetwork || ''
+            };
+        };
+
+        const ensureInitialServerSelection = () => {
+            if (selectedServerOption && selectedServerOption.planId) {
+                return;
+            }
+            const planKey = normalizePlanKey(planoSelecionado.id);
+            if (serverOptionsByPlan[planKey]) {
+                setSelectedServerOptionFromDataset(serverOptionsByPlan[planKey]);
+            } else {
+                setSelectedServerOptionFromDataset({});
+            }
+        };
+
+        const updateServerSummaryModal = () => {
+            ensureInitialServerSelection();
+            const selection = selectedServerOption || {};
+            const planDefinition = getPlanDefinition(selection.planId);
+            if (serverSummaryElements.planName) {
+                serverSummaryElements.planName.textContent = selection.planLabel || planDefinition.nome;
+            }
+            if (serverSummaryElements.planPrice) {
+                serverSummaryElements.planPrice.textContent = selection.planPriceLabel || planDefinition.precoLabel;
+            }
+            if (serverSummaryElements.planLabel) {
+                serverSummaryElements.planLabel.textContent = planDefinition.resumoDescricao || '';
+            }
+            if (serverSummaryElements.name) {
+                serverSummaryElements.name.textContent = selection.serverName || planDefinition.nome;
+            }
+            if (serverSummaryElements.region) {
+                serverSummaryElements.region.textContent = selection.serverRegion
+                    ? `Região ${selection.serverRegion}`
+                    : 'Região não informada';
+            }
+            if (serverSummaryElements.vcpu) {
+                serverSummaryElements.vcpu.textContent = selection.serverVcpu || 'vCPU não informada';
+            }
+            if (serverSummaryElements.ram) {
+                serverSummaryElements.ram.textContent = selection.serverRam || 'Memória não informada';
+            }
+            if (serverSummaryElements.storage) {
+                serverSummaryElements.storage.textContent = selection.serverStorage || 'Armazenamento não informado';
+            }
+            if (serverSummaryElements.network) {
+                serverSummaryElements.network.textContent = selection.serverNetwork || 'Rede não informada';
+            }
+        };
+
+        const buildCartUrlFromSelection = () => {
+            ensureInitialServerSelection();
+            const selection = selectedServerOption || {};
+            const planDefinition = getPlanDefinition(selection.planId);
+            const cartUrl = new URL(CART_URL, window.location.href);
+            const planKey = selection.planId || planDefinition.id;
+            cartUrl.searchParams.set('plano', planKey);
+            cartUrl.searchParams.set('planLabel', selection.planLabel || `Plano ${planDefinition.nome}`);
+            cartUrl.searchParams.set('preco', selection.planPrice || planDefinition.preco.toFixed(2));
+            if (selection.serverName) {
+                cartUrl.searchParams.set('servidor', selection.serverName);
+            }
+            if (selection.serverRegion) {
+                cartUrl.searchParams.set('regiao', selection.serverRegion);
+            }
+            if (selection.serverVcpu) {
+                cartUrl.searchParams.set('vcpu', selection.serverVcpu);
+            }
+            if (selection.serverRam) {
+                cartUrl.searchParams.set('ram', selection.serverRam);
+            }
+            if (selection.serverStorage) {
+                cartUrl.searchParams.set('storage', selection.serverStorage);
+            }
+            if (selection.serverNetwork) {
+                cartUrl.searchParams.set('network', selection.serverNetwork);
+            }
+            return cartUrl;
+        };
+
+        const navigateToCart = () => {
+            const cartUrl = buildCartUrlFromSelection();
+            window.location.href = `${cartUrl.pathname}${cartUrl.search}`;
+        };
+
+        const showServerSummaryModal = () => {
+            updateServerSummaryModal();
+            if (serverSummaryModal) {
+                serverSummaryModal.show();
+            }
+        };
+
+        const proceedToServerSummary = () => {
+            if (verificationModal && verificationModalElement) {
+                const handleHidden = () => {
+                    showServerSummaryModal();
+                    verificationModalElement.removeEventListener('hidden.bs.modal', handleHidden);
+                };
+                verificationModalElement.addEventListener('hidden.bs.modal', handleHidden);
+                verificationModal.hide();
+            } else {
+                showServerSummaryModal();
+            }
+        };
 
         const applyPlanSummary = () => {
             const { heroName, heroPrice, resumoTitulo, resumoDescricao, specsList } = planSummaryElements;
@@ -106,16 +259,26 @@
             }
         };
 
+        const setPlanByKey = (planKey) => {
+            const normalizedPlanKey = (planKey || '').toLowerCase();
+            if (!normalizedPlanKey || !PLANOS[normalizedPlanKey]) {
+                return false;
+            }
+            if (planoSelecionado.id === normalizedPlanKey) {
+                applyPlanSummary();
+                return true;
+            }
+            planoSelecionado = PLANOS[normalizedPlanKey];
+            applyPlanSummary();
+            return true;
+        };
+
         const selectPlanFromQuery = () => {
             const params = new URLSearchParams(window.location.search);
             const planParam = params.get('plano');
-            if (planParam) {
-                const key = planParam.toLowerCase();
-                if (PLANOS[key]) {
-                    planoSelecionado = PLANOS[key];
-                }
+            if (!setPlanByKey(planParam)) {
+                applyPlanSummary();
             }
-            applyPlanSummary();
         };
         selectPlanFromQuery();
 
@@ -234,12 +397,6 @@
             if (verificationFormFields) {
                 verificationFormFields.classList.remove('d-none');
             }
-            if (verificationSuccessMessage) {
-                verificationSuccessMessage.classList.add('d-none');
-            }
-            if (chooseServerButton) {
-                chooseServerButton.disabled = false;
-            }
         };
 
         if (cepInput) {
@@ -349,68 +506,101 @@
                     return;
                 }
                 verificationCodeInput.setCustomValidity('');
-                if (verificationFormFields) {
-                    verificationFormFields.classList.add('d-none');
-                }
-                if (verificationSuccessMessage) {
-                    verificationSuccessMessage.classList.remove('d-none');
-                }
-                if (chooseServerButton) {
-                    chooseServerButton.focus();
-                }
+                proceedToServerSummary();
             });
         }
-        if (chooseServerButton && serverSelectionModal) {
-            chooseServerButton.addEventListener('click', () => {
-                chooseServerButton.disabled = true;
-                if (verificationModal) {
-                    verificationModal.hide();
-                }
-                setTimeout(() => {
-                    serverSelectionModal.show();
-                    chooseServerButton.disabled = false;
-                }, 200);
-            });
-        }
-
-        const sendToCartButtons = serverSelectionModalElement
-            ? serverSelectionModalElement.querySelectorAll('.send-to-cart')
-            : [];
-
-        const buildCartUrl = (dataset) => {
-            const cartUrl = new URL(CART_URL, window.location.href);
-            const planId = (dataset.planId || planoSelecionado.id || '').toLowerCase();
-            const planLabel = dataset.planLabel || `Plano ${planoSelecionado.nome}`;
-            const price = dataset.planPrice || planoSelecionado.preco.toFixed(2);
-            cartUrl.searchParams.set('plano', planId);
-            cartUrl.searchParams.set('planLabel', planLabel);
-            cartUrl.searchParams.set('preco', price);
-            cartUrl.searchParams.set('servidor', dataset.serverName || planoSelecionado.nome);
-            if (dataset.serverRegion) {
-                cartUrl.searchParams.set('regiao', dataset.serverRegion);
+        const showServerSelectionModal = (triggerButton = null) => {
+            if (!serverSelectionModal) {
+                return;
             }
-            if (dataset.serverVcpu) {
-                cartUrl.searchParams.set('vcpu', dataset.serverVcpu);
+            if (triggerButton) {
+                triggerButton.disabled = true;
             }
-            if (dataset.serverRam) {
-                cartUrl.searchParams.set('ram', dataset.serverRam);
+            serverSelectionModal.show();
+            if (triggerButton && serverSelectionModalElement) {
+                const enableButton = () => {
+                    triggerButton.disabled = false;
+                    serverSelectionModalElement.removeEventListener('hidden.bs.modal', enableButton);
+                };
+                serverSelectionModalElement.addEventListener('hidden.bs.modal', enableButton);
             }
-            if (dataset.serverStorage) {
-                cartUrl.searchParams.set('storage', dataset.serverStorage);
-            }
-            if (dataset.serverNetwork) {
-                cartUrl.searchParams.set('network', dataset.serverNetwork);
-            }
-            return cartUrl;
         };
 
-        sendToCartButtons.forEach((button) => {
+        if (seeOtherOptionsButton && serverSelectionModal) {
+            seeOtherOptionsButton.addEventListener('click', () => {
+                showServerSelectionModal(seeOtherOptionsButton);
+            });
+        }
+
+        const selectPlanButtons = serverSelectionModalElement
+            ? Array.from(serverSelectionModalElement.querySelectorAll('.select-plan-option'))
+            : [];
+
+        selectPlanButtons.forEach((button) => {
+            const planKey = normalizePlanKey(button.dataset.planId);
+            if (planKey) {
+                serverOptionsByPlan[planKey] = cloneDataset(button.dataset);
+            }
+        });
+
+        ensureInitialServerSelection();
+
+        const handlePlanSelectionFromModal = (button) => {
+            const dataset = button.dataset ? cloneDataset(button.dataset) : {};
+            const planUpdated = setPlanByKey(dataset.planId);
+            if (!planUpdated) {
+                applyPlanSummary();
+            }
+            setSelectedServerOptionFromDataset(dataset);
+            const shouldNavigateAfterSelection = sendToCartAfterSelection;
+            sendToCartAfterSelection = false;
+            if (serverSelectionModal) {
+                serverSelectionModal.hide();
+            }
+            setTimeout(() => {
+                button.disabled = false;
+                if (shouldNavigateAfterSelection) {
+                    navigateToCart();
+                }
+            }, shouldNavigateAfterSelection ? 50 : 200);
+        };
+
+        selectPlanButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 button.disabled = true;
-                const cartUrl = buildCartUrl(button.dataset);
-                window.location.href = `${cartUrl.pathname}${cartUrl.search}`;
+                handlePlanSelectionFromModal(button);
             });
         });
+
+        if (serverSelectionModalElement) {
+            serverSelectionModalElement.addEventListener('hidden.bs.modal', () => {
+                sendToCartAfterSelection = false;
+            });
+        }
+
+        if (goToCartButton) {
+            goToCartButton.addEventListener('click', () => {
+                goToCartButton.disabled = true;
+                navigateToCart();
+            });
+        }
+
+        if (changeServerButton) {
+            changeServerButton.addEventListener('click', () => {
+                sendToCartAfterSelection = true;
+                const openSelectionModal = () => {
+                    showServerSelectionModal();
+                };
+                if (serverSummaryModalElement && serverSummaryModalElement.classList.contains('show')) {
+                    serverSummaryModalElement.addEventListener('hidden.bs.modal', openSelectionModal, { once: true });
+                    if (serverSummaryModal) {
+                        serverSummaryModal.hide();
+                    }
+                } else {
+                    openSelectionModal();
+                }
+            });
+        }
 
         if (tipoPF && tipoPJ) {
             tipoPF.addEventListener('change', togglePessoa);

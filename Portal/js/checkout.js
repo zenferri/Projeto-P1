@@ -39,7 +39,7 @@
         };
     };
 
-    const selection = readSelectionFromParams();
+    let selection = readSelectionFromParams();
 
     const serverNameEl = document.getElementById('checkoutServerName');
     const planLabelEl = document.getElementById('checkoutPlanLabel');
@@ -50,27 +50,93 @@
         document.getElementById('checkoutTotal')
     ];
 
-    if (serverNameEl) {
-        serverNameEl.textContent = selection.serverName;
-    }
-    if (planLabelEl) {
-        const regionSuffix = selection.region ? ` • ${selection.region}` : '';
-        planLabelEl.textContent = `${selection.planLabel}${regionSuffix}`;
-    }
-    if (specsListEl) {
-        specsListEl.innerHTML = '';
-        [selection.vcpu, selection.ram, selection.storage, selection.network]
-            .filter(Boolean)
-            .forEach((spec) => {
-                const li = document.createElement('li');
-                li.textContent = spec;
-                specsListEl.appendChild(li);
-            });
-    }
-    priceEls.forEach((el) => {
-        if (el) {
-            el.textContent = formatCurrency(selection.price);
+    const applySelectionToSummary = () => {
+        if (serverNameEl) {
+            serverNameEl.textContent = selection.serverName;
         }
+        if (planLabelEl) {
+            const regionSuffix = selection.region ? ` • ${selection.region}` : '';
+            planLabelEl.textContent = `${selection.planLabel}${regionSuffix}`;
+        }
+        if (specsListEl) {
+            specsListEl.innerHTML = '';
+            [selection.vcpu, selection.ram, selection.storage, selection.network]
+                .filter(Boolean)
+                .forEach((spec) => {
+                    const li = document.createElement('li');
+                    li.textContent = spec;
+                    specsListEl.appendChild(li);
+                });
+        }
+        priceEls.forEach((el) => {
+            if (el) {
+                el.textContent = formatCurrency(selection.price);
+            }
+        });
+    };
+
+    const updateUrlWithSelection = () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('plano', selection.planId);
+        url.searchParams.set('planLabel', selection.planLabel);
+        url.searchParams.set('preco', selection.price.toFixed(2));
+        url.searchParams.set('servidor', selection.serverName);
+        url.searchParams.set('regiao', selection.region);
+        url.searchParams.set('vcpu', selection.vcpu);
+        url.searchParams.set('ram', selection.ram);
+        url.searchParams.set('storage', selection.storage);
+        url.searchParams.set('network', selection.network);
+        window.history.replaceState(null, '', `${url.pathname}${url.search}`);
+    };
+
+    applySelectionToSummary();
+
+    const parsePriceValue = (value) => {
+        if (value === undefined || value === null || value === '') {
+            return null;
+        }
+        const normalized = value.toString().replace(',', '.');
+        const numberValue = Number(normalized);
+        return Number.isFinite(numberValue) ? numberValue : null;
+    };
+
+    const changeServerButton = document.getElementById('btnChangeServer');
+    const serverSelectionModalElement = document.getElementById('serverSelectionModal');
+    const serverSelectionModal = serverSelectionModalElement ? new bootstrap.Modal(serverSelectionModalElement) : null;
+    const modalSelectButtons = serverSelectionModalElement
+        ? Array.from(serverSelectionModalElement.querySelectorAll('.modal-select-plan'))
+        : [];
+
+    changeServerButton?.addEventListener('click', () => {
+        serverSelectionModal?.show();
+    });
+
+    const handleServerSelection = (dataset) => {
+        if (!dataset) {
+            return;
+        }
+        const parsedPrice = parsePriceValue(dataset.planPrice);
+        selection = {
+            ...selection,
+            planId: dataset.planId || selection.planId,
+            planLabel: dataset.planLabel || selection.planLabel,
+            price: parsedPrice ?? selection.price,
+            serverName: dataset.serverName || selection.serverName,
+            region: dataset.serverRegion || selection.region,
+            vcpu: dataset.serverVcpu || selection.vcpu,
+            ram: dataset.serverRam || selection.ram,
+            storage: dataset.serverStorage || selection.storage,
+            network: dataset.serverNetwork || selection.network
+        };
+        applySelectionToSummary();
+        updateUrlWithSelection();
+        serverSelectionModal?.hide();
+    };
+
+    modalSelectButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            handleServerSelection(button.dataset);
+        });
     });
 
     const pixRadio = document.getElementById('paymentPix');

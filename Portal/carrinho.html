@@ -69,6 +69,24 @@
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
         }
 
+        .server-option {
+            background: var(--cor-fundo-medio);
+            border-radius: 20px;
+            color: #fff;
+            padding: 1.5rem;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: var(--sombreamento);
+        }
+
+        .server-option ul {
+            padding-left: 1rem;
+        }
+
+        .server-option li {
+            margin-bottom: .35rem;
+        }
+
         .pix-qr-placeholder {
             background: repeating-linear-gradient(45deg, rgba(5, 5, 20, 0.08), rgba(5, 5, 20, 0.08) 10px, rgba(5, 5, 20, 0.02) 10px, rgba(5, 5, 20, 0.02) 20px);
             border-radius: 16px;
@@ -221,6 +239,9 @@
                             <span>Total hoje</span>
                             <strong id="checkoutTotal">R$ 69,90</strong>
                         </div>
+                        <button type="button" class="btn btn-outline-light w-100 mt-3" id="btnChangeServer">
+                            Alterar servidor
+                        </button>
                     </div>
 
                     <div class="summary-card">
@@ -232,6 +253,78 @@
             </div>
         </div>
     </main>
+
+    <div class="modal fade" id="serverSelectionModal" tabindex="-1" aria-labelledby="serverSelectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serverSelectionModalLabel">Escolha outro servidor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info" role="alert">
+                        Selecionar um novo servidor atualiza automaticamente os valores deste carrinho.
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Alta disponibilidade</p>
+                                <h3 class="h5 fw-bold">API • SP01</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 10</p>
+                                <ul>
+                                    <li>8 vCPU • 16 GB RAM</li>
+                                    <li>100 GB SSD NVMe</li>
+                                    <li>Rede 1 Gbps dedicada</li>
+                                    <li>Backup incremental diário</li>
+                                </ul>
+                                <p class="h4">R$ 69,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="desempenho" data-plan-label="Plano Desempenho" data-plan-price="69.90" data-server-name="API • SP01" data-server-region="São Paulo" data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM" data-server-storage="100 GB SSD NVMe" data-server-network="Rede 1 Gbps dedicada">
+                                    Selecionar este plano
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Equilíbrio</p>
+                                <h3 class="h5 fw-bold">Banco • SP02</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 20</p>
+                                <ul>
+                                    <li>4 vCPU • 8 GB RAM</li>
+                                    <li>80 GB SSD NVMe</li>
+                                    <li>Rede 500 Mbps</li>
+                                    <li>Snapshots semanais</li>
+                                </ul>
+                                <p class="h4">R$ 39,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="avancado" data-plan-label="Plano Avançado" data-plan-price="39.90" data-server-name="Banco • SP02" data-server-region="São Paulo" data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM" data-server-storage="80 GB SSD NVMe" data-server-network="Rede 500 Mbps">
+                                    Selecionar este plano
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="server-option h-100">
+                                <p class="text-uppercase text-white-50 small mb-1">Projetos leves</p>
+                                <h3 class="h5 fw-bold">Dev • SP03</h3>
+                                <p class="text-white-50 mb-3">Região São Paulo • VLAN 30</p>
+                                <ul>
+                                    <li>2 vCPU • 4 GB RAM</li>
+                                    <li>40 GB SSD</li>
+                                    <li>Rede 200 Mbps</li>
+                                    <li>Snapshot mensal</li>
+                                </ul>
+                                <p class="h4">R$ 29,90 <small class="fs-6">/mês</small></p>
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="essencial" data-plan-label="Plano Essencial" data-plan-price="29.90" data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM" data-server-storage="40 GB SSD" data-server-network="Rede 200 Mbps">
+                                    Selecionar este plano
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Voltar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">

@@ -184,42 +184,26 @@
 
     <main class="py-5">
         <div class="container">
-            <section class="cadastro-hero mb-5">
-                <div class="row g-4 align-items-center">
-                    <div class="col-md-7">
-                        <p class="info-chip">
-                            <span class="badge bg-success rounded-pill">Etapas guiadas</span>
-                            Configure em poucos minutos
-                        </p>
-                        <h1 class="fw-bold mt-3">
-                            Cadastro e provisionamento sem atrito
-                        </h1>
-                        <p class="lead mb-0">
-                            Revise seus dados, confirme o e-mail, escolha o servidor e finalize o pagamento sem sair desta jornada.
-                        </p>
-                    </div>
-                    <div class="col-md-5 text-md-end">
-                        <div class="text-white-50">
-                            <p class="mb-1">Plano atual</p>
-                            <h2 class="h3 fw-bold mb-2" id="selectedPlanName">Desempenho</h2>
-                            <p class="fs-5 mb-0" id="selectedPlanPrice">R$ 69,90/mês</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="row g-4 align-items-start">
                 <div class="col-lg-5">
                     <div class="card-cadastro p-4 mb-4 plan-summary">
-                        <p class="text-uppercase text-white-50 small mb-2">Detalhes do plano</p>
-                        <h2 class="h4 fw-bold" id="planResumeTitle">VM dedicada para crescer</h2>
+                        <p class="text-uppercase text-white-50 small mb-2">Plano atual</p>
+                        <div class="d-flex flex-column gap-2 mb-3">
+                            <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2">
+                                <h2 class="h4 fw-bold mb-0" id="selectedPlanName">Desempenho</h2>
+                                <span class="fs-4 fw-bold text-white" id="selectedPlanPrice">R$ 69,90/mês</span>
+                            </div>
+                            <p class="text-white-50 mb-0" id="planResumeTitle">VPS dedicado para crescer</p>
+                        </div>
                         <p class="text-white-50" id="planResumeDescription">8 vCPU • 16 GB RAM • 100 GB SSD NVMe</p>
                         <ul class="mb-4" id="selectedPlanSpecs">
                             <li>Provisionamento em 30 segundos</li>
                             <li>Rede 1 Gbps dedicada</li>
                             <li>Backup automático</li>
                         </ul>
-                        <a href="/index.html#opcoes" class="btn btn-outline-light w-100">Quero revisar outras opções</a>
+                        <button type="button" class="btn btn-outline-light w-100" id="seeOtherOptionsBtn">
+                            Quero ver outras opções
+                        </button>
                     </div>
 
                     <div class="card-cadastro p-4">
@@ -264,8 +248,8 @@
                                         <input type="text" class="form-control" id="inputSobrenome" name="sobrenome" required data-required-group="pf">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="inputCPF" class="form-label">CPF* (apenas números)</label>
-                                        <input type="text" class="form-control" id="inputCPF" name="cpf" required data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                                        <label for="inputCPF" class="form-label">CPF*</label>
+                                        <input type="text" class="form-control" id="inputCPF" name="cpf" required data-required-group="pf" inputmode="numeric" maxlength="14" placeholder="Apenas números" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="inputNascimento" class="form-label">Data de nascimento*</label>
@@ -273,14 +257,14 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label d-block">Sexo*</label>
-                                        <div class="d-flex gap-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="masculino" required data-required-group="pf">
-                                                <label class="form-check-label" for="sexoM">Masculino</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino" data-required-group="pf">
+                                        <div class="d-flex flex-wrap gap-3">
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="radio" name="sexo" id="sexoF" value="feminino" required data-required-group="pf">
                                                 <label class="form-check-label" for="sexoF">Feminino</label>
+                                            </div>
+                                            <div class="form-check mb-0">
+                                                <input class="form-check-input" type="radio" name="sexo" id="sexoM" value="masculino" data-required-group="pf">
+                                                <label class="form-check-label" for="sexoM">Masculino</label>
                                             </div>
                                         </div>
                                     </div>
@@ -410,13 +394,54 @@
                                 <button type="submit" class="btn btn-primary" id="btnEnviarCodigo">Enviar</button>
                             </div>
                         </div>
-                        <div id="verificationSuccessMessage" class="alert alert-success d-none mb-0" role="alert">
-                            Cadastro confirmado! Agora selecione qual servidor quer provisionar.
-                            <div class="d-flex justify-content-end mt-3">
-                                <button type="button" class="btn btn-success" id="btnChooseServer">Selecionar servidor</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Resumo do Servidor -->
+    <div class="modal fade" id="serverSummaryModal" tabindex="-1" aria-labelledby="serverSummaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="serverSummaryModalLabel">Servidor selecionado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted mb-4">Confira os detalhes antes de concluir seu pedido.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <p class="text-uppercase text-muted small mb-1">Plano</p>
+                                <h4 class="mb-1" id="serverSummaryPlanName">Desempenho</h4>
+                                <p class="mb-0 text-primary fw-semibold" id="serverSummaryPlanPrice">R$ 69,90/mês</p>
+                                <p class="text-muted small mb-0" id="serverSummaryPlanLabel"></p>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-md-6">
+                            <div class="border rounded-4 p-3 h-100">
+                                <p class="text-uppercase text-muted small mb-1">Servidor</p>
+                                <h4 class="mb-1" id="serverSummaryName">API • SP01</h4>
+                                <p class="text-muted mb-0" id="serverSummaryRegion">Região São Paulo</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="border rounded-4 p-3">
+                                <p class="text-uppercase text-muted small mb-2">Especificações</p>
+                                <ul class="mb-0" id="serverSummarySpecs">
+                                    <li id="serverSummaryVcpu">8 vCPU</li>
+                                    <li id="serverSummaryRam">16 GB RAM</li>
+                                    <li id="serverSummaryStorage">100 GB SSD NVMe</li>
+                                    <li id="serverSummaryNetwork">Rede 1 Gbps dedicada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" id="changeServerBtn">Alterar servidor</button>
+                    <button type="button" class="btn btn-success" id="goToCartBtn">Seguir para o carrinho</button>
                 </div>
             </div>
         </div>
@@ -432,7 +457,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-info" role="alert">
-                        Cada opção abaixo já considera a mesma região e cobrança mensal informada no plano escolhido. Clique em "Enviar ao carrinho" para revisar o pagamento.
+                        Cada opção abaixo já considera a mesma região e cobrança mensal informada no plano escolhido. Clique em "Selecionar este plano" para atualizar os detalhes e continuar o cadastro.
                     </div>
                     <div class="row g-4">
                         <div class="col-md-4">
@@ -447,7 +472,7 @@
                                     <li>Backup incremental diário</li>
                                 </ul>
                                 <p class="h4">R$ 69,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="desempenho" data-plan-label="Desempenho" data-plan-price="69.90" data-server-name="API • SP01" data-server-region="São Paulo" data-server-network="1 Gbps dedicado" data-server-storage="100 GB SSD NVMe" data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM">Enviar ao carrinho</button>
+                                <button type="button" class="btn btn-primary w-100 select-plan-option" data-plan-id="desempenho" data-plan-label="Desempenho" data-plan-price="69.90" data-plan-price-label="R$ 69,90/mês" data-server-name="API • SP01" data-server-region="São Paulo" data-server-network="1 Gbps dedicado" data-server-storage="100 GB SSD NVMe" data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM">Selecionar este plano</button>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -462,7 +487,7 @@
                                     <li>Snapshots semanais</li>
                                 </ul>
                                 <p class="h4">R$ 39,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="avancado" data-plan-label="Avançado" data-plan-price="39.90" data-server-name="Banco • SP02" data-server-region="São Paulo" data-server-network="500 Mbps" data-server-storage="80 GB SSD NVMe" data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM">Enviar ao carrinho</button>
+                                <button type="button" class="btn btn-primary w-100 select-plan-option" data-plan-id="avancado" data-plan-label="Avançado" data-plan-price="39.90" data-plan-price-label="R$ 39,90/mês" data-server-name="Banco • SP02" data-server-region="São Paulo" data-server-network="500 Mbps" data-server-storage="80 GB SSD NVMe" data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM">Selecionar este plano</button>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -477,7 +502,7 @@
                                     <li>Snapshot mensal</li>
                                 </ul>
                                 <p class="h4">R$ 29,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 send-to-cart" data-plan-id="essencial" data-plan-label="Essencial" data-plan-price="29.90" data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-network="200 Mbps" data-server-storage="40 GB SSD" data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM">Enviar ao carrinho</button>
+                                <button type="button" class="btn btn-primary w-100 select-plan-option" data-plan-id="essencial" data-plan-label="Essencial" data-plan-price="29.90" data-plan-price-label="R$ 29,90/mês" data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-network="200 Mbps" data-server-storage="40 GB SSD" data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM">Selecionar este plano</button>
                             </div>
                         </div>
                     </div>
