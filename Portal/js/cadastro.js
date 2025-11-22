@@ -45,7 +45,7 @@
         const termsModalContent = document.getElementById('termsModalContent');
         const termsAgreeButton = document.getElementById('termsAgreeBtn');
         const termsDeclineButton = document.getElementById('termsDeclineBtn');
-        const CART_URL = '/carrinho.html';
+        const CART_URL = 'carrinho.html';
         const PLANOS = {
             essencial: {
                 id: 'essencial',
@@ -613,7 +613,7 @@
                 return;
             }
             termsLoading = true;
-            fetch('/termos.html', { cache: 'no-cache' })
+            fetch('termosuso.html', { cache: 'no-cache' })
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error(`HTTP ${response.status}`);
@@ -676,7 +676,7 @@
             termsDeclineButton.addEventListener('click', () => {
                 termsShouldReturnToCadastro = false;
                 termsModal.hide();
-                window.location.href = '/index.html';
+                window.location.href = 'index.html';
             });
         }
     };

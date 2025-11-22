@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre & Equipe • Singularys</title>
+    <meta name="description" content="Conheça a história da Singularys e o time por trás do nosso produto.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        :root {
+            color-scheme: light only;
+        }
+
+        html,
+        body {
+            background: #fff;
+            color: #101C5E;
+        }
+
+        .hero-shell {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.16), rgba(5, 5, 20, 0.75));
+            color: #fff;
+            border-radius: 32px;
+            padding: 48px 36px;
+            box-shadow: 0 24px 45px rgba(5, 5, 20, 0.35);
+        }
+
+        .team-hero {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.14), rgba(5, 5, 20, 0.68));
+            color: #fff;
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: 0 24px 45px rgba(5, 5, 20, 0.35);
+        }
+
+        .team-card {
+            background: var(--cor-fundo-medio);
+            color: #fff;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--sombreamento);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            height: 100%;
+        }
+
+        .team-photo img {
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border: 1px dashed rgba(255, 255, 255, 0.35);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .team-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            text-decoration: none;
+            transition: transform .2s ease, background .2s ease;
+        }
+
+        .team-links a:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .team-links svg {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./css/style7.css?v=15112025.3" id="themeStylesheet">
+    <link rel="stylesheet" href="./css/style_login.css">
+    <link rel="stylesheet" href="./css/botoes.css">
+    <link rel="stylesheet" href="./css/reveal.css">
+    <link rel="stylesheet" href="./css/smallscreen.css?v=15112025.3">
+</head>
+
+<body>
+    <section class="menu-top">
+        <div class="superinfo-bg">
+            <div class="superinfo">
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="mailto:zenferri@gmail.com">Suporte</a>
+                <!-- <a href="#quem_somos">Nossa equipe</a> -->
+            </div>
+        </div>
+
+        <header class="menu-bg">
+            <div class="menu">
+                <div class="menu-logo">
+                    <a href="./index.html">Singularys</a>
+                </div>
+                <nav class="menu-nav">
+                    <ul>
+                        <!-- <li><a href="./index.html#sobre">Sobre nós</a></li> -->
+                        <li><a href="./index.html#opcoes">Planos</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li><a href="./cadastro.html" class="botao-cadastro">Contrate</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </section>
+
+    <main class="py-5">
+        <div class="container">
+            <section class="hero-shell mb-5" id="sobre">
+                <div class="d-flex flex-column gap-3">
+                    <div class="d-flex flex-column flex-lg-row align-items-start justify-content-between gap-3">
+                        <div>
+                            <p class="text-uppercase text-white-50 mb-2">Sobre a Singularys</p>
+                            <h1 class="h3 fw-bold mb-3">Um ponto de origem para novas ideias</h1>
+                        </div>
+                        <a class="link-github btn btn-light text-dark fw-bold d-inline-flex align-items-center ms-lg-auto"
+                            href="https://github.com/zenferri/Projeto-P1/" target="_blank" id="teamProjectLink">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.8-.25.8-.56 0-.28-.01-1.03-.02-2.02-3.2.69-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.74 1.27 3.41.97.1-.76.41-1.27.75-1.57-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.19 1.19a11.1 11.1 0 0 1 5.82 0c2.21-1.5 3.18-1.19 3.18-1.19.63 1.59.24 2.76.12 3.05.74.81 1.18 1.85 1.18 3.11 0 4.42-2.71 5.39-5.29 5.67.42.37.8 1.1.8 2.23 0 1.61-.02 2.91-.02 3.31 0 .31.21.67.81.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                            </svg>
+                            <span class="ms-2">Saiba mais sobre o projeto</span>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-0">A Singularys nasce da ideia de que toda criação começa em um
+                        ponto. Antes de qualquer forma existir, há um instante silencioso, denso e cheio de
+                        potencial, semelhante à singularidade que antecede o universo. Foi essa imagem de origem
+                        absoluta que inspirou o nosso nome. Singularys remete a esse centro primordial onde tudo
+                        está contido antes de se expandir, onde a energia repousa por um momento antes de se
+                        transformar em movimento, estrutura e vida.</p>
+                    <div class="mt-1">
+                        <a class="btn btn-link btn-sm text-white px-0" data-bs-toggle="collapse" href="#manifesto"
+                            role="button" aria-expanded="false" aria-controls="manifesto">
+                            Continuar lendo
+                        </a>
+                    </div>
+                    <div class="collapse pt-1" id="manifesto">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <p class="mb-3 text-white-50">Da mesma forma, na tecnologia que empregamos, um único
+                                    servidor físico funciona como esse ponto inicial. É nele que a potência está
+                                    concentrada, aguardando o momento de se desdobrar em novos ambientes virtuais. Cada
+                                    VPS nasce como um pequeno universo próprio, um espaço isolado, mas capaz de se
+                                    conectar a outros e formar um grande universo de ideias em expansão, cheio de
+                                    movimento e vida. É nesse encontro entre origem e possibilidade que a Singularys
+                                    encontra seu propósito.</p>
+                                <p class="mb-0 text-white-50">Nós oferecemos esse ponto de origem. Um ambiente seguro,
+                                    estável e preparado para sustentar o primeiro impulso criativo. Assim como estrelas
+                                    se formam a partir do caos primordial, novas instâncias podem crescer a partir de um
+                                    único servidor central, expandindo-se conforme a necessidade e a imaginação de cada
+                                    cliente.</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <p class="mb-3 text-white-50">Aqui, cada visão encontra liberdade para existir sem
+                                    ruídos, sem limitações impostas por terceiros e sem interferências. Acreditamos que
+                                    criar é um movimento sagrado. Exige confiança, estrutura e coragem. Nossa missão é
+                                    sustentar esse momento decisivo em que uma ideia deixa de ser apenas intenção e se
+                                    torna presença.</p>
+                                <p class="mb-0 text-white-50">A Singularys existe para ser o núcleo. A faísca. O início
+                                    de algo vivo. Porque quando o ponto de partida é sólido, tudo o que nasce a partir
+                                    dele pode alcançar o que desejar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-hero mb-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="h3 fw-bold mb-3">Nossa equipe</h1>
+                        <p class="text-white-50 mb-0">Conheça quem está por trás da arquitetura do projeto Singularys.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quem_somos" class="row g-4">
+                <div class="col-md-4">
+                    <div class="team-card h-100">
+                        <div class="team-photo">
+                            <img src="https://www.singularys.net/imgs/volpato.jpg" alt="Volpato">
+                        </div>
+                        <h2 class="h5 fw-bold mt-3 mb-1">Guilherme Henrique Volpato</h2>
+                        <div class="d-flex align-items-center justify-content-start gap-2 team-links">
+                            <a href="https://www.linkedin.com/in/guilherme-henrique-volpato-a19676381/" target="_blank"
+                                aria-label="LinkedIn de Guilherme" class="link-linkedin">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.49h4.52V24H.24zM7.77 8.49h4.33v2.11h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.4 3 5.4 6.89V24h-4.52v-7.25c0-1.73-.03-3.95-2.41-3.95-2.41 0-2.78 1.88-2.78 3.82V24H7.77z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/Guilhermevolp-GV" target="_blank"
+                                aria-label="GitHub de Guilherme" class="link-github">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.8-.25.8-.56 0-.28-.01-1.03-.02-2.02-3.2.69-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.74 1.27 3.41.97.1-.76.41-1.27.75-1.57-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.19 1.19a11.1 11.1 0 0 1 5.82 0c2.21-1.5 3.18-1.19 3.18-1.19.63 1.59.24 2.76.12 3.05.74.81 1.18 1.85 1.18 3.11 0 4.42-2.71 5.39-5.29 5.67.42.37.8 1.1.8 2.23 0 1.61-.02 2.91-.02 3.31 0 .31.21.67.81.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card h-100">
+                        <div class="team-photo">
+                            <img src="https://www.singularys.net/imgs/zen.jpg" alt="Zen">
+                        </div>
+                        <h2 class="h5 fw-bold mt-3 mb-1">José Augusto Zen Ferri</h2>
+                        <div class="d-flex align-items-center justify-content-start gap-2 team-links">
+                            <a href="https://www.linkedin.com/in/zenferri/" target="_blank"
+                                aria-label="LinkedIn de José" class="link-linkedin">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.49h4.52V24H.24zM7.77 8.49h4.33v2.11h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.4 3 5.4 6.89V24h-4.52v-7.25c0-1.73-.03-3.95-2.41-3.95-2.41 0-2.78 1.88-2.78 3.82V24H7.77z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/zenferri" target="_blank" aria-label="GitHub de José"
+                                class="link-github">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.8-.25.8-.56 0-.28-.01-1.03-.02-2.02-3.2.69-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.74 1.27 3.41.97.1-.76.41-1.27.75-1.57-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.19 1.19a11.1 11.1 0 0 1 5.82 0c2.21-1.5 3.18-1.19 3.18-1.19.63 1.59.24 2.76.12 3.05.74.81 1.18 1.85 1.18 3.11 0 4.42-2.71 5.39-5.29 5.67.42.37.8 1.1.8 2.23 0 1.61-.02 2.91-.02 3.31 0 .31.21.67.81.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-card h-100">
+                        <div class="team-photo">
+                            <img src="https://www.singularys.net/imgs/rafael.jpg" alt="Rafael">
+                        </div>
+                        <h2 class="h5 fw-bold mt-3 mb-1">Rafael Henrique Biliasi</h2>
+                        <div class="d-flex align-items-center justify-content-start gap-2 team-links">
+                            <a href="https://www.linkedin.com/in/rafael-biliasi-8b4b9322b/" target="_blank"
+                                aria-label="LinkedIn de Rafael" class="link-linkedin">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.49h4.52V24H.24zM7.77 8.49h4.33v2.11h.06c.6-1.13 2.07-2.33 4.26-2.33 4.55 0 5.4 3 5.4 6.89V24h-4.52v-7.25c0-1.73-.03-3.95-2.41-3.95-2.41 0-2.78 1.88-2.78 3.82V24H7.77z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/RafaelBiliasi" target="_blank" aria-label="GitHub de Rafael"
+                                class="link-github">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.8-.25.8-.56 0-.28-.01-1.03-.02-2.02-3.2.69-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.74 1.27 3.41.97.1-.76.41-1.27.75-1.57-2.56-.29-5.26-1.28-5.26-5.69 0-1.26.45-2.3 1.19-3.11-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.19 1.19a11.1 11.1 0 0 1 5.82 0c2.21-1.5 3.18-1.19 3.18-1.19.63 1.59.24 2.76.12 3.05.74.81 1.18 1.85 1.18 3.11 0 4.42-2.71 5.39-5.29 5.67.42.37.8 1.1.8 2.23 0 1.61-.02 2.91-.02 3.31 0 .31.21.67.81.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer mt-5">
+        <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
+    </footer>
+
+     <!-- Login flutuante -->
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bem vindo de volta!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="login-form">
+                        <div class="mb-3">
+                            <label class="form-label">Digite seu e-mail:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="nome@examplo.com">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="Digite sua senha">
+                                <span class="input-group-text password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="remember">
+                                <label class="form-check-label" for="remember">Lembrar</label>
+                            </div>
+                            <a href="#" class="text-decoration-none forgot-password-link">Esqueceu sua senha?</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login text-white">Entrar</button>
+
+                        <div class="register-link">
+                            Ainda não tem uma conta? <a href="cadastro.html" class="text-decoration-none">Contrate
+                                agora!</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fim login fultuante  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="./js/main_script.js?v=15112025"></script>
+</body>
+
+</html>

@@ -22,6 +22,9 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
+
+/* Mantive o css interno por ser muito pouca coisa específica */
+
         :root {
             color-scheme: light only;
         }
@@ -52,11 +55,11 @@
     </style>
 
     <!-- CSS principal do site -->
-    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025_v3" id="themeStylesheet">
-    <link rel="stylesheet" href="/css/style_login.css">
-    <link rel="stylesheet" href="/css/botoes.css">
-    <link rel="stylesheet" href="/css/reveal.css">
-    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025_v3">
+    <link rel="stylesheet" type="text/css" href="./css/style7.css?v=15112025_v3" id="themeStylesheet">
+    <link rel="stylesheet" href="./css/style_login.css">
+    <link rel="stylesheet" href="./css/botoes.css">
+    <link rel="stylesheet" href="./css/reveal.css">
+    <link rel="stylesheet" href="./css/smallscreen.css?v=15112025_v3">
 
 </head>
 
@@ -64,23 +67,23 @@
     <section class="menu-top">
         <div class="superinfo-bg">
             <div class="superinfo">
-                <a href="/termos.html">Termos de Uso</a>
-                <a href="#suporte">Suporte</a>
-                <a href="#quem_somos">Nossa equipe</a>
+                <a href="./termos.html">Termos de Uso</a>
+                <a href="mailto:zenferri@gmail.com">Suporte</a>
+                <a href="./equipe.html#quem_somos">Nossa equipe</a>
             </div>
         </div>
 
         <header class="menu-bg">
             <div class="menu">
                 <div class="menu-logo">
-                    <a href="/index.html">Singularys</a>
+                    <a href="index.html">Singularys</a>
                 </div>
                 <nav class="menu-nav">
                     <ul>
                         <li><a href="#overview">Visão geral</a></li>
                         <li><a href="#recursos">Recursos</a></li>
                         <li><a href="#eventos">Eventos</a></li>
-                        <li><a href="/index.html">Log out</a></li>
+                        <li><a href="index.html">Log out</a></li>
                         <!-- <li><a href="#" class="botao-cadastro" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastre-se</a></li> -->
                     </ul>
                 </nav>
@@ -91,21 +94,23 @@
     <main class="py-5">
         <div class="container">
 
-            <!-- Hero / resumo -->
-             
-            <section id="overview" class="row g-4 align-items-stretch mb-1">
+            <!-- resumo -->
+
+            <section id="overview" class="row g-4 align-items-stretch mb-4">
                 <div class="col-12 col-xl-8">
                     <div class="card h-100 border-0 text-white shadow-sm"
                         style="background: var(--cor-fundo-medio); box-shadow: var(--sombreamento);">
                         <div class="card-body">
-                            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-4 gap-3">
+                            <div
+                                class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-4 gap-3">
                                 <div class="w-100" style="max-width: 340px;">
                                     <label for="vpsSelector" class="text-white-50 small text-uppercase mb-2">Selecione o
                                         VPS</label>
                                     <select id="vpsSelector" class="form-select form-select-sm text-dark">
                                     </select>
                                 </div>
-                                <button class="btn btn-warning text-dark fw-bold" id="btnBuyNewVps">Comprar novo VPS</button>
+                                <button class="btn btn-warning text-dark fw-bold" id="btnBuyNewVps">Comprar novo
+                                    VPS</button>
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
                                 <div>
@@ -113,11 +118,15 @@
                                         class="badge rounded-pill bg-success text-uppercase fw-bold px-3 py-2 mb-2">Servidor
                                         on-line</span>
                                     <h1 class="h3 fw-bold" id="vpsDisplayName">VM • api-singularys</h1>
-                                    <p class="text-white-50 mb-2" id="vpsLocation">Ubuntu 24.04 LTS — Região São Paulo • VLAN 10</p>
+                                    <p class="text-white-50 mb-2" id="vpsLocation">Ubuntu 24.04 LTS — Região São Paulo •
+                                        VLAN 10</p>
                                     <div class="d-flex flex-column flex-sm-row gap-3 text-white-50">
-                                        <div><span class="text-white">IP público:</span> <span id="vpsIp">18.120.40.12</span></div>
-                                        <div><span class="text-white">Uptime:</span> <span id="vpsUptime">18 dias 04:23</span></div>
-                                        <div><span class="text-white">Último backup:</span> <span id="vpsLastBackup">há 8h</span></div>
+                                        <div><span class="text-white">IP público:</span> <span
+                                                id="vpsIp">184.120.40.12</span></div>
+                                        <div><span class="text-white">Uptime:</span> <span id="vpsUptime">18 dias
+                                                04:23</span></div>
+                                        <div><span class="text-white">Último backup:</span> <span id="vpsLastBackup">há
+                                                8h</span></div>
                                     </div>
                                 </div>
                                 <div class="text-md-end w-100" style="max-width: 340px;">
@@ -127,7 +136,8 @@
                                         <span class="fw-bold" id="vpsCpuUsage">62%</span>
                                     </div>
                                     <div class="progress mb-2" style="height: 8px;">
-                                        <div class="progress-bar bg-warning" role="progressbar" id="vpsCpuUsageBar" style="width: 62%;">
+                                        <div class="progress-bar bg-warning" role="progressbar" id="vpsCpuUsageBar"
+                                            style="width: 62%;">
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between">
@@ -135,7 +145,8 @@
                                         <span class="fw-bold" id="vpsMemoryUsage">48%</span>
                                     </div>
                                     <div class="progress mb-3" style="height: 8px;">
-                                        <div class="progress-bar bg-info" role="progressbar" id="vpsMemoryUsageBar" style="width: 48%;"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" id="vpsMemoryUsageBar"
+                                            style="width: 48%;"></div>
                                     </div>
                                     <div class="d-flex gap-2 flex-wrap">
                                         <button class="btn btn-outline-light btn-sm px-3">Reiniciar</button>
@@ -167,15 +178,17 @@
                                     <strong class="text-white" id="vpsTrafficUsed">2.9 TB</strong>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-success" role="progressbar" id="vpsTrafficBar" style="width: 58%;"></div>
+                                    <div class="progress-bar bg-success" role="progressbar" id="vpsTrafficBar"
+                                        style="width: 58%;"></div>
                                 </div>
-                                <p class="small text-white-50 mb-0" id="vpsNextInvoice">Próxima fatura em 12 de dezembro</p>
+                                <p class="small text-white-50 mb-0" id="vpsNextInvoice">Próxima fatura em 12 de dezembro
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
+            
             <!-- Métricas -->
             <section class="row g-4 mb-4">
                 <div class="col-12 col-sm-6 col-xl-3">
@@ -414,9 +427,8 @@
                                     minutos.</p>
                             </div>
                             <div class="d-flex flex-wrap gap-3">
-                                <a class="btn btn-outline-light" href="mailto:suporte@singularys.net">Abrir ticket</a>
-                                <a class="btn btn-warning text-dark fw-bold" href="tel:+5512919550638">Chamar
-                                    suporte</a>
+                                <a class="btn btn-warning" href="mailto:zenferri@gmail.com">Abrir ticket</a>
+                                <!-- <a class="btn btn-warning text-dark fw-bold" href="tel:+5512919550638">Chamar suporte</a> -->
                             </div>
                         </div>
                     </div>
@@ -429,6 +441,8 @@
         <p>© 2025 Singularys — Tecnologia para quem pensa grande.</p>
     </footer>
 
+    <!-- modal comprar novo VPS  -->
+
     <div class="modal fade" id="dashboardServerSelectionModal" tabindex="-1"
         aria-labelledby="dashboardServerSelectionModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
@@ -439,7 +453,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-info" role="alert">
-                        Escolha uma configuração para provisionar imediatamente. Você será levado ao carrinho para concluir o pagamento.
+                        Escolha uma configuração para provisionar imediatamente. Você será levado ao carrinho para
+                        concluir o pagamento.
                     </div>
                     <div class="row g-4">
                         <div class="col-md-4">
@@ -456,9 +471,9 @@
                                 <p class="h4">R$ 69,90 <small class="fs-6">/mês</small></p>
                                 <button type="button" class="btn btn-primary w-100 dashboard-select-plan"
                                     data-plan-id="desempenho" data-plan-label="Plano Desempenho" data-plan-price="69.90"
-                                    data-server-name="API • SP01" data-server-region="São Paulo" data-server-vcpu="8 vCPU"
-                                    data-server-ram="16 GB RAM" data-server-storage="100 GB SSD NVMe"
-                                    data-server-network="Rede 1 Gbps dedicada">
+                                    data-server-name="API • SP01" data-server-region="São Paulo"
+                                    data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM"
+                                    data-server-storage="100 GB SSD NVMe" data-server-network="Rede 1 Gbps dedicada">
                                     Selecionar este plano
                                 </button>
                             </div>
@@ -478,8 +493,8 @@
                                 <button type="button" class="btn btn-primary w-100 dashboard-select-plan"
                                     data-plan-id="avancado" data-plan-label="Plano Avançado" data-plan-price="39.90"
                                     data-server-name="Banco • SP02" data-server-region="São Paulo"
-                                    data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM" data-server-storage="80 GB SSD NVMe"
-                                    data-server-network="Rede 500 Mbps">
+                                    data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM"
+                                    data-server-storage="80 GB SSD NVMe" data-server-network="Rede 500 Mbps">
                                     Selecionar este plano
                                 </button>
                             </div>
@@ -498,8 +513,8 @@
                                 <p class="h4">R$ 29,90 <small class="fs-6">/mês</small></p>
                                 <button type="button" class="btn btn-primary w-100 dashboard-select-plan"
                                     data-plan-id="essencial" data-plan-label="Plano Essencial" data-plan-price="29.90"
-                                    data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-vcpu="2 vCPU"
-                                    data-server-ram="4 GB RAM" data-server-storage="40 GB SSD"
+                                    data-server-name="Dev • SP03" data-server-region="São Paulo"
+                                    data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM" data-server-storage="40 GB SSD"
                                     data-server-network="Rede 200 Mbps">
                                     Selecionar este plano
                                 </button>
@@ -547,12 +562,12 @@
                                 <input type="checkbox" class="form-check-input" id="remember">
                                 <label class="form-check-label" for="remember">Lembrar</label>
                             </div>
-                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                            <a href="#" class="text-decoration-none forgot-password-link">Esqueceu sua senha?</a>
                         </div>
                         <button type="submit" class="btn btn-login text-white">Entrar</button>
                         <div class="register-link">
                             Ainda não tem uma conta? <a href="#" class="text-decoration-none" data-bs-toggle="modal"
-                                href="/cadastro.html">Cadastre-se agora!</a>
+                                href="cadastro.html">Contrate agora!</a>
                         </div>
                     </form>
                 </div>
@@ -566,10 +581,10 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <script src="/js/dashboard.js?v=15112025"></script>
-    <script src="/js/script_reveal.js?v=15112025"></script>
-    <script src="/js/cadastro.js?v=15112025"></script>
-    <script src="/js/main_script.js?v=15112025"></script>
+    <script src="./js/dashboard.js?v=20112025"></script>
+    <script src="./js/script_reveal.js?v=20112025"></script>
+    <script src="./js/cadastro.js?v=20112025"></script>
+    <script src="./js/main_script.js?v=20112025"></script>
 </body>
 
 </html>

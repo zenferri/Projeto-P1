@@ -7,7 +7,7 @@
   const elements = document.querySelectorAll('.reveal');
   if (!elements.length) return;
 
-  // Configura o observador de interseção
+  // Configura o observador de interseção (vigia elementos do site para para avisar qd entram ou saem da área visivel - viewport)
   const observer = new IntersectionObserver((entries, obs) => {
     for (const entry of entries) {
       if (entry.isIntersecting) {

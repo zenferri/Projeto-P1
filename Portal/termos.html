@@ -26,198 +26,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- CSS externo -->
-    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025">
+    <link rel="stylesheet" type="text/css" href="./css/style7.css?v=15112025">
 
-    <link rel="stylesheet" href="/css/style_login.css">
+    <link rel="stylesheet" href="./css/style_login.css">
 
-    <link rel="stylesheet" href="/css/botoes.css">
+    <link rel="stylesheet" href="./css/botoes.css">
 
-    <link rel="stylesheet" href="/css/reveal.css">
-    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025">
+    <link rel="stylesheet" href="./css/reveal.css">
+    <link rel="stylesheet" href="./css/smallscreen.css?v=15112025">
 
 
     <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            line-height: 1.6;
-            color: #222;
-        } */
-
-        h1,
-        h2 {
-            color: white;
+        :root {
+            --bg: #0b1326;
+            --painel: rgba(255, 255, 255, 0.04);
+            --borda: rgba(255, 255, 255, 0.08);
+            --mate: #cbd5e1;
+            --text: #e2e8f0;
+            --destaque: #38bdf8;
         }
 
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            margin-top: 35px;
-            font-size: larger;
-            font-weight: bold;
-
-        }
-
-        p {
-            margin-bottom: 15px;
+        .termos-body {
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         .termos {
-            margin-top: 30px;
+            padding: 90px 0 60px;
+            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.08), transparent 32%),
+                radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.06), transparent 25%);
+        }
+
+        .termos-container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--painel);
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+            padding: 26px 22px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .termos-resumo {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--destaque);
+            border-radius: 12px;
+            padding: 16px 14px;
+            margin-bottom: 18px;
+        }
+
+        .termos-resumo h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #f8fafc;
+        }
+
+        .termos-resumo ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .termos-resumo li {
+            color: var(--mate);
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .termos-conteudo h1 {
+            font-size: clamp(30px, 4vw, 40px);
+            margin-bottom: 10px;
+            color: #f8fafc;
+            letter-spacing: -0.01em;
+        }
+
+        .termos-conteudo h2 {
+            margin-top: 28px;
+            margin-bottom: 8px;
+            font-size: 20px;
+            color: #f1f5f9;
+        }
+
+        .termos-conteudo p {
+            margin-bottom: 14px;
+            color: var(--mate);
+            line-height: 1.7;
+        }
+
+        .termos-destaque {
+            /* border-left: 3px solid var(--mate); */
+            /* background: rgba(56, 189, 248, 0.05); */
+            color: var(--text);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+        }
+
+        .termos-list {
+            list-style: disc;
+            padding-left: 22px;
+            margin-bottom: 14px;
+        }
+
+        .termos-list li {
+            color: var(--mate);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .termos-container {
+                padding: 18px 16px;
+            }
+
+            .termos-conteudo h1 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="termos-body">
     <section class="menu-top">
         <div class="superinfo-bg">
             <div class="superinfo">
                 <a href="#">Termos de Uso</a>
                 <!-- <a href="#documentos">Documentos</a> -->
-                <a href="#suporte">Suporte</a>
-                <a href="#quem_somos">Nossa equipe</a>
+                <a href="mailto:zenferri@gmail.com">Suporte</a>
+                <a href="./equipe.html#quem_somos">Nossa equipe</a>
             </div>
         </div>
 
         <header class="menu-bg">
             <div class="menu">
                 <div class="menu-logo">
-                    <a href="/index.html">Singularys</a>
+                    <a href="./index.html">Singularys</a>
                 </div>
                 <nav class="menu-nav">
                     <ul>
-                        <li><a href="/index.html">Sobre nós</a></li>
-                        <li><a href="/index.html#opcoes">Planos</a></li>
+                        <li><a href="./equipe.html#sobre">Sobre nós</a></li>
+                        <li><a href="./index.html#opcoes">Planos</a></li>
                         <!-- <li><a href="#login">Login</a></li> -->
                             <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                            <li><a href="/cadastro.html" class="botao-cadastro">Cadastre-se</a></li>
+                            <li><a href="./cadastro.html" class="botao-cadastro">Contrate</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
     </section>
+
     <section class="termos">
-        <div class="container">
-            <div class="col-12">
+        <div class="termos-container">
+            <div class="termos-resumo">
+                <h2>Resumo</h2>
+                <ul class="termos-list">
+                    <li>O VPS é autogerenciado: Isao significa que você cuida de instalação, segurança e backups próprios.</li>
+                    <li>Uso deve respeitar CPU/banda/armazenamento do plano; abuso pode gerar suspensão ou recomendação de upgrade.</li>
+                    <li>Pagamento em dia e dados cadastrais atualizados são obrigatórios.</li>
+                    <li>É proibido SPAM, atividades ilícitas ou que comprometam a infraestrutura.</li>
+                    <li>Disponibilidade alvo de 99% e reembolso integral em até 7 dias da ativação.</li>
+                </ul>
+            </div>
+
+            <div class="termos-conteudo">
                 <h1>Termos de Uso – Singularys</h1>
 
-                <p>Ao utilizar os serviços da <strong>Singularys</strong>, você declara estar legalmente apto a
-                    contratar e
-                    concorda
-                    com as condições descritas abaixo. As informações fornecidas podem ser verificadas a qualquer
-                    momento e
-                    inconsistências poderão resultar em bloqueio ou cancelamento. Os dados informados serão tratados
-                    exclusivamente
-                    para execução do contrato, em conformidade com a legislação aplicável. A contratação se aperfeiçoa
-                    quando
-                    você
-                    clica em <strong>“Aceito”</strong>.</p>
+                <div class="termos-destaque">
+                    Ao utilizar os serviços da <strong>Singularys</strong>, você declara estar legalmente apto a contratar e concorda com as condições descritas abaixo. As informações fornecidas podem ser verificadas a qualquer momento e inconsistências poderão resultar em bloqueio ou cancelamento. Os dados informados serão tratados exclusivamente para execução do contrato, em conformidade com a legislação aplicável. A contratação se aperfeiçoa quando você clica em <strong>“Aceito”</strong>.
+                </div>
 
                 <h2>1. Objeto do Serviço</h2>
-                <p>A Singularys fornece <strong>Servidores Virtuais Privados (VPS)</strong> de alto desempenho, operados
-                    em
-                    datacenter localizado no Brasil. O usuário é integralmente responsável pela instalação,
-                    configuração,
-                    segurança,
-                    manutenção e operação dos softwares dentro da VPS.</p>
+                <p>A Singularys fornece <strong>Servidores Virtuais Privados (VPS)</strong> de alto desempenho, operados em datacenter localizado no Brasil. O usuário é integralmente responsável pela configuração, segurança, manutenção e operação dos softwares dentro da VPS.</p>
 
                 <h2>2. Natureza do Serviço</h2>
-                <p>O VPS é um ambiente virtualmente isolado, executado em hosts físicos compartilhados. O uso de CPU,
-                    memória,
-                    disco
-                    e banda deve respeitar os limites do plano contratado. Em caso de uso abusivo, a Singularys poderá
-                    intervir
-                    para
-                    preservar a estabilidade da infraestrutura.</p>
+                <p>O VPS é um ambiente virtualmente isolado, executado em hosts físicos compartilhados. O uso de CPU, memória, disco e banda deve respeitar os limites do plano contratado. Em caso de uso abusivo, a Singularys poderá intervir para preservar a estabilidade da infraestrutura.</p>
 
                 <h2>3. Tráfego, Banda e Limites</h2>
-                <p>Os planos possuem limites específicos de transferência, armazenamento e processamento. Ao atingir
-                    limites
-                    críticos, a VPS poderá ser reduzida, suspensa ou receber recomendação de upgrade. Todo tráfego, de
-                    entrada
-                    ou
-                    saída, integra o consumo da VPS.</p>
+                <p>Os planos possuem limites específicos de transferência, armazenamento e processamento. Ao atingir limites críticos, a VPS poderá ficar instável, podendo ser suspensa ou receber recomendação de upgrade. Todo tráfego, de entrada ou saída, integra o consumo da VPS.</p>
 
                 <h2>4. Prazo, Renovação e Cancelamento</h2>
-                <p>Os planos são renovados automaticamente. O cancelamento pode ser solicitado a qualquer momento,
-                    mantendo
-                    o
-                    acesso
-                    até o fim do ciclo. Dentro de 7 dias da ativação, há direito ao reembolso integral; após esse
-                    período,
-                    não
-                    há
-                    devolução proporcional.</p>
+                <p>Os planos são renovados automaticamente. O cancelamento pode ser solicitado a qualquer momento, mantendo o acesso até o fim do ciclo. Dentro de 7 dias da ativação, há direito ao reembolso integral; após esse período, não há devolução proporcional.</p>
 
                 <h2>5. Credenciais e Acesso</h2>
-                <p>As credenciais fornecidas são pessoais e devem ser mantidas em sigilo. Toda ação realizada com essas
-                    credenciais
-                    será presumida como legítima. A restauração de acesso exige verificação de identidade.</p>
+                <p>As credenciais fornecidas são pessoais e devem ser mantidas em sigilo. Toda ação realizada com essas credenciais será presumida como legítima. A restauração de acesso exige verificação de identidade.</p>
 
                 <h2>6. Obrigações do Contratante</h2>
                 <p>Ao contratar a Singularys, você se compromete a:</p>
-                <p>• pagar pontualmente;<br>
-                    • manter seus dados atualizados;<br>
-                    • administrar integralmente sua VPS (sistema operacional, atualizações, firewall, permissões e
-                    serviços);<br>
-                    • manter seus próprios backups;<br>
-                    • não utilizar o serviço para SPAM, ataques, mineração de criptomoedas não autorizada ou atividades
-                    ilícitas;<br>
-                    • adotar medidas razoáveis de segurança digital.</p>
+                <ul class="termos-list">
+                    <li>pagar pontualmente;</li>
+                    <li>manter seus dados atualizados;</li>
+                    <li>administrar integralmente sua VPS (sistema operacional, atualizações, firewall, permissões e serviços);</li>
+                    <li>manter seus próprios backups;</li>
+                    <li>não utilizar o serviço para SPAM, ataques, mineração de criptomoedas não autorizada ou atividades ilícitas;</li>
+                    <li>adotar medidas razoáveis de segurança digital.</li>
+                </ul>
 
                 <h2>7. Obrigações da Singularys</h2>
-                <p>A Singularys se compromete a fornecer a infraestrutura contratada, manter seu datacenter operando,
-                    registrar
-                    acessos conforme o Marco Civil da Internet, prestar suporte técnico básico (infraestrutura) e
-                    comunicar
-                    manutenções que possam gerar indisponibilidade, exceto em emergências.</p>
+                <p>A Singularys se compromete a fornecer a infraestrutura contratada, manter seu datacenter operando, registrar acessos conforme o Marco Civil da Internet, prestar suporte técnico básico (infraestrutura) e comunicar manutenções que possam gerar indisponibilidade, exceto em emergências.</p>
 
                 <h2>8. Conteúdos e Usos Proibidos</h2>
-                <p>Não é permitido hospedar ou distribuir conteúdo ilícito, violar direitos de terceiros, executar
-                    atividades
-                    que
-                    exijam plano específico (ex.: streaming, conteúdo adulto) ou comprometer a integridade da
-                    infraestrutura.
-                </p>
+                <p>Não é permitido hospedar ou distribuir conteúdo ilícito, violar direitos de terceiros, executar atividades que exijam plano específico (ex.: streaming, conteúdo adulto) ou comprometer a integridade da infraestrutura.</p>
 
                 <h2>9. Garantia de Disponibilidade</h2>
-                <p>A Singularys garante 99% de disponibilidade mensal, com exceção de manutenções programadas, falhas
-                    decorrentes de
-                    sua configuração interna, ordens judiciais ou abusos de uso. Em caso de descumprimento, poderá ser
-                    solicitado
-                    desconto proporcional.</p>
+                <p>A Singularys garante 99% de disponibilidade mensal, com exceção de manutenções programadas, falhas decorrentes de sua configuração interna, ordens judiciais ou abusos de uso. Em caso de descumprimento, poderá ser solicitado desconto proporcional.</p>
 
                 <h2>10. Privacidade e Proteção de Dados</h2>
-                <p>A Singularys não acessa o conteúdo interno da sua VPS. Dados só poderão ser acessados para cumprir
-                    ordens
-                    legais
-                    ou defender direitos em disputa judicial. Registros de acesso são mantidos por 6 meses,
-                    criptografados.
-                    Nenhum
-                    dado é armazenado fora do Brasil.</p>
+                <p>A Singularys não acessa o conteúdo interno da sua VPS. Dados só poderão ser acessados para cumprir ordens legais ou defender direitos em disputa judicial. Registros de acesso são mantidos por 6 meses, criptografados. Nenhum dado é armazenado fora do Brasil.</p>
 
                 <h2>11. Backup</h2>
-                <p>A Singularys realiza backups <strong>globais e incrementais</strong> da infraestrutura, voltados à
-                    preservação do
-                    ambiente como um todo. Isso <strong>não garante recuperação individual de dados</strong> hospedados
-                    na
-                    VPS.
-                    Backups próprios são de sua inteira responsabilidade.</p>
+                <p>A Singularys realiza backups <strong>globais e incrementais</strong> da infraestrutura, voltados à preservação do ambiente como um todo. Isso <strong>não garante recuperação individual de dados</strong> hospedados na VPS. Backups próprios são de sua inteira responsabilidade.</p>
 
                 <h2>12. Suspensão e Desativação</h2>
-                <p>A VPS poderá ser suspensa nos casos de inadimplência, violação dos termos, uso abusivo, atividades
-                    ilícitas,
-                    SPAM, incidentes de segurança ou determinação de autoridades brasileiras.</p>
+                <p>A VPS poderá ser suspensa nos casos de inadimplência, violação dos termos, uso abusivo, atividades ilícitas, SPAM, incidentes de segurança ou determinação de autoridades brasileiras.</p>
 
                 <h2>13. Interpretação e Foro</h2>
-                <p>Este contrato será interpretado de forma mais favorável ao usuário. Conflitos poderão ser resolvidos
-                    no
-                    foro
-                    da
-                    residência do contratante (se pessoa física) ou no foro de Jaú/SP.</p>
+                <p>Este contrato será interpretado de forma mais favorável ao usuário. Conflitos poderão ser resolvidos no foro da residência do contratante no foro de Jaú/SP.</p>
             </div>
         </div>
     </section>
@@ -258,7 +279,7 @@
                                 <input type="checkbox" class="form-check-input" id="remember">
                                 <label class="form-check-label" for="remember">Lembrar</label>
                             </div>
-                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                            <a href="#" class="text-decoration-none forgot-password-link">Esqueceu sua senha?</a>
                         </div>
 
                         <button type="submit" class="btn btn-login text-white">Entrar</button>
@@ -266,7 +287,7 @@
 
 
                         <div class="register-link">
-                            Ainda não tem uma conta? <a href="/cadastro.html" class="text-decoration-none">Cadastre-se agora!</a>
+                            Ainda não tem uma conta? <a href="cadastro.html" class="text-decoration-none">Contrate agora!</a>
                         </div>
                     </form>
                 </div>
@@ -279,9 +300,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="/js/script_reveal.js"></script>
-    <script src="/js/cadastro.js"></script>
-    <script src="/js/main_script.js"></script>
+    <script src="./js/script_reveal.js"></script>
+    <script src="./js/cadastro.js"></script>
+    <script src="./js/main_script.js"></script>
 
 </body>
 

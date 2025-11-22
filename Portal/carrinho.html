@@ -31,104 +31,36 @@
         }
     </style>
 
-    <link rel="stylesheet" type="text/css" href="/css/style7.css?v=15112025_v3" id="themeStylesheet">
-    <link rel="stylesheet" href="/css/style_login.css">
-    <link rel="stylesheet" href="/css/botoes.css">
-    <link rel="stylesheet" href="/css/reveal.css">
-    <link rel="stylesheet" href="/css/smallscreen.css?v=15112025_v3">
-
-    <style>
-        .checkout-hero {
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.16), rgba(5, 5, 20, 0.7));
-            border-radius: 32px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 25px 45px rgba(5, 5, 20, 0.35);
-        }
-
-        .summary-card {
-            background: var(--cor-fundo-medio);
-            border-radius: 24px;
-            color: #fff;
-            padding: 1.5rem;
-            box-shadow: var(--sombreamento);
-        }
-
-        .summary-card ul {
-            padding-left: 1rem;
-        }
-
-        .summary-card li {
-            margin-bottom: .35rem;
-        }
-
-        .payment-card {
-            background: #f7f8ff;
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
-        }
-
-        .server-option {
-            background: var(--cor-fundo-medio);
-            border-radius: 20px;
-            color: #fff;
-            padding: 1.5rem;
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: var(--sombreamento);
-        }
-
-        .server-option ul {
-            padding-left: 1rem;
-        }
-
-        .server-option li {
-            margin-bottom: .35rem;
-        }
-
-        .pix-qr-placeholder {
-            background: repeating-linear-gradient(45deg, rgba(5, 5, 20, 0.08), rgba(5, 5, 20, 0.08) 10px, rgba(5, 5, 20, 0.02) 10px, rgba(5, 5, 20, 0.02) 20px);
-            border-radius: 16px;
-            height: 220px;
-            display: grid;
-            place-items: center;
-            color: #454BBA;
-            font-weight: 600;
-        }
-
-        .payment-tabs .btn-outline-primary.active {
-            background: #343c83;
-            color: #fff;
-        }
-
-        .status-message {
-            transition: opacity .3s ease;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/style7.css?v=15112025_v3" id="themeStylesheet">
+    <link rel="stylesheet" href="./css/style_login.css">
+    <link rel="stylesheet" href="./css/botoes.css">
+    <link rel="stylesheet" href="./css/reveal.css">
+    <link rel="stylesheet" href="./css/cart.css?v=21112025">
+    <link rel="stylesheet" href="./css/smallscreen.css?v=15112025_v3">
 </head>
 
 <body>
     <section class="menu-top">
-        <div class="superinfo-bg">
+        <!-- <div class="superinfo-bg">
             <div class="superinfo">
-                <a href="/termos.html">Termos de Uso</a>
+                <a href="./termos.html">Termos de Uso</a>
                 <a href="#suporte">Suporte</a>
-                <a href="#quem_somos">Nossa equipe</a>
+                <a href="./equipe.html#quem_somos">Nossa equipe</a>
             </div>
-        </div>
+        </div> -->
 
         <header class="menu-bg">
             <div class="menu">
                 <div class="menu-logo">
-                    <a href="/index.html">Singularys</a>
+                    <a href="./index.html">Singularys</a>
                 </div>
                 <nav class="menu-nav">
                     <ul>
-                        <li><a href="/index.html#sobre">Sobre nós</a></li>
-                        <li><a href="/cadastro.html">Cadastro</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
-                        <li><a href="/cadastro.html" class="botao-cadastro">Alterar plano</a></li>
+                        <!-- <li><a href="#" onclick="history.back(); return false;">Voltar</a></li> -->
+                        <li><a href="./index.html">Sair</a></li>
+                        <!-- <li><a href="./cadastro.html">Cadastro</a></li> -->
+                        <!-- <li><a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li> -->
+                        <!-- <li><a href="./cadastro.html" class="botao-cadastro">Alterar plano</a></li> -->
                     </ul>
                 </nav>
             </div>
@@ -142,7 +74,8 @@
                     <div class="col-lg-8">
                         <p class="text-uppercase text-white-50 mb-1">Resumo rápido</p>
                         <h1 class="h3 fw-bold mb-2">Finalize o provisionamento do seu servidor</h1>
-                        <p class="text-white-50 mb-0">Revise o plano selecionado e escolha o método de pagamento preferido. Assim que a transação for aprovada, iniciaremos o deploy automaticamente.</p>
+                        <p class="text-white-50 mb-0">Revise o plano selecionado e escolha o método de pagamento
+                            preferido. Assim que a transação for aprovada, iniciaremos o deploy automaticamente.</p>
                     </div>
                     <div class="col-lg-4 text-lg-end">
                         <p class="text-white-50 mb-1">Valor mensal</p>
@@ -154,15 +87,19 @@
             <div class="row g-4 align-items-start">
                 <div class="col-lg-8">
                     <div class="payment-card mb-4">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
+                        <div
+                            class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
                             <div>
                                 <h2 class="h4 fw-bold mb-1">Pagamento</h2>
-                                <p class="text-muted mb-0">Selecione PIX para pagar instantaneamente ou cartão de crédito para parcelar.</p>
+                                <p class="text-muted mb-0">Selecione PIX para pagar instantaneamente ou cartão de
+                                    crédito para parcelar.</p>
                             </div>
                             <div class="btn-group payment-tabs" role="group" aria-label="Forma de pagamento">
-                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentPix" value="pix" checked>
+                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentPix" value="pix"
+                                    checked>
                                 <label class="btn btn-outline-primary" for="paymentPix">PIX</label>
-                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentCard" value="card">
+                                <input type="radio" class="btn-check" name="paymentMethod" id="paymentCard"
+                                    value="card">
                                 <label class="btn btn-outline-primary" for="paymentCard">Cartão</label>
                             </div>
                         </div>
@@ -171,9 +108,11 @@
                             <div class="pix-qr-placeholder mb-3">
                                 <span>QR Code PIX</span>
                             </div>
-                            <p class="text-muted mb-1">Abra o app do seu banco e escaneie o código acima ou copie o código Pix copia e cola:</p>
+                            <p class="text-muted mb-1">Abra o app do seu banco e escaneie o código acima ou copie o
+                                código Pix copia e cola:</p>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="pixCode" value="00020101021226880014br.gov.bcb.pix2563singularys" readonly>
+                                <input type="text" class="form-control" id="pixCode"
+                                    value="00020101021226880014br.gov.bcb.pix2563singularys" readonly>
                                 <button class="btn btn-outline-primary" type="button" id="btnCopyPix">Copiar</button>
                             </div>
                         </div>
@@ -186,15 +125,18 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label" for="cardNumber">Número do cartão*</label>
-                                    <input type="text" class="form-control" id="cardNumber" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                                    <input type="text" class="form-control" id="cardNumber" inputmode="numeric"
+                                        maxlength="19" placeholder="0000 0000 0000 0000" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="cardExpiry">Validade*</label>
-                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" inputmode="numeric" maxlength="5" required>
+                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA"
+                                        inputmode="numeric" maxlength="5" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="cardCVV">CVV*</label>
-                                    <input type="text" class="form-control" id="cardCVV" inputmode="numeric" maxlength="4" required>
+                                    <input type="text" class="form-control" id="cardCVV" inputmode="numeric"
+                                        maxlength="4" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="cardInstallments">Parcelas</label>
@@ -247,14 +189,16 @@
                     <div class="summary-card">
                         <p class="text-uppercase text-white-50 small mb-2">Suporte Singularys</p>
                         <p class="text-white-50 mb-2">Dúvidas no pagamento? Estamos online 24/7 para te ajudar.</p>
-                        <a href="mailto:suporte@singularys.net" class="btn btn-outline-light w-100">Falar com o suporte</a>
+                        <a href="mailto:zenferri@gmail.com" class="btn btn-outline-warning w-100">Falar com o
+                            suporte</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div class="modal fade" id="serverSelectionModal" tabindex="-1" aria-labelledby="serverSelectionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="serverSelectionModal" tabindex="-1" aria-labelledby="serverSelectionModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -278,7 +222,11 @@
                                     <li>Backup incremental diário</li>
                                 </ul>
                                 <p class="h4">R$ 69,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="desempenho" data-plan-label="Plano Desempenho" data-plan-price="69.90" data-server-name="API • SP01" data-server-region="São Paulo" data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM" data-server-storage="100 GB SSD NVMe" data-server-network="Rede 1 Gbps dedicada">
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan"
+                                    data-plan-id="desempenho" data-plan-label="Plano Desempenho" data-plan-price="69.90"
+                                    data-server-name="API • SP01" data-server-region="São Paulo"
+                                    data-server-vcpu="8 vCPU" data-server-ram="16 GB RAM"
+                                    data-server-storage="100 GB SSD NVMe" data-server-network="Rede 1 Gbps dedicada">
                                     Selecionar este plano
                                 </button>
                             </div>
@@ -295,7 +243,11 @@
                                     <li>Snapshots semanais</li>
                                 </ul>
                                 <p class="h4">R$ 39,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="avancado" data-plan-label="Plano Avançado" data-plan-price="39.90" data-server-name="Banco • SP02" data-server-region="São Paulo" data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM" data-server-storage="80 GB SSD NVMe" data-server-network="Rede 500 Mbps">
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan"
+                                    data-plan-id="avancado" data-plan-label="Plano Avançado" data-plan-price="39.90"
+                                    data-server-name="Banco • SP02" data-server-region="São Paulo"
+                                    data-server-vcpu="4 vCPU" data-server-ram="8 GB RAM"
+                                    data-server-storage="80 GB SSD NVMe" data-server-network="Rede 500 Mbps">
                                     Selecionar este plano
                                 </button>
                             </div>
@@ -312,7 +264,11 @@
                                     <li>Snapshot mensal</li>
                                 </ul>
                                 <p class="h4">R$ 29,90 <small class="fs-6">/mês</small></p>
-                                <button type="button" class="btn btn-primary w-100 modal-select-plan" data-plan-id="essencial" data-plan-label="Plano Essencial" data-plan-price="29.90" data-server-name="Dev • SP03" data-server-region="São Paulo" data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM" data-server-storage="40 GB SSD" data-server-network="Rede 200 Mbps">
+                                <button type="button" class="btn btn-primary w-100 modal-select-plan"
+                                    data-plan-id="essencial" data-plan-label="Plano Essencial" data-plan-price="29.90"
+                                    data-server-name="Dev • SP03" data-server-region="São Paulo"
+                                    data-server-vcpu="2 vCPU" data-server-ram="4 GB RAM" data-server-storage="40 GB SSD"
+                                    data-server-network="Rede 200 Mbps">
                                     Selecionar este plano
                                 </button>
                             </div>
@@ -360,13 +316,14 @@
                                 <input type="checkbox" class="form-check-input" id="rememberCheckout">
                                 <label class="form-check-label" for="rememberCheckout">Lembrar</label>
                             </div>
-                            <a href="#" class="text-decoration-none">Esqueceu sua senha?</a>
+                            <a href="#" class="text-decoration-none forgot-password-link">Esqueceu sua senha?</a>
                         </div>
 
                         <button type="submit" class="btn btn-login text-white">Entrar</button>
 
                         <div class="register-link">
-                            Ainda não tem uma conta? <a href="/cadastro.html" class="text-decoration-none">Cadastre-se agora!</a>
+                            Ainda não tem uma conta? <a href="cadastro.html" class="text-decoration-none">Contrate
+                                agora!</a>
                         </div>
                     </form>
                 </div>
@@ -378,8 +335,8 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <script src="/js/checkout.js?v=15112025_v1"></script>
-    <script src="/js/main_script.js?v=15112025_v3"></script>
+    <script src="./js/checkout.js?v=20112025_v1"></script>
+    <script src="./js/main_script.js?v=20112025_v3"></script>
 </body>
 
 </html>

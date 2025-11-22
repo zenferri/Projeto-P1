@@ -1,9 +1,15 @@
+// IIFFE (Immediately Invoked Function Expression): função para não poluir o escopo global. Fica restrito dentro da função.
+
 (() => {
+
+    // Busca o select de VPS
     const vpsSelector = document.getElementById('vpsSelector');
+    // Se não existir, encerra o script aqui
     if (!vpsSelector) {
         return;
     }
 
+    // Referências aos elementos da área principal (hero) do VPS
     const heroElements = {
         displayName: document.getElementById('vpsDisplayName'),
         location: document.getElementById('vpsLocation'),
@@ -16,6 +22,7 @@
         memoryBar: document.getElementById('vpsMemoryUsageBar')
     };
 
+    // Referências aos elementos que exibem o plano contratado
     const planElements = {
         name: document.getElementById('vpsPlanTitle'),
         specs: document.getElementById('vpsPlanSpecs'),
@@ -25,6 +32,7 @@
         nextInvoice: document.getElementById('vpsNextInvoice')
     };
 
+    // Referências às métricas resumidas (cards abaixo do hero)
     const metricElements = {
         cpu: {
             value: document.getElementById('metricCpuUsage'),
@@ -48,10 +56,11 @@
         }
     };
 
+    // Lista ESTATICA de VPS com todos os dados que serão exibidos na dashboard
     const VPS_LIST = [
         {
-            id: 'api',
-            label: 'VM • api-singularys',
+            id: 'api',                      // usado como valor do select
+            label: 'VM • api-singularys',   // texto usado no selec
             name: 'VM • api-singularys',
             location: 'Ubuntu 24.04 LTS — Região São Paulo • VLAN 10',
             ip: '18.120.40.12',
@@ -67,6 +76,7 @@
             trafficUsed: '2.9 TB',
             trafficUsagePercent: 58,
             nextInvoice: 'Próxima fatura em 12 de dezembro',
+            // Métricas que alimentam os cards inferiores
             metrics: {
                 cpuValue: '62%',
                 cpuBar: 62,
@@ -150,27 +160,32 @@
         }
     ];
 
+    // Cria um mapa { id: objetoVps } para acesso rápido por id
     const VPS_MAP = VPS_LIST.reduce((acc, item) => {
         acc[item.id] = item;
         return acc;
     }, {});
 
+    // Função utilitária para definir texto em um elemento, com fallback '-'
     const setText = (element, value) => {
         if (element) {
             element.textContent = value || '-';
         }
     };
-
+    // Função utilitária para ajustar a largura da barra de progresso
     const setBar = (element, percent) => {
         if (element && typeof percent === 'number') {
             element.style.width = `${Math.max(0, Math.min(percent, 100))}%`;
         }
     };
 
+    // Aplica os dados de um VPS específico em todos os elementos da página
     const applyVpsData = (vps) => {
         if (!vps) {
             return;
         }
+
+        // area hero
         setText(heroElements.displayName, vps.name);
         setText(heroElements.location, vps.location);
         setText(heroElements.ip, vps.ip);
@@ -181,6 +196,7 @@
         setText(heroElements.memoryUsage, vps.memoryUsageLabel);
         setBar(heroElements.memoryBar, vps.memoryUsagePercent);
 
+        // plano
         setText(planElements.name, vps.planName);
         setText(planElements.specs, vps.planSpecs);
         setText(planElements.trafficIncluded, vps.trafficIncluded);
@@ -188,51 +204,67 @@
         setBar(planElements.trafficBar, vps.trafficUsagePercent);
         setText(planElements.nextInvoice, vps.nextInvoice);
 
+        // metricas - CPU
         setText(metricElements.cpu.value, vps.metrics.cpuValue);
         setBar(metricElements.cpu.bar, vps.metrics.cpuBar);
         setText(metricElements.cpu.extra, vps.metrics.cpuExtra);
 
+        // metricas - memória
         setText(metricElements.memory.value, vps.metrics.memoryValue);
         setBar(metricElements.memory.bar, vps.metrics.memoryBar);
         setText(metricElements.memory.extra, vps.metrics.memoryExtra);
 
+        // metricas - storage
         setText(metricElements.storage.value, vps.metrics.storageValue);
         setBar(metricElements.storage.bar, vps.metrics.storageBar);
         setText(metricElements.storage.extra, vps.metrics.storageExtra);
 
+        // metricas - uso da rede
         setText(metricElements.network.value, vps.metrics.networkValue);
         setBar(metricElements.network.bar, vps.metrics.networkBar);
         setText(metricElements.network.extra, vps.metrics.networkExtra);
     };
 
+    // Preenche o <select> com as opções de VPS
     VPS_LIST.forEach((vps) => {
         const option = document.createElement('option');
-        option.value = vps.id;
-        option.textContent = vps.label;
+        option.value = vps.id;              // valor usado internamente
+        option.textContent = vps.label;     // texto exibido para o usuário
         vpsSelector.appendChild(option);
     });
 
+    // Aplica na tela os dados do VPS atualmente selecionado no <select>
     const applyCurrentSelection = () => {
+        // Pega o VPS pelo id selecionado ou cai no primeiro da lista
         const selected = VPS_MAP[vpsSelector.value] || VPS_LIST[0];
         applyVpsData(selected);
     };
 
+    // Atualiza a dashboard sempre que o usuário trocar o VPS no select
     vpsSelector.addEventListener('change', applyCurrentSelection);
+    // Define o valor inicial do select para o primeiro VPS da lista
     vpsSelector.value = VPS_LIST[0]?.id || '';
+    // Aplica os dados iniciais
     applyCurrentSelection();
 
+    // Botão "Comprar novo VPS"
     const buyButton = document.getElementById('btnBuyNewVps');
+    // Elemento do modal de seleção de servidor
     const serverSelectionModalElement = document.getElementById('dashboardServerSelectionModal');
+    // Instância do modal Bootstrap, se o elemento existir
     const serverSelectionModal = serverSelectionModalElement
         ? new bootstrap.Modal(serverSelectionModalElement)
         : null;
 
+    // Ao clicar no botão de compra, abre o modal (se existir)
     buyButton?.addEventListener('click', () => {
         serverSelectionModal?.show();
     });
 
+    // Monta a URL do carrinho com base nos data-attributes do botão
     const buildCartUrl = (dataset) => {
-        const cartUrl = new URL('/carrinho.html', window.location.href);
+        // Cria URL relativa a partir da URL atual
+        const cartUrl = new URL('carrinho.html', window.location.href);
         if (dataset.planId) {
             cartUrl.searchParams.set('plano', dataset.planId);
         }
@@ -263,14 +295,17 @@
         return cartUrl;
     };
 
+    // Seleciona os botões de plano dentro do modal (cada card de servidor)
     const modalButtons = serverSelectionModalElement
         ? serverSelectionModalElement.querySelectorAll('.dashboard-select-plan')
         : [];
 
+    // Para cada botão de plano, adiciona o comportamento de ir para o carrinho
     modalButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            button.disabled = true;
+            button.disabled = true; // evita clique duplo
             const cartUrl = buildCartUrl(button.dataset || {});
+            // Redireciona para o carrinho com os parâmetros montados
             window.location.href = `${cartUrl.pathname}${cartUrl.search}`;
         });
     });

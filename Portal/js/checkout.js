@@ -1,5 +1,5 @@
 (() => {
-    const DASHBOARD_URL = '/dashboard.html';
+    const DASHBOARD_URL = 'dashboard.html';
     const selectionWrapper = document.getElementById('checkoutSummary');
     if (!selectionWrapper) {
         return;
