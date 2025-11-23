@@ -219,6 +219,23 @@
                                 <input type="tel" class="form-control" id="inputWhatsapp" name="telefone" required
                                     placeholder="(11) 90000-0000">
                             </div>
+                            <div class="col-md-6">
+                                <label for="inputPassword" class="form-label">Senha de acesso*</label>
+                                <input type="password" class="form-control" id="inputPassword" name="senha" required
+                                    minlength="8" autocomplete="new-password"
+                                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+                                    aria-describedby="passwordHelp"
+                                    placeholder="Crie uma senha segura">
+                                <div class="form-text text-muted" id="passwordHelp">
+                                    Mínimo de 8 caracteres com letras, números e um símbolo.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputPasswordConfirm" class="form-label">Confirme a senha*</label>
+                                <input type="password" class="form-control" id="inputPasswordConfirm"
+                                    name="senhaConfirmacao" required minlength="8" autocomplete="new-password"
+                                    placeholder="Repita a senha escolhida">
+                            </div>
 
                             <div class="col-md-8">
                                 <label for="inputEndereco" class="form-label">Endereço*</label>

@@ -24,6 +24,8 @@
         const cnpjInput = document.getElementById('inputCNPJ');
         const phoneInput = document.getElementById('inputWhatsapp');
         const emailInput = document.getElementById('inputEmail');
+        const passwordInput = document.getElementById('inputPassword');
+        const passwordConfirmInput = document.getElementById('inputPasswordConfirm');
         const verificationModalElement = document.getElementById('verificationModal');
         const verificationEmail = document.getElementById('verificationEmail');
         const verificationForm = document.getElementById('verificationForm');
@@ -470,6 +472,39 @@
                 }
                 updateFieldValidityClass(emailInput);
             });
+        }
+        // Campo para cadastro e checagem de senha 
+        if (passwordInput) {
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+            const validatePasswordMatch = () => {
+                if (!passwordConfirmInput) {
+                    return;
+                }
+                if (!passwordConfirmInput.value) {
+                    passwordConfirmInput.setCustomValidity('');
+                } else if (passwordInput.value !== passwordConfirmInput.value) {
+                    passwordConfirmInput.setCustomValidity('As senhas precisam ser iguais.');
+                } else {
+                    passwordConfirmInput.setCustomValidity('');
+                }
+                updateFieldValidityClass(passwordConfirmInput);
+            };
+            passwordInput.addEventListener('input', () => {
+                if (!passwordInput.value) {
+                    passwordInput.setCustomValidity('');
+                } else if (!passwordPattern.test(passwordInput.value)) {
+                    passwordInput.setCustomValidity('Use 8 caracteres com letras, números e símbolo.');
+                } else {
+                    passwordInput.setCustomValidity('');
+                }
+                updateFieldValidityClass(passwordInput);
+                validatePasswordMatch();
+            });
+            if (passwordConfirmInput) {
+                passwordConfirmInput.addEventListener('input', () => {
+                    validatePasswordMatch();
+                });
+            }
         }
 
         if (verificationCodeInput) {

@@ -1,10 +1,23 @@
+// Fluxo da aplicação:
+// 	•	Ao carregar a página, o script verifica se o checkout existe, define um plano padrão, tenta ler o plano da URL e preenche o resumo.
+// 	•	Ele configura o modal de seleção de servidor para permitir troca de plano, atualizando resumo e URL.
+// 	•	Alterna automaticamente entre layouts de PIX e cartão conforme o método escolhido.
+// 	•	Aplica máscaras nos campos de cartão para facilitar a digitação.
+// 	•	Facilita a cópia do código PIX com feedback visual.
+// 	•	Na finalização, valida o formulário (no caso do cartão), mostra uma mensagem de sucesso e redireciona para a dashboard.
+
 (() => {
+
+    // URL de destino após pagamento
     const DASHBOARD_URL = 'dashboard.html';
+
+    // Wrapper do resumo de checkout. se não existir, não faz nada
     const selectionWrapper = document.getElementById('checkoutSummary');
     if (!selectionWrapper) {
         return;
     }
 
+    // Seleção padrão do plano (fallback)
     const DEFAULT_SELECTION = {
         planId: 'desempenho',
         planLabel: 'Plano Desempenho',
@@ -17,11 +30,13 @@
         network: 'Rede 1 Gbps dedicada'
     };
 
+    // Formata um número como moeda em pt-BR
     const formatCurrency = (value) => {
         const numberValue = Number(value) || 0;
         return numberValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     };
 
+    // Lê parâmetros da URL e monta o objeto de seleção
     const readSelectionFromParams = () => {
         const params = new URLSearchParams(window.location.search);
         const rawPrice = params.get('preco');
@@ -39,6 +54,7 @@
         };
     };
 
+    // Estado atual da seleção
     let selection = readSelectionFromParams();
 
     const serverNameEl = document.getElementById('checkoutServerName');
@@ -50,6 +66,7 @@
         document.getElementById('checkoutTotal')
     ];
 
+    // Aplica a seleção atual ao resumo (DOM)
     const applySelectionToSummary = () => {
         if (serverNameEl) {
             serverNameEl.textContent = selection.serverName;
@@ -75,6 +92,7 @@
         });
     };
 
+    // Atualiza a URL com os parâmetros da seleção atual (sem recarregar)
     const updateUrlWithSelection = () => {
         const url = new URL(window.location.href);
         url.searchParams.set('plano', selection.planId);
@@ -89,8 +107,10 @@
         window.history.replaceState(null, '', `${url.pathname}${url.search}`);
     };
 
+    // Preenche o resumo na carga inicial
     applySelectionToSummary();
 
+    // Converte um valor de preço para número ou null
     const parsePriceValue = (value) => {
         if (value === undefined || value === null || value === '') {
             return null;
@@ -100,6 +120,7 @@
         return Number.isFinite(numberValue) ? numberValue : null;
     };
 
+    // Modal de troca de servidor/plano
     const changeServerButton = document.getElementById('btnChangeServer');
     const serverSelectionModalElement = document.getElementById('serverSelectionModal');
     const serverSelectionModal = serverSelectionModalElement ? new bootstrap.Modal(serverSelectionModalElement) : null;
@@ -107,10 +128,12 @@
         ? Array.from(serverSelectionModalElement.querySelectorAll('.modal-select-plan'))
         : [];
 
+    // Abre o modal ao clicar em "trocar servidor"
     changeServerButton?.addEventListener('click', () => {
         serverSelectionModal?.show();
     });
 
+    // Atualiza a seleção com os dados do botão escolhido no modal
     const handleServerSelection = (dataset) => {
         if (!dataset) {
             return;
@@ -133,12 +156,14 @@
         serverSelectionModal?.hide();
     };
 
+    // Liga cada botão do modal ao handler de seleção
     modalSelectButtons.forEach((button) => {
         button.addEventListener('click', () => {
             handleServerSelection(button.dataset);
         });
     });
 
+    // Alternância entre PIX e cartão
     const pixRadio = document.getElementById('paymentPix');
     const cardRadio = document.getElementById('paymentCard');
     const pixContent = document.getElementById('pixContent');
@@ -158,18 +183,21 @@
     cardRadio?.addEventListener('change', togglePaymentViews);
     togglePaymentViews();
 
+    // Campos de cartão + máscaras
     const cardNumber = document.getElementById('cardNumber');
     const cardExpiry = document.getElementById('cardExpiry');
     const cardCVV = document.getElementById('cardCVV');
 
     const digitsOnly = (value) => value.replace(/\D/g, '');
 
+    // Máscara do número do cartão: 1234 1234 1234 1234
     cardNumber?.addEventListener('input', () => {
         const digits = digitsOnly(cardNumber.value).slice(0, 16);
         const grouped = digits.replace(/(.{4})/g, '$1 ').trim();
         cardNumber.value = grouped;
     });
 
+    // Máscara de validade: MM/AA
     cardExpiry?.addEventListener('input', () => {
         const digits = digitsOnly(cardExpiry.value).slice(0, 4);
         if (digits.length <= 2) {
@@ -179,10 +207,12 @@
         }
     });
 
+    // CVV: até 4 dígitos
     cardCVV?.addEventListener('input', () => {
         cardCVV.value = digitsOnly(cardCVV.value).slice(0, 4);
     });
 
+    // Cópia do código PIX
     const pixCodeInput = document.getElementById('pixCode');
     const copyPixButton = document.getElementById('btnCopyPix');
     copyPixButton?.addEventListener('click', () => {
@@ -191,8 +221,10 @@
         }
         let copyAction;
         if (navigator.clipboard?.writeText) {
+            // API moderna de clipboard
             copyAction = navigator.clipboard.writeText(pixCodeInput.value);
         } else {
+            // Fallback legado
             pixCodeInput.select();
             const didCopy = document.execCommand && document.execCommand('copy');
             pixCodeInput.setSelectionRange(0, 0);
@@ -212,6 +244,7 @@
             });
     });
 
+    // Finalização do pagamento
     const finalizeButton = document.getElementById('btnFinalize');
     const statusMessage = document.getElementById('paymentStatus');
     const cardForm = document.getElementById('cardForm');
@@ -219,6 +252,7 @@
     const getSelectedMethod = () => (cardRadio?.checked ? 'card' : 'pix');
 
     finalizeButton?.addEventListener('click', () => {
+        // Se for cartão, exige formulário válido (HTML5)
         if (getSelectedMethod() === 'card' && cardForm) {
             if (!cardForm.checkValidity()) {
                 cardForm.reportValidity();
@@ -233,6 +267,6 @@
         }
         setTimeout(() => {
             window.location.href = DASHBOARD_URL;
-        }, 1800);
+        }, 2800);
     });
 })();

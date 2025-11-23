@@ -8,6 +8,8 @@
     if (!vpsSelector) {
         return;
     }
+    const sshRecoveryButton = document.getElementById('btnSendSshCredentials');
+    const sshRecoveryFeedback = document.getElementById('sshRecoveryFeedback');
 
     // Referências aos elementos da área principal (hero) do VPS
     const heroElements = {
@@ -178,6 +180,14 @@
             element.style.width = `${Math.max(0, Math.min(percent, 100))}%`;
         }
     };
+    const setSshFeedback = (message, variant = 'muted') => {
+        if (!sshRecoveryFeedback) {
+            return;
+        }
+        sshRecoveryFeedback.classList.remove('d-none', 'text-success', 'text-white-50');
+        sshRecoveryFeedback.classList.add(variant === 'success' ? 'text-success' : 'text-white-50');
+        sshRecoveryFeedback.textContent = message;
+    };
 
     // Aplica os dados de um VPS específico em todos os elementos da página
     const applyVpsData = (vps) => {
@@ -309,4 +319,19 @@
             window.location.href = `${cartUrl.pathname}${cartUrl.search}`;
         });
     });
+
+    // Botão para recuperar credenciais SSH 
+    if (sshRecoveryButton) {
+        const defaultLabel = sshRecoveryButton.textContent.trim() || 'Enviar credenciais SSH';
+        sshRecoveryButton.addEventListener('click', () => {
+            sshRecoveryButton.disabled = true;
+            sshRecoveryButton.textContent = 'Enviando...';
+            setSshFeedback('Reenviando usuário e senha SSH...', 'muted');
+            setTimeout(() => {
+                setSshFeedback('Credenciais enviadas para o e-mail cadastrado.', 'success');
+                sshRecoveryButton.disabled = false;
+                sshRecoveryButton.textContent = defaultLabel;
+            }, 1600);
+        });
+    }
 })();
