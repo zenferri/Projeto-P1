@@ -1,12 +1,17 @@
 (() => {
+
+    // Função principal de inicialização do fluxo de cadastro
     const initCadastroModal = () => {
         const form = document.getElementById('cadastroForm');
+
+        // Evita rodar duas vezes se o formulário não existe ou já foi inicializado
         if (!form || form.dataset.initialized === 'true') {
             return;
         }
 
         form.dataset.initialized = 'true';
 
+        // Captura de elementos do DOM (modais, campos, botões etc.)
         const cadastroModalElement = document.getElementById('exampleModal');
         const pfFields = document.getElementById('pfFields');
         const pjFields = document.getElementById('pjFields');
@@ -45,6 +50,8 @@
         const termsModalContent = document.getElementById('termsModalContent');
         const termsAgreeButton = document.getElementById('termsAgreeBtn');
         const termsDeclineButton = document.getElementById('termsDeclineBtn');
+
+        // URL base do carrinho e catálogo de planos
         const CART_URL = 'carrinho.html';
         const PLANOS = {
             essencial: {
@@ -84,11 +91,14 @@
             specsList: document.getElementById('selectedPlanSpecs')
         };
 
+        // Instâncias dos modais Bootstrap, se existirem! 
         const cadastroModal = cadastroModalElement ? bootstrap.Modal.getOrCreateInstance(cadastroModalElement) : null;
         const verificationModal = verificationModalElement ? new bootstrap.Modal(verificationModalElement) : null;
         const serverSelectionModal = serverSelectionModalElement ? new bootstrap.Modal(serverSelectionModalElement) : null;
         const serverSummaryModal = serverSummaryModalElement ? new bootstrap.Modal(serverSummaryModalElement) : null;
         const termsModal = termsModalElement ? bootstrap.Modal.getOrCreateInstance(termsModalElement) : null;
+
+        // Flags (ou variáveis) de estado
         let shouldValidate = false;
         let termsShouldReturnToCadastro = false;
         let termsLoaded = false;
@@ -97,8 +107,10 @@
         let sendToCartAfterSelection = false;
         const serverOptionsByPlan = {};
 
+        // Helper para deixar só dígitos e limitar tamanho
         const digitsOnly = (value, maxLength) => value.replace(/\D/g, '').slice(0, maxLength);
 
+        // Copia simples de dataset de um elemento
         const cloneDataset = (dataset = {}) => {
             const clone = {};
             if (!dataset) {
@@ -109,7 +121,7 @@
             });
             return clone;
         };
-
+        // Normaliza chave do plano e resolve definição
         const normalizePlanKey = (value) => (value ? value.toLowerCase() : '');
 
         const getPlanDefinition = (planKey) => {
@@ -117,6 +129,7 @@
             return PLANOS[normalized] || planoSelecionado;
         };
 
+        // Monta objeto selectedServerOption a partir de dataset ou plano padrão
         const setSelectedServerOptionFromDataset = (dataset = {}) => {
             const planDefinition = getPlanDefinition(dataset.planId);
             selectedServerOption = {
@@ -133,6 +146,7 @@
             };
         };
 
+        // Garante que sempre haja uma seleção de servidor
         const ensureInitialServerSelection = () => {
             if (selectedServerOption && selectedServerOption.planId) {
                 return;
@@ -145,6 +159,7 @@
             }
         };
 
+        // Atualiza o modal de resumo de servidor
         const updateServerSummaryModal = () => {
             ensureInitialServerSelection();
             const selection = selectedServerOption || {};
@@ -179,7 +194,7 @@
                 serverSummaryElements.network.textContent = selection.serverNetwork || 'Rede não informada';
             }
         };
-
+        // Monta URL do carrinho com query params do plano
         const buildCartUrlFromSelection = () => {
             ensureInitialServerSelection();
             const selection = selectedServerOption || {};
@@ -210,11 +225,13 @@
             return cartUrl;
         };
 
+        // Redireciona para o carrinho
         const navigateToCart = () => {
             const cartUrl = buildCartUrlFromSelection();
             window.location.href = `${cartUrl.pathname}${cartUrl.search}`;
         };
 
+        // Exibe modal de resumo de plaon
         const showServerSummaryModal = () => {
             updateServerSummaryModal();
             if (serverSummaryModal) {
@@ -222,6 +239,7 @@
             }
         };
 
+        // Após verificação de email, leva para o resumo de servidor
         const proceedToServerSummary = () => {
             if (verificationModal && verificationModalElement) {
                 const handleHidden = () => {
@@ -235,8 +253,10 @@
             }
         };
 
+        // Aplica dados do plano selecionado na seção hero
         const applyPlanSummary = () => {
             const { heroName, heroPrice, resumoTitulo, resumoDescricao, specsList } = planSummaryElements;
+            // e aqui faz atualização dos elementos
             if (heroName) {
                 heroName.textContent = planoSelecionado.nome;
             }
@@ -259,6 +279,7 @@
             }
         };
 
+        // Troca o plano pela chave
         const setPlanByKey = (planKey) => {
             const normalizedPlanKey = (planKey || '').toLowerCase();
             if (!normalizedPlanKey || !PLANOS[normalizedPlanKey]) {
@@ -273,6 +294,7 @@
             return true;
         };
 
+        // Lê o plano da query string se houver ?plano=...
         const selectPlanFromQuery = () => {
             const params = new URLSearchParams(window.location.search);
             const planParam = params.get('plano');
@@ -282,6 +304,7 @@
         };
         selectPlanFromQuery();
 
+        // Helpers de validação, máscaras, eventos, termos etc....
         const isFieldElement = (element) =>
             element instanceof HTMLInputElement ||
             element instanceof HTMLSelectElement ||
@@ -681,9 +704,11 @@
         }
     };
 
+    // Namespace global da aplicação
     window.Singularys = window.Singularys || {};
     window.Singularys.initCadastroModal = initCadastroModal;
 
+    // Inicialização automática quando o DOM estiver pronto
     if (document.readyState !== 'loading') {
         initCadastroModal();
     } else {
