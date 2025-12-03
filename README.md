@@ -151,11 +151,13 @@ O modelo de negócio foi estruturado com base na metodologia Business Model Canv
 
 O modelo pode ser acessado em https://www.singularys.net/assets/canvas.html
 
-## 7. Paleta de Cores
+## 7. Paleta de Cores e Protótipo Figma
 
 O front-end deverá sser construído com base na seguinte paleta de cores, disponível em 
 
 https://www.singularys.net/assets/paleta.html
+
+O Protótipo pode ser acessado em https://www.figma.com/proto/Pw26SgXljrD4fwjItDOrJI/Prot%C3%B3tipo-singularys?node-id=2053-101&t=Cx1jDxWT21nUT1KS-1
 
 
 ## 8. Protótipo de Fluxo de Provisionamento
