@@ -16,9 +16,10 @@
 
 ### Integrantes
 
-- Guilherme Henrique Volpato
+- Evellyn Santana Marinho
 - José Augusto Zen Ferri
 - Rafael Henrique Biliasi
+- Tainara Santos
 
 **Data:** Setembro/2025
 <br>
