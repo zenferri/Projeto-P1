@@ -245,7 +245,7 @@ O diagrama entidade-relacionamento (DER) representa as principais estruturas do 
 
 ### Diagrama
 
-![Diagrama ER do Sistema](./assets/der.png)
+![Diagrama ER do Sistema](./assets/der.jpeg)
 
 ### Considerações
 
