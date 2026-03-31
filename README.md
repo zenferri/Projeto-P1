@@ -5,14 +5,13 @@
 **Faculdade de Tecnologia de Jahu**
 
 **Curso:** Desenvolvimento de Software Multiplataforma  
-**Disciplina:** Engenharia de Software I  
+**Disciplina:** Engenharia de Software II 
 **Turma:** 2025.2
 
 ## Projeto
 
 **Portal de Deploy de Máquinas Virtuais (Proxmox)**<br>
-**Codinome: <i>Habitat</i>**<br>
-**Versão 1.0 – 2025.2**
+**Versão 1.2 – 2025.2**
 
 ### Integrantes
 
@@ -38,15 +37,17 @@
 - [4. Requisitos Funcionais e Não Funcionais](#4-requisitos-funcionais-e-não-funcionais)
   - [4.1 Requisitos Funcionais](#41-requisitos-funcionais)
     - [RF01](#rf01) • [RF02](#rf02) • [RF03](#rf03) • [RF04](#rf04) • [RF05](#rf05)
-    - [RF06](#rf06) • [RF07](#rf07)
+    - [RF06](#rf06) • [RF07](#rf07) • [RF08](#rf08) • [RF09](#rf09) • [RF10](#rf10)
+    - [RF11](#rf11) • [RF12](#rf12) • [RF13](#rf13) • [RF14](#rf14)
   - [4.2 Requisitos Não Funcionais](#42-requisitos-não-funcionais)
     - [RNF01](#rnf01) • [RNF02](#rnf02) • [RNF03](#rnf03) • [RNF04](#rnf04) • [RNF05](#rnf05)
-    - [RNF06](#rnf06) • [RNF07](#rnf07)
+    - [RNF06](#rnf06) • [RNF07](#rnf07) • [RNF08](#rnf08) • [RNF09](#rnf09)
 - [5. Estudo de Viabilidade](#5-estudo-de-viabilidade)
 - [6. Canvas de Modelo de Negócio](#6-canvas-de-modelo-de-negócio)
 - [7. Paleta de Cores](#7-paleta-de-cores)
 - [8. Protótipo de Fluxo de Provisionamento](#8-protótipo-de-fluxo-de-provisionamento)
 - [9. Protótipo de Arquitetura Técnica](#9-protótipo-de-arquitetura-técnica)
+  - [9.1 Modelo de Dados (DER)](#91-modelo-de-dados-der)
 - [10. Segurança e Governança](#10-segurança-e-governança)
 - [11. Cronograma da Primeira Etapa](#11-cronograma-da-primeira-etapa-20252)
 - [12. Referências](#12-referências)
@@ -96,35 +97,55 @@ A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo.
 
 ### 4.1 Requisitos Funcionais
 
-- <a id="rf01"></a>**RF01** – Cadastrar e autenticar clientes: O sistema deve permitir o registro de novos clientes, com validação de e-mail, bem como o login seguro de usuários existentes.
+- <a id="rf01"></a>**RF01** – Cadastrar e autenticar clientes: O sistema deve permitir o registro de novos clientes, com persistência em banco de dados (tabela `usuarios`), incluindo validação de e-mail, armazenamento seguro de senha (hash) e controle de acesso por papéis (`papeis` e `usuarios_papeis`).
 
-- <a id="rf02"></a>**RF02** – Catalogar planos de VPS: O portal deve exibir a lista de planos disponíveis, com especificações de CPU, memória, armazenamento e preço.
+- <a id="rf02"></a>**RF02** – Catalogar planos de VPS: O portal deve exibir a lista de planos disponíveis, armazenados na tabela `planos`, contendo especificações de CPU, memória, armazenamento e preço.
 
-- <a id="rf03"></a>**RF03** – Selecionar e realizar pedido: O cliente deve poder selecionar um plano, gerar um pedido e visualizar os detalhes antes de confirmar.
+- <a id="rf03"></a>**RF03** – Selecionar e realizar pedido: O cliente deve poder selecionar um plano, gerar um pedido e visualizar os detalhes antes de confirmar, com registro na tabela `pedidos`.
 
-- <a id="rf04"></a>**RF04** – Integrar com gateway de pagamento: O sistema deve permitir que o cliente realize pagamento online (cartão/Pix), recebendo confirmação automática via webhook.
+- <a id="rf04"></a>**RF04** – Integrar com gateway de pagamento: O sistema deve permitir que o cliente realize pagamento online (cartão/Pix), registrando as transações na tabela `pagamentos`, com confirmação automática via webhook e controle de idempotência.
 
-- <a id="rf05"></a>**RF05** – Provisionar automaticamente a VM: Após confirmação de pagamento, o sistema deve disparar o processo de criação da VM no Proxmox, a partir de um template configurado com cloud-init.
+- <a id="rf05"></a>**RF05** – Provisionar automaticamente a VM: Após confirmação de pagamento, o sistema deve disparar o processo de criação da VM no Proxmox, a partir de um template configurado com cloud-init, utilizando processamento assíncrono via `fila_tarefas`.
 
-- <a id="rf06"></a>**RF06** – Configurar a VM: O sistema deve aplicar automaticamente CPU, memória, armazenamento, rede e hostname conforme o plano contratado.
+- <a id="rf06"></a>**RF06** – Configurar a VM: O sistema deve aplicar automaticamente CPU, memória, armazenamento, rede e hostname conforme o plano contratado, com persistência dessas informações na tabela `maquinas_virtuais`.
 
-- <a id="rf07"></a>**RF07** – Gerar e entregar as credenciais: O sistema deve registrar e disponibilizar ao cliente as credenciais de acesso à sua VM no painel do portal.
+- <a id="rf07"></a>**RF07** – Gerar e entregar as credenciais: O sistema deve registrar e disponibilizar ao cliente as credenciais de acesso à sua VM no painel do portal, armazenadas de forma segura na tabela `credenciais`.
+
+- <a id="rf08"></a>**RF08** – Registrar eventos de provisionamento: O sistema deve registrar todas as etapas do processo de provisionamento na tabela `eventos_provisionamento`, incluindo status, tipo e mensagens de erro ou sucesso.
+
+- <a id="rf09"></a>**RF09** – Auditoria de ações: O sistema deve registrar ações relevantes dos usuários e do sistema na tabela `logs_auditoria`, garantindo rastreabilidade e segurança operacional.
+
+- <a id="rf10"></a>**RF10** – Monitoramento de recursos: O sistema deve disponibilizar ao cliente estatísticas de uso de CPU, memória, armazenamento e tráfego de rede, com atualização em tempo real ou em intervalos reduzidos.
+
+- <a id="rf11"></a>**RF11** – Gerenciar snapshots: O sistema deve permitir a criação e restauração de snapshots das máquinas virtuais sob demanda, possibilitando retorno a estados anteriores.
+
+- <a id="rf12"></a>**RF12** – Backup e restauração: O sistema deve permitir a execução de backups automáticos (diários) e restauração sob demanda, conforme regras definidas no plano contratado.
+
+- <a id="rf13"></a>**RF13** – Gerenciar sessões e autenticação: O sistema deve gerenciar sessões de usuários por meio de tokens armazenados na tabela `tokens`, com controle de validade e expiração.
+
+- <a id="rf14"></a>**RF14** – Atendimento automatizado via IA (opcional): O sistema poderá disponibilizar atendimento automatizado, registrando interações nas tabelas `conversas`, `mensagens` e `feedback_ia`.
+
+---
 
 ### 4.2 Requisitos Não Funcionais
 
 - <a id="rnf01"></a>**RNF01** – Disponibilidade SLA: O portal deve estar disponível em 99,5% do tempo mensal, excetuando-se manutenções programadas.
 
-- <a id="rnf02"></a>**RNF02** – Desempenho: resposta < 3s
+- <a id="rnf02"></a>**RNF02** – Desempenho: O sistema deve apresentar tempo de resposta inferior a 3 segundos para operações comuns.
 
 - <a id="rnf03"></a>**RNF03** – Escalabilidade: O sistema deve suportar crescimento do número de clientes e provisionamento simultâneo de múltiplas VMs, sem degradação significativa de performance.
 
-- <a id="rnf04"></a>**RNF04** – Segurança: Todas as comunicações devem ser realizadas via HTTPS (TLS 1.2 ou superior), e as senhas armazenadas com criptografia forte.
+- <a id="rnf04"></a>**RNF04** – Segurança: Todas as comunicações devem ser realizadas via HTTPS (TLS 1.2 ou superior), com armazenamento seguro de credenciais e controle de acesso.
 
 - <a id="rnf05"></a>**RNF05** – Confiabilidade: O provisionamento de VMs deve ser idempotente, garantindo que um mesmo pedido não gere múltiplas máquinas em caso de repetição de eventos do gateway.
 
-- <a id="rnf06"></a>**RNF06** – Usabilidade: A interface deve ser intuitiva e responsiva, acessível em navegadores modernos e dispositivos móveis.
+- <a id="rnf06"></a>**RNF06** – Usabilidade: A interface deve ser intuitiva, responsiva e compatível com navegadores modernos e dispositivos móveis.
 
-- <a id="rnf07"></a>**RNF07** – Conformidade com a LGPD: O portal deve estar em conformidade com a LGPD (Lei Geral de Proteção de Dados) no tratamento de dados pessoais de clientes.
+- <a id="rnf07"></a>**RNF07** – Conformidade com a LGPD: O sistema deve garantir conformidade com a Lei Geral de Proteção de Dados (LGPD), assegurando o tratamento adequado dos dados pessoais.
+
+- <a id="rnf08"></a>**RNF08** – Observabilidade: O sistema deve manter registros de logs, eventos e métricas que permitam monitoramento, auditoria e diagnóstico de falhas.
+
+- <a id="rnf09"></a>**RNF09** – Processamento assíncrono: O sistema deve utilizar filas de processamento para operações críticas (provisionamento, integração com gateway), garantindo resiliência e escalabilidade.
 
 ## 5. Estudo de Viabilidade
 
@@ -197,6 +218,46 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 • Camada de Integração com Pagamentos: O portal contará com integração a gateways de pagamento como Stripe ou Mercado Pago, que enviarão confirmações via webhooks para disparo do processo de provisionamento.
 
 • Camada de Segurança: Todas as comunicações serão realizadas por meio de TLS (HTTPS), assegurando confidencialidade e integridade dos dados. Além disso, serão aplicadas boas práticas de controle de acesso, criptografia de credenciais e conformidade com a LGPD.
+
+## 9.1 Modelo de Dados (DER)
+
+O sistema foi modelado com base em um banco de dados relacional, utilizando PostgreSQL, com o objetivo de garantir integridade, rastreabilidade e consistência das informações. O modelo de dados foi construído de forma alinhada aos requisitos funcionais e ao backlog do produto, assegurando correspondência direta entre as regras de negócio e as entidades persistidas.
+
+O diagrama entidade-relacionamento (DER) representa as principais estruturas do sistema, incluindo usuários, planos, pedidos, pagamentos, máquinas virtuais e mecanismos de auditoria e provisionamento.
+
+### Principais Entidades
+
+- **usuarios**: Armazena os dados dos clientes do sistema, incluindo informações de autenticação e status.
+- **papeis / usuarios_papeis**: Responsáveis pelo controle de acesso e permissões dos usuários.
+- **planos**: Define os planos de VPS disponíveis para contratação.
+- **pedidos**: Representa a solicitação de contratação de um plano por um usuário.
+- **pagamentos**: Armazena informações das transações realizadas via gateway de pagamento.
+- **maquinas_virtuais**: Contém os dados das VMs provisionadas no Proxmox.
+- **credenciais**: Armazena as credenciais de acesso às máquinas virtuais de forma segura.
+- **eventos_provisionamento**: Registra o histórico de eventos durante o provisionamento das VMs.
+- **logs_auditoria**: Responsável pelo registro de ações relevantes realizadas no sistema.
+- **fila_tarefas**: Controla o processamento assíncrono das tarefas de provisionamento.
+
+### Entidades Complementares
+
+- **tokens**: Gerenciamento de sessões e autenticação.
+- **conversas, mensagens e feedback_ia**: Estrutura opcional para suporte e atendimento automatizado via inteligência artificial.
+
+### Diagrama
+
+![Diagrama ER do Sistema](./assets/der.png)
+
+### Considerações
+
+A modelagem adotada permite:
+
+- Separação clara entre domínio de negócio e infraestrutura;
+- Rastreabilidade completa do ciclo de vida do pedido até a VM provisionada;
+- Suporte a processamento assíncrono por meio de filas;
+- Registro detalhado de auditoria e eventos;
+- Facilidade de expansão para novas funcionalidades, como suporte automatizado e monitoramento avançado.
+
+O modelo de dados está diretamente alinhado aos requisitos funcionais definidos, garantindo consistência entre a camada de persistência e a lógica de negócio do sistema.
 
 ---
 
