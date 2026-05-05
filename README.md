@@ -209,7 +209,7 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 
 ## 9.1 Modelo de Dados (DER)
 
-O sistema foi modelado com base em um banco de dados relacional, utilizando PostgreSQL, com o objetivo de garantir integridade, rastreabilidade e consistência das informações. O modelo de dados foi construído de forma alinhada aos requisitos funcionais e ao backlog do produto, assegurando correspondência direta entre as regras de negócio e as entidades persistidas.
+O sistema foi modelado com base em um banco de dados relacional, utilizando MariaDB, com o objetivo de garantir integridade, rastreabilidade e consistência das informações. O modelo de dados foi construído de forma alinhada aos requisitos funcionais e ao backlog do produto, assegurando correspondência direta entre as regras de negócio e as entidades persistidas.
 
 O diagrama entidade-relacionamento (DER) representa as principais estruturas do sistema, incluindo usuários, planos, pedidos, pagamentos, máquinas virtuais e mecanismos de auditoria e provisionamento.
 
@@ -223,10 +223,10 @@ O diagrama entidade-relacionamento (DER) representa as principais estruturas do 
 - **maquinas_virtuais**: Contém os dados das VMs provisionadas no Proxmox.
 - **credenciais**: Armazena as credenciais de acesso às máquinas virtuais de forma segura.
 - **eventos_provisionamento**: Registra o histórico de eventos durante o provisionamento das VMs.
-- **logs_auditoria**: Responsável pelo registro de ações relevantes realizadas no sistema.
+- **logs_auditoria**: Responsável pelo registro de ações relevantes realizadas no sistema (em estudo).
 - **fila_tarefas**: Controla o processamento assíncrono das tarefas de provisionamento.
 
-### Entidades Complementares
+### Entidades Complementares (em estudo)
 
 - **tokens**: Gerenciamento de sessões e autenticação.
 - **conversas, mensagens e feedback_ia**: Estrutura opcional para suporte e atendimento automatizado via inteligência artificial.
