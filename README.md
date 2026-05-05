@@ -159,13 +159,13 @@ Há demanda crescente por soluções de provisionamento automatizado entre desen
 
 O modelo de negócio foi estruturado com base na metodologia Business Model Canvas, desenvolvida por Osterwalder e Pigneur (2010), amplamente utilizada no campo da administração e da inovação por permitir a representação clara e integrada dos elementos essenciais de um empreendimento. O Canvas possibilita visualizar de maneira unificada a proposta de valor, os segmentos de clientes, os canais, as fontes de receita, os recursos-chave, as atividades centrais e a estrutura de custos, favorecendo análises estratégicas e decisões de desenvolvimento. Sua aplicação no presente projeto contribui para alinhar a solução proposta às necessidades do mercado e reforçar a consistência do planejamento técnico e operacional.
 
-O modelo pode ser acessado em https://www.singularys.net/assets/canvas.html
+![Diagrama ER do Sistema](./assets/canvas.png)
 
 ## 7. Paleta de Cores e Protótipo Figma
 
-O front-end deverá sser construído com base na seguinte paleta de cores, disponível em 
+O front-end deverá sser construído com base na seguinte paleta de cores:
 
-https://www.singularys.net/assets/paleta.html
+![Diagrama ER do Sistema](./assets/paleta.png)
 
 O Protótipo pode ser acessado em https://www.figma.com/proto/Pw26SgXljrD4fwjItDOrJI/Prot%C3%B3tipo-singularys?node-id=2053-101&t=Cx1jDxWT21nUT1KS-1
 
