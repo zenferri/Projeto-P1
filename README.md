@@ -38,8 +38,7 @@
 - [4. Requisitos Funcionais e Não Funcionais](#4-requisitos-funcionais-e-não-funcionais)
   - [4.1 Requisitos Funcionais](#41-requisitos-funcionais)
     - [RF01](#rf01) • [RF02](#rf02) • [RF03](#rf03) • [RF04](#rf04) • [RF05](#rf05)
-    - [RF06](#rf06) • [RF07](#rf07) • [RF08](#rf08) • [RF09](#rf09) • [RF10](#rf10)
-    - [RF11](#rf11) • [RF12](#rf12) • [RF13](#rf13) • [RF14](#rf14)
+    - [RF06](#rf06) • [RF07](#rf07) • [RF08](#rf08) 
   - [4.2 Requisitos Não Funcionais](#42-requisitos-não-funcionais)
     - [RNF01](#rnf01) • [RNF02](#rnf02) • [RNF03](#rnf03) • [RNF04](#rnf04) • [RNF05](#rnf05)
     - [RNF06](#rnf06) • [RNF07](#rnf07) • [RNF08](#rnf08) • [RNF09](#rnf09)
@@ -113,18 +112,6 @@ A pesquisa seguirá abordagem aplicada, com caráter exploratório e descritivo.
 - <a id="rf07"></a>**RF07** – Gerar e entregar as credenciais: O sistema deve registrar e disponibilizar ao cliente as credenciais de acesso à sua VM no painel do portal, armazenadas de forma segura na tabela `credenciais`.
 
 - <a id="rf08"></a>**RF08** – Registrar eventos de provisionamento: O sistema deve registrar todas as etapas do processo de provisionamento na tabela `eventos_provisionamento`, incluindo status, tipo e mensagens de erro ou sucesso.
-
-- <a id="rf09"></a>**RF09** – Auditoria de ações: O sistema deve registrar ações relevantes dos usuários e do sistema na tabela `logs_auditoria`, garantindo rastreabilidade e segurança operacional.
-
-- <a id="rf10"></a>**RF10** – Monitoramento de recursos: O sistema deve disponibilizar ao cliente estatísticas de uso de CPU, memória, armazenamento e tráfego de rede, com atualização em tempo real ou em intervalos reduzidos.
-
-- <a id="rf11"></a>**RF11** – Gerenciar snapshots: O sistema deve permitir a criação e restauração de snapshots das máquinas virtuais sob demanda, possibilitando retorno a estados anteriores.
-
-- <a id="rf12"></a>**RF12** – Backup e restauração: O sistema deve permitir a execução de backups automáticos (diários) e restauração sob demanda, conforme regras definidas no plano contratado.
-
-- <a id="rf13"></a>**RF13** – Gerenciar sessões e autenticação: O sistema deve gerenciar sessões de usuários por meio de tokens armazenados na tabela `tokens`, com controle de validade e expiração.
-
-- <a id="rf14"></a>**RF14** – Atendimento automatizado via IA (opcional): O sistema poderá disponibilizar atendimento automatizado, registrando interações nas tabelas `conversas`, `mensagens` e `feedback_ia`.
 
 ---
 
