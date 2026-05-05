@@ -195,13 +195,11 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 
 • Camada de Aplicação (Back-end): Implementada em Node.js/Express ou Python/Django REST Framework, será responsável pela lógica de negócios, autenticação de clientes, gestão de pedidos, integração com gateway de pagamento e comunicação com os demais serviços da arquitetura.
 
-• Camada de Dados: Utilização de PostgreSQL como sistema gerenciador de banco de dados relacional, armazenando informações de clientes, planos, pedidos, pagamentos, logs de auditoria e metadados das máquinas virtuais.
+• Camada de Dados: Utilização do MariaDB como sistema gerenciador de banco de dados relacional, armazenando informações de clientes, planos, pedidos, pagamentos, logs de auditoria e metadados das máquinas virtuais.
 
 • Camada de Mensageria e Orquestração: A comunicação assíncrona e o gerenciamento de tarefas de provisionamento serão realizados por meio de Redis ou RabbitMQ, assegurando confiabilidade, escalabilidade e idempotência no tratamento dos eventos. O Orquestrador de Provisionamento atuará como serviço especializado, consumindo mensagens da fila e executando as chamadas à API do Proxmox.
 
 • Camada de Infraestrutura Virtualizada: A infraestrutura de máquinas virtuais será gerida em ambiente Proxmox, utilizando templates configurados com cloud-init, possibilitando a criação rápida e padronizada de VMs.
-
-• Camada de Rede e Proxy Reverso: O acesso externo às VMs e ao portal será intermediado por Traefik ou Nginx, garantindo balanceamento de carga, roteamento dinâmico de subdomínios e emissão automática de certificados digitais.
 
 • Camada de Integração com Pagamentos: O portal contará com integração a gateways de pagamento como Stripe ou Mercado Pago, que enviarão confirmações via webhooks para disparo do processo de provisionamento.
 
