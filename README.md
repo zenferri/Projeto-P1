@@ -1,5 +1,5 @@
 # Documentação do PI
-Última atualização: 30/04/2026
+Última atualização: 12/05/2026
 
 # FATEC JAHU
 
@@ -11,8 +11,9 @@
 
 ## Projeto
 
-**Portal de Deploy de Máquinas Virtuais (Proxmox)**<br>
-**Versão 1.2 – 2025.2**
+**Portal de Deploy de Máquinas Virtuais**<br>
+**Versão 1.2 – 2025.2**<br>
+**Última atualização: 12/05/2026 - Inclusão do Diagrama de Classes**
 
 ### Integrantes
 
@@ -21,7 +22,6 @@
 - Rafael Henrique Biliasi
 - Tainara Santos
 
-**Data:** Setembro/2025
 <br>
 
 ## Sumário
@@ -48,6 +48,7 @@
 - [8. Protótipo de Fluxo de Provisionamento](#8-protótipo-de-fluxo-de-provisionamento)
 - [9. Protótipo de Arquitetura Técnica](#9-protótipo-de-arquitetura-técnica)
   - [9.1 Modelo de Dados (DER)](#91-modelo-de-dados-der)
+  - [9.2 Diagrama de Classes](#92-diagrama-de-classes)
 - [10. Segurança e Governança](#10-segurança-e-governança)
 - [11. Cronograma da Primeira Etapa](#11-cronograma-da-primeira-etapa-20252)
 - [12. Referências](#12-referências)
@@ -244,6 +245,33 @@ A modelagem adotada permite:
 - Facilidade de expansão para novas funcionalidades, como suporte automatizado e monitoramento avançado.
 
 O modelo de dados está diretamente alinhado aos requisitos funcionais definidos, garantindo consistência entre a camada de persistência e a lógica de negócio do sistema.
+
+
+## 9.2 Diagrama de Classes
+
+O diagrama de classes representa a estrutura lógica orientada a objetos do sistema Singularys, evidenciando as principais classes de domínio, seus atributos, operações e relacionamentos. Enquanto o DER apresentado na seção anterior descreve a persistência dos dados em modelo relacional, o diagrama de classes permite visualizar a organização conceitual do sistema sob a perspectiva da aplicação, aproximando a modelagem das regras de negócio, dos serviços de autenticação, dos pedidos, dos pagamentos, do provisionamento de máquinas virtuais e dos módulos complementares de auditoria, fila de tarefas e suporte por inteligência artificial.
+
+A modelagem proposta mantém coerência com os requisitos funcionais e não funcionais do projeto. O fluxo principal parte do usuário, que pode possuir um ou mais papéis, selecionar planos, realizar pedidos, efetuar pagamentos e, após a confirmação, receber uma máquina virtual provisionada no ambiente Proxmox. O processo é acompanhado por eventos de provisionamento, logs de auditoria e tarefas assíncronas, garantindo rastreabilidade, segurança e confiabilidade operacional.
+
+![Diagrama de Classes](./assets/Class_Diagran.png)
+
+### Leitura do Diagrama
+
+A classe `Usuario` representa o ator central do sistema, responsável por autenticação, realização de pedidos e abertura de conversas de suporte. O controle de acesso é estruturado pelas classes `Papel` e `UsuarioPapel`, permitindo que um mesmo usuário exerça diferentes funções no portal, como cliente, administrador ou operador.
+
+A classe `Plano` define os recursos computacionais contratáveis, como CPU, memória RAM, armazenamento e preço. A partir dela, o usuário cria um `Pedido`, que concentra o status da contratação, o valor e o histórico temporal da solicitação. Cada pedido está vinculado a um `Pagamento`, responsável por registrar o meio utilizado, o status da transação, a chave de idempotência e a confirmação do pagamento pelo gateway.
+
+Após a confirmação do pagamento, o pedido passa a gerar uma `MaquinaVirtual`, contendo os dados técnicos da instância provisionada no Proxmox, como identificador externo, nó servidor, hostname, endereço IP, recursos computacionais e modelo utilizado. A classe `Credencial` representa os dados de acesso da VM, devendo ser tratada com proteção reforçada, já que envolve informações sensíveis de autenticação.
+
+O provisionamento é acompanhado por `EventoProvisionamento`, que registra cada etapa relevante do processo, incluindo sucessos, falhas e mensagens operacionais. A classe `FilaTarefa` representa o processamento assíncrono, essencial para evitar que operações demoradas, como clonagem e inicialização de VMs, bloqueiem a experiência do usuário no portal.
+
+As classes `LogAuditoria` e `Token` reforçam os aspectos de segurança, governança e rastreabilidade. Já as classes `Conversa`, `Mensagem` e `FeedbackIA` representam uma extensão planejada para atendimento automatizado, permitindo suporte ao cliente, registro de interações e avaliação da qualidade das respostas geradas por inteligência artificial.
+
+### Considerações sobre a Modelagem
+
+O diagrama de classes complementa o DER ao demonstrar como as entidades persistidas se transformam em objetos de domínio da aplicação. Essa visão é especialmente útil para orientar a implementação do back-end, a separação de responsabilidades entre modelos, serviços e controladores, além da integração com módulos externos, como gateway de pagamento, fila de tarefas e API do Proxmox.
+
+A estrutura favorece os princípios de coesão, rastreabilidade e expansão gradual do sistema. O núcleo do domínio permanece concentrado em usuários, planos, pedidos, pagamentos e máquinas virtuais, enquanto os módulos de auditoria, tokens, filas e inteligência artificial podem evoluir sem comprometer a arquitetura principal.
 
 ---
 
