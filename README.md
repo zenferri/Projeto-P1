@@ -208,64 +208,74 @@ A arquitetura proposta adota um modelo em camadas para assegurar modularidade, e
 
 ## 9.1 Modelo de Dados (DER)
 
-O sistema foi modelado com base em um banco de dados relacional, utilizando MariaDB, com o objetivo de garantir integridade, rastreabilidade e consistência das informações. O modelo de dados foi construído de forma alinhada aos requisitos funcionais e ao backlog do produto, assegurando correspondência direta entre as regras de negócio e as entidades persistidas.
+O modelo de dados do projeto Singularys foi estruturado para representar, de forma relacional, o ciclo completo de contratação, pagamento e provisionamento de máquinas virtuais em ambiente Proxmox. A modelagem parte do usuário como entidade central do sistema, permitindo que ele possua papéis de acesso, realize pedidos, contrate planos de VPS, efetue pagamentos e tenha suas máquinas virtuais provisionadas de maneira automatizada.
 
-O diagrama entidade-relacionamento (DER) representa as principais estruturas do sistema, incluindo usuários, planos, pedidos, pagamentos, máquinas virtuais e mecanismos de auditoria e provisionamento.
+O diagrama foi elaborado em formato DER, com foco na camada de persistência da aplicação. Por isso, diferentemente de um diagrama de classes orientado a objetos, ele privilegia tabelas, chaves primárias, chaves estrangeiras, restrições de unicidade e cardinalidades entre entidades. Essa abordagem permite visualizar com clareza como os dados serão armazenados no banco relacional e como cada etapa do fluxo de negócio será rastreada.
 
-### Principais Entidades
-
-- **usuarios**: Armazena os dados dos clientes do sistema, incluindo informações de autenticação e status.
-- **papeis / usuarios_papeis**: Responsáveis pelo controle de acesso e permissões dos usuários.
-- **planos**: Define os planos de VPS disponíveis para contratação.
-- **pedidos**: Representa a solicitação de contratação de um plano por um usuário.
-- **pagamentos**: Armazena informações das transações realizadas via gateway de pagamento.
-- **maquinas_virtuais**: Contém os dados das VMs provisionadas no Proxmox.
-- **credenciais**: Armazena as credenciais de acesso às máquinas virtuais de forma segura.
-- **eventos_provisionamento**: Registra o histórico de eventos durante o provisionamento das VMs.
-- **logs_auditoria**: Responsável pelo registro de ações relevantes realizadas no sistema (em estudo).
-- **fila_tarefas**: Controla o processamento assíncrono das tarefas de provisionamento.
-
-### Entidades Complementares (em estudo)
-
-- **tokens**: Gerenciamento de sessões e autenticação.
-- **conversas, mensagens e feedback_ia**: Estrutura opcional para suporte e atendimento automatizado via inteligência artificial.
+A modelagem contempla as entidades principais do domínio, como `usuarios`, `planos`, `pedidos`, `pagamentos` e `maquinas_virtuais`, além de entidades auxiliares voltadas ao controle de acesso, credenciais, eventos de provisionamento e processamento assíncrono. Com isso, o banco de dados passa a sustentar não apenas o cadastro e a contratação de serviços, mas também a segurança, a auditoria e a automação operacional do portal.
 
 ### Diagrama
 
-![Diagrama ER do Sistema](./assets/der.jpeg)
-
-### Considerações
-
-A modelagem adotada permite:
-
-- Separação clara entre domínio de negócio e infraestrutura;
-- Rastreabilidade completa do ciclo de vida do pedido até a VM provisionada;
-- Suporte a processamento assíncrono por meio de filas;
-- Registro detalhado de auditoria e eventos;
-- Facilidade de expansão para novas funcionalidades, como suporte automatizado e monitoramento avançado.
-
-O modelo de dados está diretamente alinhado aos requisitos funcionais definidos, garantindo consistência entre a camada de persistência e a lógica de negócio do sistema.
-
-
-## 9.2 Diagrama de Classes
-
-O diagrama de classes representa a estrutura lógica orientada a objetos do sistema Singularys, evidenciando as principais classes de domínio, seus atributos, operações e relacionamentos. Enquanto o DER apresentado na seção anterior descreve a persistência dos dados em modelo relacional, o diagrama de classes permite visualizar a organização conceitual do sistema sob a perspectiva da aplicação, aproximando a modelagem das regras de negócio, dos serviços de autenticação, dos pedidos, dos pagamentos, do provisionamento de máquinas virtuais e dos módulos complementares de auditoria, fila de tarefas e suporte por inteligência artificial.
-
-A modelagem proposta mantém coerência com os requisitos funcionais e não funcionais do projeto. O fluxo principal parte do usuário, que pode possuir um ou mais papéis, selecionar planos, realizar pedidos, efetuar pagamentos e, após a confirmação, receber uma máquina virtual provisionada no ambiente Proxmox. O processo é acompanhado por eventos de provisionamento, logs de auditoria e tarefas assíncronas, garantindo rastreabilidade, segurança e confiabilidade operacional.
-
-![Diagrama de Classes](./assets/Class_Diagran.png)
+![Diagrama ER do Sistema](./assets/db_singularys.png)
 
 ### Leitura do Diagrama
 
-A classe `Usuario` representa o ator central do sistema, responsável por autenticação, realização de pedidos e abertura de conversas de suporte. O controle de acesso é estruturado pelas classes `Papel` e `UsuarioPapel`, permitindo que um mesmo usuário exerça diferentes funções no portal, como cliente, administrador ou operador.
+A leitura do diagrama começa pela entidade `usuarios`, que representa os clientes e demais usuários do sistema. Cada usuário possui dados cadastrais, como nome, e-mail, telefone, senha armazenada em formato seguro e status de ativação. O e-mail é tratado como valor único, evitando duplicidade de contas. A partir dessa entidade, o sistema controla tanto o acesso quanto as ações comerciais realizadas dentro do portal.
 
-A classe `Plano` define os recursos computacionais contratáveis, como CPU, memória RAM, armazenamento e preço. A partir dela, o usuário cria um `Pedido`, que concentra o status da contratação, o valor e o histórico temporal da solicitação. Cada pedido está vinculado a um `Pagamento`, responsável por registrar o meio utilizado, o status da transação, a chave de idempotência e a confirmação do pagamento pelo gateway.
+O controle de permissões é feito por meio das entidades `papeis` e `usuarios_papeis`. Um usuário pode ter um ou mais papéis, e cada papel pode estar associado a vários usuários. Para representar essa relação muitos-para-muitos, foi criada a tabela intermediária `usuarios_papeis`, composta pelas chaves estrangeiras `usuario_id` e `papel_id`. Essa estrutura permite diferenciar, por exemplo, usuários clientes, administradores e operadores do sistema, mantendo o modelo flexível para futuras expansões.
 
-Após a confirmação do pagamento, o pedido passa a gerar uma `MaquinaVirtual`, contendo os dados técnicos da instância provisionada no Proxmox, como identificador externo, nó servidor, hostname, endereço IP, recursos computacionais e modelo utilizado. A classe `Credencial` representa os dados de acesso da VM, devendo ser tratada com proteção reforçada, já que envolve informações sensíveis de autenticação.
+A entidade `planos` armazena os planos de VPS disponíveis para contratação. Cada plano possui nome, descrição, quantidade de núcleos de CPU, memória em megabytes, armazenamento em gigabytes, preço mensal e status de ativação. Um plano pode estar vinculado a diversos pedidos, mas cada pedido se refere a apenas um plano contratado. Essa relação permite preservar o histórico da contratação e identificar exatamente quais recursos foram solicitados pelo cliente.
 
-O provisionamento é acompanhado por `EventoProvisionamento`, que registra cada etapa relevante do processo, incluindo sucessos, falhas e mensagens operacionais. A classe `FilaTarefa` representa o processamento assíncrono, essencial para evitar que operações demoradas, como clonagem e inicialização de VMs, bloqueiem a experiência do usuário no portal.
+A entidade `pedidos` representa a solicitação de contratação realizada pelo usuário. Cada pedido pertence a um usuário e a um plano, contendo status, valor total e datas de criação e alteração. O pedido funciona como o elo central entre a intenção de compra, o pagamento e o provisionamento da máquina virtual. Assim, antes de qualquer VM ser criada, o sistema registra formalmente o pedido e acompanha sua evolução.
 
-As classes `LogAuditoria` e `Token` reforçam os aspectos de segurança, governança e rastreabilidade. Já as classes `Conversa`, `Mensagem` e `FeedbackIA` representam uma extensão planejada para atendimento automatizado, permitindo suporte ao cliente, registro de interações e avaliação da qualidade das respostas geradas por inteligência artificial.
+A entidade `pagamentos` está vinculada a `pedidos` em uma relação de um para um. Isso significa que cada pedido possui um único registro de pagamento associado, e cada pagamento pertence a um único pedido. Essa tabela registra o gateway utilizado, o identificador da transação no provedor de pagamento, a chave de idempotência, o status da transação, o valor pago e a data de confirmação. A presença de campos únicos, como `gateway_transacao_id` e `idempotency_key`, reforça a segurança contra duplicidade de cobranças ou repetição indevida de eventos enviados pelo gateway.
+
+Após a confirmação do pagamento, o pedido resulta em uma máquina virtual, representada pela entidade `maquinas_virtuais`. Essa relação também é de um para um, pois cada pedido aprovado deve gerar uma única VM, e cada VM deriva de um único pedido. A tabela registra informações essenciais para a operação no Proxmox, como nó físico utilizado, identificador da VM, hostname, endereço IPv4, status, recursos computacionais aplicados, template utilizado e data de provisionamento. Embora a VM esteja relacionada ao pedido e ao plano, ela também mantém vínculo direto com o usuário, facilitando consultas no painel do cliente e operações administrativas.
+
+A entidade `credenciais` armazena os dados de acesso da máquina virtual. Cada VM possui uma credencial associada, contendo usuário, senha criptografada e eventual chave SSH. A relação apresentada indica que a máquina virtual possui credenciais, e a presença de chave única em `maquina_virtual_id` reforça que cada máquina deve ter um conjunto controlado de credenciais de acesso. Essa separação melhora a organização do modelo e permite aplicar regras específicas de segurança sobre dados sensíveis.
+
+A entidade `eventos_provisionamento` registra o histórico técnico da criação e configuração da VM. Cada máquina virtual pode gerar vários eventos, como início do provisionamento, clonagem do template, configuração de rede, aplicação de recursos, inicialização da VM, erro ou conclusão. Essa tabela é importante para auditoria, diagnóstico de falhas e acompanhamento do ciclo de vida técnico da máquina virtual.
+
+A entidade `fila_tarefas` representa o mecanismo de processamento assíncrono do sistema. Embora não esteja diretamente ligada por cardinalidade no diagrama apresentado, ela cumpre papel operacional relevante: registrar tarefas pendentes ou processadas, como provisionamento de VM, reprocessamento de falhas, chamadas ao Proxmox ou outras ações demoradas. Seus campos `tipo`, `referencia_id`, `payload`, `status`, `tentativas`, `erro` e `processado_em` permitem controlar a execução de tarefas em segundo plano, garantindo maior resiliência e escalabilidade.
+
+Em síntese, o DER descreve um fluxo de negócio bem definido: o usuário acessa o sistema, possui papéis de permissão, escolhe um plano, realiza um pedido, efetua o pagamento e, após a confirmação, tem uma máquina virtual provisionada. A partir dessa VM, o sistema registra credenciais e eventos técnicos, enquanto a fila de tarefas sustenta o processamento assíncrono necessário para que a automação seja confiável e tolerante a falhas.
+
+## 9.2 Diagrama de Classes
+
+O diagrama de classes do projeto Singularys representa a estrutura conceitual do sistema sob a perspectiva da orientação a objetos. Enquanto o DER descreve como os dados serão persistidos no banco relacional, o diagrama de classes demonstra como as principais entidades do domínio podem ser organizadas dentro da aplicação, indicando seus atributos, métodos e relacionamentos.
+
+Nesse modelo, cada classe representa um elemento relevante do negócio, como usuários, planos, pedidos, pagamentos, máquinas virtuais, credenciais, filas de tarefas e eventos de provisionamento. A modelagem permite compreender não apenas quais informações cada entidade carrega, mas também quais comportamentos podem ser atribuídos a elas no fluxo da aplicação.
+
+A classe `Usuarios` ocupa posição central no diagrama, pois representa o cliente ou operador que interage com o portal. A partir dela, o sistema permite a associação de papéis de acesso, a realização de pedidos e, indiretamente, o acompanhamento das máquinas virtuais contratadas. O método `fazerPedido(Planos plano)` expressa o comportamento principal do usuário no contexto comercial da plataforma: escolher um plano e iniciar uma contratação.
+
+O diagrama também evidencia a separação entre o domínio comercial e o domínio operacional. O domínio comercial é composto principalmente por `Usuarios`, `Papeis`, `Planos`, `Pedidos` e `Pagamentos`. Já o domínio operacional aparece nas classes `MaquinasVirtuais`, `Credenciais`, `FilasTarefas` e `EventosProvisionamentos`, que representam a automação do provisionamento, a entrega de acesso e o registro das etapas técnicas executadas pelo sistema.
+
+Outro ponto importante é a presença de atributos privados em informações sensíveis, como `senha_hash` em `Usuarios` e `senha_criptografada` em `Credenciais`. Essa escolha indica preocupação com encapsulamento e segurança, evitando que dados críticos sejam manipulados livremente por outras partes da aplicação. Assim, o diagrama já sinaliza boas práticas de proteção de credenciais desde a modelagem conceitual.
+
+![Diagrama de Classes](./assets/Diagrama_Classes.png)
+
+### Leitura do Diagrama
+
+A leitura do diagrama começa pela classe `Usuarios`, que representa os usuários cadastrados no sistema. Essa classe possui atributos como identificador, nome, e-mail, telefone, status e datas de criação e alteração. O atributo `senha_hash` aparece como privado, indicado pelo sinal de menos, demonstrando que a senha não deve ser exposta diretamente. O comportamento principal da classe é `fazerPedido(Planos plano)`, que representa a ação de contratar um plano de VPS.
+
+A classe `Papeis` representa os perfis de acesso do sistema, como cliente, administrador ou operador. O relacionamento entre `Usuarios` e `Papeis` indica que um usuário pode possuir vários papéis. Essa estrutura permite controlar permissões e diferentes níveis de acesso dentro do portal, mantendo flexibilidade para expansão futura.
+
+A classe `Planos` descreve os produtos oferecidos pela plataforma. Cada plano contém nome, descrição, quantidade de CPU, memória, armazenamento, preço mensal e status de ativação. Ela funciona como a base da contratação, pois define os recursos que serão aplicados posteriormente à máquina virtual.
+
+A classe `Pedidos` representa a solicitação de contratação feita pelo usuário. Um usuário pode fazer vários pedidos, enquanto cada pedido está associado a um plano específico. Essa classe possui status, valor total, data de criação e o método `processarPagamento()`, que expressa o início do fluxo financeiro após a criação do pedido.
+
+A classe `Pagamentos` representa a transação financeira vinculada ao pedido. O relacionamento entre `Pedidos` e `Pagamentos` é de um para um, indicando que cada pedido gera um pagamento correspondente. Essa classe contém informações como gateway utilizado, identificador da transação, chave de idempotência, status, valor e data de pagamento. O método `confirmar()` representa a confirmação da transação, normalmente realizada após retorno do gateway ou recebimento de webhook.
+
+A classe `MaquinasVirtuais` representa a VM criada no ambiente Proxmox após a confirmação do pagamento. O relacionamento entre `Pedidos` e `MaquinasVirtuais` foi modelado como `1` para `0..1`, o que é tecnicamente adequado, porque um pedido pode existir antes da VM ser provisionada. Assim, nem todo pedido terá imediatamente uma máquina virtual associada. Apenas após a aprovação e o processamento do provisionamento é que a VM será criada. Essa classe reúne dados como nó Proxmox, VMID, hostname, IP, status, recursos computacionais e template utilizado. Seus métodos `provisionar()`, `reiniciar()` e `desligar()` indicam comportamentos operacionais ligados ao ciclo de vida da VM.
+
+A classe `Credenciais` representa os dados de acesso da máquina virtual. Cada máquina virtual possui um conjunto de credenciais associado. O atributo `senha_criptografada` aparece como privado, reforçando que a senha da VM deve ser protegida e acessada apenas por mecanismos controlados. Também há previsão de chave SSH, o que permite uma forma mais segura e profissional de acesso ao servidor.
+
+A classe `EventosProvisionamentos` registra os eventos técnicos relacionados à criação e manutenção da máquina virtual. Uma VM pode possuir vários eventos, como início do provisionamento, clonagem de template, configuração de rede, falha, tentativa de reprocessamento ou conclusão. Essa classe é importante para auditoria, diagnóstico de problemas e rastreabilidade do processo automatizado.
+
+A classe `FilasTarefas` representa o processamento assíncrono da aplicação. Embora não esteja ligada diretamente por relacionamento no diagrama apresentado, ela possui papel essencial na arquitetura do sistema. Seu objetivo é armazenar e executar tarefas em segundo plano, como chamadas à API do Proxmox, provisionamento de máquinas, reprocessamento de falhas e outras rotinas demoradas. O método `executar()` representa o comportamento central dessa classe.
+
+Em síntese, o diagrama de classes descreve o funcionamento lógico do Singularys a partir de seus principais objetos de domínio. O fluxo pode ser lido da seguinte forma: um usuário possui papéis de acesso, escolhe um plano, faz um pedido, gera um pagamento e, após a confirmação, esse pedido pode resultar em uma máquina virtual. A VM, por sua vez, possui credenciais de acesso e registra eventos de provisionamento. Paralelamente, a fila de tarefas sustenta a execução assíncrona das operações mais sensíveis, tornando o sistema mais seguro, escalável e resiliente.
+
 
 ### Considerações sobre a Modelagem
 
