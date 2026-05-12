@@ -258,167 +258,171 @@ A modelagem proposta mantém coerência com os requisitos funcionais e não func
 ```mermaid
 ---
 config:
-  theme: neo
-  look: handDrawn
-title: Diagrama de Classes do Sistema Singularys
+  theme: redux
+  look: neo
+  layout: dagre
+  fontFamily: '''Recursive Variable'', sans-serif'
+  themeVariables:
+    fontFamily: '''Recursive Variable'', sans-serif'
+title: Sample title
 ---
 classDiagram
 direction TB
     class Usuario {
-        +Long idUsuario
-        +String nome
-        +String email
-        +String senhaHash
-        +String telefone
-        +boolean ativo
-        +DateTime criadoEm
-        +DateTime atualizadoEm
-        +login()
-        +logout()
-        +realizarPedido()
-        +iniciarConversa()
+	    +Long idUsuario
+	    +String nome
+	    +String email
+	    +String senhaHash
+	    +String telefone
+	    +boolean ativo
+	    +DateTime criadoEm
+	    +DateTime atualizadoEm
+	    +login()
+	    +logout()
+	    +realizarPedido()
+	    +iniciarConversa()
     }
 
     class Papel {
-        +Long idPapel
-        +String nome
-        +atribuirPermissao()
+	    +Long idPapel
+	    +String nome
+	    +atribuirPermissao()
     }
 
     class UsuarioPapel {
-        +Long usuarioId
-        +Long papelId
-        +vincularPapel()
+	    +Long usuarioId
+	    +Long papelId
+	    +vincularPapel()
     }
 
     class Plano {
-        +Long idPlano
-        +String nome
-        +int cpu
-        +int memoriaRam
-        +int armazenamento
-        +Decimal preco
-        +boolean ativo
-        +ativarPlano()
-        +desativarPlano()
-        +alterarPreco()
+	    +Long idPlano
+	    +String nome
+	    +int cpu
+	    +int memoriaRam
+	    +int armazenamento
+	    +Decimal preco
+	    +boolean ativo
+	    +ativarPlano()
+	    +desativarPlano()
+	    +alterarPreco()
     }
 
     class Pedido {
-        +Long idPedido
-        +String status
-        +Decimal valor
-        +DateTime criadoEm
-        +DateTime atualizadoEm
-        +criarPedido()
-        +cancelarPedido()
-        +atualizarStatus()
+	    +Long idPedido
+	    +String status
+	    +Decimal valor
+	    +DateTime criadoEm
+	    +DateTime atualizadoEm
+	    +criarPedido()
+	    +cancelarPedido()
+	    +atualizarStatus()
     }
 
     class Pagamento {
-        +Long idPagamento
-        +String meioPagamento
-        +String status
-        +String transacaoGateway
-        +String chaveIdempotencia
-        +Decimal valor
-        +DateTime pagoEm
-        +processarPagamento()
-        +confirmarPagamento()
-        +estornarPagamento()
+	    +Long idPagamento
+	    +String meioPagamento
+	    +String status
+	    +String transacaoGateway
+	    +String chaveIdempotencia
+	    +Decimal valor
+	    +DateTime pagoEm
+	    +processarPagamento()
+	    +confirmarPagamento()
+	    +estornarPagamento()
     }
 
     class MaquinaVirtual {
-        +Long idMaquina
-        +String idProxmox
-        +String noServidor
-        +String nomeHost
-        +String ip
-        +String status
-        +int cpu
-        +int memoria
-        +int disco
-        +String modeloUsado
-        +DateTime criadoEm
-        +ligar()
-        +desligar()
-        +reiniciar()
-        +provisionar()
+	    +Long idMaquina
+	    +String idProxmox
+	    +String noServidor
+	    +String nomeHost
+	    +String ip
+	    +String status
+	    +int cpu
+	    +int memoria
+	    +int disco
+	    +String modeloUsado
+	    +DateTime criadoEm
+	    +ligar()
+	    +desligar()
+	    +reiniciar()
+	    +provisionar()
     }
 
     class Credencial {
-        +Long idCredencial
-        +String usuarioVm
-        +String senhaHash
-        +String tipoHash
-        +DateTime criadoEm
-        +gerarCredenciais()
-        +alterarSenha()
+	    +Long idCredencial
+	    +String usuarioVm
+	    +String senhaHash
+	    +String tipoHash
+	    +DateTime criadoEm
+	    +gerarCredenciais()
+	    +alterarSenha()
     }
 
     class EventoProvisionamento {
-        +Long idEvento
-        +String tipo
-        +String status
-        +String mensagem
-        +DateTime criadoEm
-        +registrarEvento()
+	    +Long idEvento
+	    +String tipo
+	    +String status
+	    +String mensagem
+	    +DateTime criadoEm
+	    +registrarEvento()
     }
 
     class LogAuditoria {
-        +Long idLog
-        +String acao
-        +String descricao
-        +String ip
-        +String userAgent
-        +DateTime criadoEm
-        +registrarLog()
+	    +Long idLog
+	    +String acao
+	    +String descricao
+	    +String ip
+	    +String userAgent
+	    +DateTime criadoEm
+	    +registrarLog()
     }
 
     class FilaTarefa {
-        +Long idTarefa
-        +String tipo
-        +JSON dados
-        +String status
-        +int tentativas
-        +String erro
-        +DateTime criadoEm
-        +adicionarFila()
-        +executarTarefa()
-        +reprocessar()
+	    +Long idTarefa
+	    +String tipo
+	    +JSON dados
+	    +String status
+	    +int tentativas
+	    +String erro
+	    +DateTime criadoEm
+	    +adicionarFila()
+	    +executarTarefa()
+	    +reprocessar()
     }
 
     class Conversa {
-        +Long idConversa
-        +DateTime criadoEm
-        +iniciarConversa()
-        +encerrarConversa()
+	    +Long idConversa
+	    +DateTime criadoEm
+	    +iniciarConversa()
+	    +encerrarConversa()
     }
 
     class Mensagem {
-        +Long idMensagem
-        +String remetente
-        +String mensagem
-        +DateTime criadoEm
-        +enviarMensagem()
+	    +Long idMensagem
+	    +String remetente
+	    +String mensagem
+	    +DateTime criadoEm
+	    +enviarMensagem()
     }
 
     class FeedbackIA {
-        +Long idFeedback
-        +int nota
-        +String comentario
-        +DateTime criadoEm
-        +enviarFeedback()
+	    +Long idFeedback
+	    +int nota
+	    +String comentario
+	    +DateTime criadoEm
+	    +enviarFeedback()
     }
 
     class Token {
-        +Long idToken
-        +String tokenHash
-        +DateTime expiracao
-        +DateTime criadoEm
-        +gerarToken()
-        +validarToken()
-        +revogarToken()
+	    +Long idToken
+	    +String tokenHash
+	    +DateTime expiracao
+	    +DateTime criadoEm
+	    +gerarToken()
+	    +validarToken()
+	    +revogarToken()
     }
 
     Usuario "1" --> "*" UsuarioPapel
