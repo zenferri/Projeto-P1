@@ -11,8 +11,9 @@
 
 ## Projeto
 
-**Portal de Deploy de Máquinas Virtuais (Proxmox)**<br>
-**Versão 1.2 – 2025.2**
+**Portal de Deploy de Máquinas Virtuais**<br>
+**Versão 1.2 – 2025.2**<br>
+**Última atualização: 12/05/2026 - Inclusão do Diagrama de Classes**
 
 ### Integrantes
 
@@ -21,7 +22,6 @@
 - Rafael Henrique Biliasi
 - Tainara Santos
 
-**Data:** Setembro/2025
 <br>
 
 ## Sumário
@@ -253,192 +253,7 @@ O diagrama de classes representa a estrutura lógica orientada a objetos do sist
 
 A modelagem proposta mantém coerência com os requisitos funcionais e não funcionais do projeto. O fluxo principal parte do usuário, que pode possuir um ou mais papéis, selecionar planos, realizar pedidos, efetuar pagamentos e, após a confirmação, receber uma máquina virtual provisionada no ambiente Proxmox. O processo é acompanhado por eventos de provisionamento, logs de auditoria e tarefas assíncronas, garantindo rastreabilidade, segurança e confiabilidade operacional.
 
-### Código Mermaid
-
-```mermaid
----
-config:
-  theme: redux
-  look: neo
-  layout: dagre
-  fontFamily: '''Recursive Variable'', sans-serif'
-  themeVariables:
-    fontFamily: '''Recursive Variable'', sans-serif'
-title: Sample title
----
-classDiagram
-direction TB
-    class Usuario {
-	    +Long idUsuario
-	    +String nome
-	    +String email
-	    +String senhaHash
-	    +String telefone
-	    +boolean ativo
-	    +DateTime criadoEm
-	    +DateTime atualizadoEm
-	    +login()
-	    +logout()
-	    +realizarPedido()
-	    +iniciarConversa()
-    }
-
-    class Papel {
-	    +Long idPapel
-	    +String nome
-	    +atribuirPermissao()
-    }
-
-    class UsuarioPapel {
-	    +Long usuarioId
-	    +Long papelId
-	    +vincularPapel()
-    }
-
-    class Plano {
-	    +Long idPlano
-	    +String nome
-	    +int cpu
-	    +int memoriaRam
-	    +int armazenamento
-	    +Decimal preco
-	    +boolean ativo
-	    +ativarPlano()
-	    +desativarPlano()
-	    +alterarPreco()
-    }
-
-    class Pedido {
-	    +Long idPedido
-	    +String status
-	    +Decimal valor
-	    +DateTime criadoEm
-	    +DateTime atualizadoEm
-	    +criarPedido()
-	    +cancelarPedido()
-	    +atualizarStatus()
-    }
-
-    class Pagamento {
-	    +Long idPagamento
-	    +String meioPagamento
-	    +String status
-	    +String transacaoGateway
-	    +String chaveIdempotencia
-	    +Decimal valor
-	    +DateTime pagoEm
-	    +processarPagamento()
-	    +confirmarPagamento()
-	    +estornarPagamento()
-    }
-
-    class MaquinaVirtual {
-	    +Long idMaquina
-	    +String idProxmox
-	    +String noServidor
-	    +String nomeHost
-	    +String ip
-	    +String status
-	    +int cpu
-	    +int memoria
-	    +int disco
-	    +String modeloUsado
-	    +DateTime criadoEm
-	    +ligar()
-	    +desligar()
-	    +reiniciar()
-	    +provisionar()
-    }
-
-    class Credencial {
-	    +Long idCredencial
-	    +String usuarioVm
-	    +String senhaHash
-	    +String tipoHash
-	    +DateTime criadoEm
-	    +gerarCredenciais()
-	    +alterarSenha()
-    }
-
-    class EventoProvisionamento {
-	    +Long idEvento
-	    +String tipo
-	    +String status
-	    +String mensagem
-	    +DateTime criadoEm
-	    +registrarEvento()
-    }
-
-    class LogAuditoria {
-	    +Long idLog
-	    +String acao
-	    +String descricao
-	    +String ip
-	    +String userAgent
-	    +DateTime criadoEm
-	    +registrarLog()
-    }
-
-    class FilaTarefa {
-	    +Long idTarefa
-	    +String tipo
-	    +JSON dados
-	    +String status
-	    +int tentativas
-	    +String erro
-	    +DateTime criadoEm
-	    +adicionarFila()
-	    +executarTarefa()
-	    +reprocessar()
-    }
-
-    class Conversa {
-	    +Long idConversa
-	    +DateTime criadoEm
-	    +iniciarConversa()
-	    +encerrarConversa()
-    }
-
-    class Mensagem {
-	    +Long idMensagem
-	    +String remetente
-	    +String mensagem
-	    +DateTime criadoEm
-	    +enviarMensagem()
-    }
-
-    class FeedbackIA {
-	    +Long idFeedback
-	    +int nota
-	    +String comentario
-	    +DateTime criadoEm
-	    +enviarFeedback()
-    }
-
-    class Token {
-	    +Long idToken
-	    +String tokenHash
-	    +DateTime expiracao
-	    +DateTime criadoEm
-	    +gerarToken()
-	    +validarToken()
-	    +revogarToken()
-    }
-
-    Usuario "1" --> "*" UsuarioPapel
-    Papel "1" --> "*" UsuarioPapel
-    Usuario "1" --> "*" Pedido
-    Plano "1" --> "*" Pedido
-    Pedido "1" --> "1" Pagamento
-    Pedido "1" --> "1" MaquinaVirtual
-    MaquinaVirtual "1" --> "*" Credencial
-    Pedido "1" --> "*" EventoProvisionamento
-    Usuario "1" --> "*" LogAuditoria
-    Usuario "1" --> "*" Conversa
-    Conversa "1" --> "*" Mensagem
-    Conversa "1" --> "*" FeedbackIA
-    Usuario "1" --> "*" Token
-```
+![Diagrama de Classes](./assets/Class_Diagran.png)
 
 ### Leitura do Diagrama
 
