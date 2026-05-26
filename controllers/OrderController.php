@@ -23,7 +23,7 @@ class OrderController extends BaseController
     {
         if (empty($_SESSION['user'])) {
             $_SESSION['flash_error'] = 'Faça login ou cadastro antes de finalizar o pedido.';
-            $this->redirect('/cadastro');
+            $this->redirect('/login');
         }
 
         $selectedPlan = $_SESSION['selected_plan'] ?? $this->planModel->getPlan('essencial');

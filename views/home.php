@@ -129,10 +129,4 @@
     .hover-shadow {
         transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
-    .hover-shadow:hover {
-        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1) !important;
-        transform: translateY(-2px);
-    }
-</style>
-
 <?php require __DIR__ . '/layout/footer.php'; ?>

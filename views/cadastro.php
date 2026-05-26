@@ -113,7 +113,7 @@
 
                             <button class="btn btn-primary btn-lg w-100" type="submit">Criar conta e continuar</button>
                             <p class="text-center text-muted small mt-3">
-                                Já tem conta? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="text-primary">Faça login</a>
+                                Já tem conta? <a href="<?= BASE_URL ?>/login" class="text-primary">Faça login</a>
                             </p>
                         </form>
                     </div>

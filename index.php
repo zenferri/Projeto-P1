@@ -21,19 +21,26 @@ $baseUrl = $basePath === '/' ? '' : $basePath;
 define('BASE_URL', $baseUrl);
 
 $path = '/' . trim(substr($requestUri, strlen($basePath)), '/');
-if ($path === '//') {
+if ($path === '//' || $path === '') {
     $path = '/';
 }
-if ($path === '') {
-    $path = '/';
-}
-$method = $_SERVER['REQUEST_METHOD'];
 
+if (($path === '/index.php' || $path === '/index.php/') && !empty($_GET['page'])) {
+    $pageName = trim(strtolower($_GET['page']), '/');
+    $path = $pageName === '' ? '/' : '/' . $pageName;
+}
+
+$method = $_SERVER['REQUEST_METHOD'];
 $routeKey = $path . '|' . $method;
 
 if (!isset($routes[$routeKey])) {
     if (isset($routes[$path . '|GET'])) {
         $routeKey = $path . '|GET';
+    } elseif (!empty($_GET['page'])) {
+        $pageAlias = '/' . trim(strtolower($_GET['page']), '/') . '|GET';
+        if (isset($routes[$pageAlias])) {
+            $routeKey = $pageAlias;
+        }
     }
 }
 

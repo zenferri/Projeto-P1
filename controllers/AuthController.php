@@ -83,7 +83,8 @@ class AuthController extends BaseController
     {
         session_unset();
         session_destroy();
-        header('Location: /');
+        $redirect = BASE_URL ?: '/';
+        header('Location: ' . $redirect);
         exit;
     }
 }

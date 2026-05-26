@@ -15,9 +15,9 @@
                     <p><?= htmlspecialchars($plan['cpu']) ?> · <?= htmlspecialchars($plan['ram']) ?> · <?= htmlspecialchars($plan['storage']) ?></p>
                 </div>
             </div>
-            <div class="dashboard-actions">
-                <a class="button" href="<?= BASE_URL ?>/carrinho">Alterar pagamento</a>
-                <a class="button button-outline" href="<?= BASE_URL ?>/cadastro">Novo plano</a>
+            <div class="dashboard-actions d-flex flex-wrap gap-3 mt-4">
+                <a class="btn btn-primary" href="<?= BASE_URL ?>/carrinho">Alterar pagamento</a>
+                <a class="btn btn-outline-primary" href="<?= BASE_URL ?>/cadastro">Novo plano</a>
             </div>
         </div>
         <div class="dashboard-card metric-card">

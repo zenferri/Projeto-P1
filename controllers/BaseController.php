@@ -10,7 +10,11 @@ class BaseController
 
     protected function redirect(string $path): void
     {
-        header('Location: ' . $path);
+        $target = rtrim(BASE_URL, '/') . $path;
+        if ($target === '') {
+            $target = '/';
+        }
+        header('Location: ' . $target);
         exit;
     }
 }

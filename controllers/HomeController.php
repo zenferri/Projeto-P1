@@ -21,7 +21,7 @@ class HomeController extends BaseController
     {
         $plans = $this->planModel->getPlans();
         $selectedPlan = null;
-        $planCode = $_GET['plano'] ?? ''; 
+        $planCode = $_GET['plano'] ?? '';
 
         if ($planCode) {
             $selectedPlan = $this->planModel->getPlan($planCode);
@@ -39,10 +39,21 @@ class HomeController extends BaseController
         $this->render('cadastro', compact('plans', 'selectedPlan', 'pageTitle', 'pageDescription'));
     }
 
+    public function login(): void
+    {
+        if (!empty($_SESSION['user'])) {
+            $this->redirect('/dashboard');
+        }
+
+        $pageTitle = 'Login • Singularys';
+        $pageDescription = 'Entre em sua conta para acessar o painel e concluir o pedido.';
+        $this->render('login', compact('pageTitle', 'pageDescription'));
+    }
+
     public function dashboard(): void
     {
         if (empty($_SESSION['user'])) {
-            $this->redirect('/cadastro');
+            $this->redirect('/login');
         }
 
         $user = $_SESSION['user'];
