@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Evita reescrever arquivos estáticos
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Roteia todo o restante para o index central
+RewriteRule ^.*$ index.php [L,QSA]
