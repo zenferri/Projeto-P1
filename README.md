@@ -13,7 +13,7 @@
 
 **Singularys — Portal de Contratação e Gestão de VPS**<br>
 **Versão 2.0 – 2025.2 / 2026.1**<br>
-**Última atualização: 02/06/2026 — Consolidação da documentação acadêmica com a documentação de engenharia**
+**Última atualização: 02/06/2026 — Consolidação da documentação**
 
 ### Integrantes
 
