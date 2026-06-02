@@ -481,7 +481,7 @@ A tabela `maquinas_virtuais` é o elo entre o domínio comercial e o operacional
 
 #### 9.4.4 Diagrama ER
 
-![Diagrama ER do banco Singularys](./assets/db_singularys.png)
+![Diagrama ER do banco Singularys](./assets/db_singularys.jpeg)
 
 ### 9.5 Diagrama de Classes
 
