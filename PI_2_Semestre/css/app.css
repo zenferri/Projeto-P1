@@ -1,0 +1,126 @@
+/*
+ * Estilos da area logada / portal (Bootstrap).
+ * A landpage continua em style5.css e demais arquivos legados.
+ */
+:root {
+    --singularys-azul: #101C5E;
+    --singularys-azul-claro: #4361EE;
+    --singularys-fundo: #f4f6fc;
+    --singularys-card: #ffffff;
+    --singularys-borda: #d5dbfb;
+}
+
+body.app-body {
+    background-color: var(--singularys-fundo);
+    color: var(--singularys-azul);
+    font-family: "Inter", system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.app-body main {
+    flex: 1 0 auto;
+}
+
+.app-topbar {
+    background: var(--singularys-azul);
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+.app-topbar a {
+    color: #eff1fe;
+    text-decoration: none;
+}
+
+.app-topbar a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.navbar-app {
+    background: var(--singularys-azul) !important;
+    box-shadow: 0 2px 8px rgba(16, 28, 94, 0.15);
+}
+
+.navbar-app .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.navbar-app .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-app .nav-link:hover,
+.navbar-app .nav-link.active {
+    color: #fff !important;
+}
+
+.btn-singularys {
+    background: var(--singularys-azul-claro);
+    border-color: var(--singularys-azul-claro);
+    color: #fff;
+}
+
+.btn-singularys:hover {
+    background: #3651d4;
+    border-color: #3651d4;
+    color: #fff;
+}
+
+.app-card {
+    background: var(--singularys-card);
+    border: 1px solid var(--singularys-borda);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 24px rgba(16, 28, 94, 0.06);
+}
+
+.app-card-dark {
+    background: var(--singularys-azul);
+    color: #fff;
+    border: none;
+    border-radius: 0.75rem;
+}
+
+.app-page-title {
+    color: var(--singularys-azul);
+}
+
+.app-footer {
+    background: var(--singularys-azul);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.875rem;
+    margin-top: auto;
+}
+
+.app-footer p {
+    margin: 0;
+}
+
+.app-choice-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.app-choice-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(16, 28, 94, 0.12);
+}
+
+.mvc-error {
+    display: block;
+    min-height: 1rem;
+    font-size: 0.875rem;
+}
+
+.table-app thead {
+    background: var(--singularys-fundo);
+    color: var(--singularys-azul);
+}
+
+.badge-situacao {
+    text-transform: capitalize;
+}
