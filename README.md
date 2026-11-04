@@ -14,7 +14,7 @@
 **Versão 3.0 – 2025.2 / 2026.2**<br>
 **Última atualização: 02/06/2026 — Consolidação da documentação**
 
-### Integrante
+### Integrante atual
 - José Augusto Zen Ferri
 
 ### Integrantes anteriores
