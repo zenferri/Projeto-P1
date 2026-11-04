@@ -66,8 +66,7 @@
 - [11. Segurança e Governança](#11-segurança-e-governança)
 - [12. Evolução da Implementação](#12-evolução-da-implementação)
 - [13. Convenções do Projeto](#13-convenções-do-projeto)
-- [14. Cronograma da Primeira Etapa](#14-cronograma-da-primeira-etapa)
-- [15. Referências](#15-referências)
+- [14. Referências](#14-referências)
 
 ---
 
@@ -593,25 +592,7 @@ O projeto adota convenções para facilitar leitura, manutenção e continuidade
 
 ---
 
-## 14. Cronograma da Primeira Etapa
-
-| Mês | Dia | Tarefa |
-|---|---:|---|
-| Agosto | 25 | Formação da equipe |
-| Setembro | 01 | Definição do tema e objetivo |
-| Setembro | 22 | Documento de requisitos |
-| Setembro | 29 | Estudo de viabilidade |
-| Outubro | 13 | Modelo de negócio Canvas |
-| Outubro | 20 | Planejamento do design |
-| Outubro | 27 | Modelagens iniciais DER e UML |
-| Novembro | 03 | Entrega do protótipo |
-| Novembro | 25 | Entrega da aplicação e documentação |
-| Novembro | 25 | Apresentação do PI com modelo estático|
-| Maio/Junho | 2026 | Consolidação da engenharia, banco, dashboard e documentação atualizada |
-
----
-
-## 15. Referências
+## 14. Referências
 
 NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY. **The NIST Definition of Cloud Computing**. NIST Special Publication 800-145. Gaithersburg: NIST, 2011. Disponível em: https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-145.pdf. Acesso em: 07 set. 2025.
 
