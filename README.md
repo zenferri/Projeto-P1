@@ -1,26 +1,26 @@
 # Documentação do PI
-Última atualização: 02/06/2026
+Última atualização: 04/11/2026
 
 # FATEC JAHU
 
 **Faculdade de Tecnologia de Jahu**
 
 **Curso:** Desenvolvimento de Software Multiplataforma  
-**Disciplina:** Engenharia de Software II  
 **Turma:** 2025.2
 
 ## Projeto
 
 **Singularys — Portal de Contratação e Gestão de VPS**<br>
-**Versão 2.0 – 2025.2 / 2026.1**<br>
+**Versão 3.0 – 2025.2 / 2026.2**<br>
 **Última atualização: 02/06/2026 — Consolidação da documentação**
 
-### Integrantes
-
-- Evellyn Santana Marinho
+### Integrante
 - José Augusto Zen Ferri
-- Rafael Henrique Biliasi
-- Tainara Santos
+
+### Integrantes anteriores
+- Evellyn Santana Marinho (2o semestre)
+- Rafael Henrique Biliasi (1o e 2o semestres)
+- Tainara Santos (2o semestre)
 
 <br>
 
